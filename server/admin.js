@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('password').value;
             
             try {
+                updateDebugInfo("开始发送登录请求...");
+                
                 const response = await fetch('/api/auth/login', {
                     method: 'POST',
                     headers: {
@@ -55,7 +57,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify({ password })
                 });
                 
-                const data = await response.json();
+                // 检查响应状态
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    updateDebugInfo(`服务器返回错误状态码: ${response.status}, 内容: ${errorText}`);
+                    throw new Error(`服务器返回错误: ${response.status} ${response.statusText}`);
+                }
+                
+                // 尝试解析 JSON
+                let data;
+                try {
+                    data = await response.json();
+                    updateDebugInfo("成功解析服务器响应");
+                } catch (e) {
+                    const text = await response.text();
+                    updateDebugInfo(`JSON 解析错误，原始响应: ${text}`);
+                    throw new Error('服务器返回了无效的 JSON 数据');
+                }
                 
                 if (data.success) {
                     authToken = data.token;
@@ -74,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('登录请求失败:', error);
                 updateDebugInfo("登录请求失败: " + error.message);
-                alert('登录请求失败，请检查服务器连接');
+                alert('登录请求失败: ' + error.message);
             }
         });
     }
