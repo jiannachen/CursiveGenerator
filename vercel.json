@@ -6,12 +6,15 @@
     { "src": "js/**", "use": "@vercel/static" },
     { "src": "server/*.html", "use": "@vercel/static" },
     { "src": "server/index.js", "use": "@vercel/node" },
-    { "src": "cn/**", "use": "@vercel/static" }  
+    { "src": "cn/**", "use": "@vercel/static" },
+    { "src": "images/**", "use": "@vercel/static" },
+    { "src": "*.ico", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/server/index.js" },
     { "src": "/server/(.*)", "dest": "/server/$1" },
-    { "src": "/cn/(.*)", "dest": "/cn/$1" },  
+    { "src": "/cn/(.*)", "dest": "/cn/$1" },
+    { "src": "/images/(.*)", "dest": "/images/$1" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
