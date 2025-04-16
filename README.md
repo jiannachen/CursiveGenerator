@@ -37,6 +37,7 @@ Cursive Generator是一个在线花体字生成工具，可以将普通文本转
 git clone https://github.com/jiannachen/CursiveGenerator.git
 cd CursiveGenerator
 
+```
 
 ## 项目结构
 cursive-generator/
