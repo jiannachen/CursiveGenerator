@@ -654,16 +654,14 @@ async function markAsRead(feedbackId) {
 }
 
 // 在登录按钮下方添加一个测试按钮
-const loginContainer = document.getElementById('loginContainer');
-if (loginContainer) {
-    const testServerBtn = document.createElement('button');
-    testServerBtn.textContent = '测试服务器连接';
-    testServerBtn.className = 'btn btn-secondary';
-    testServerBtn.style.marginTop = '10px';
+const testServerBtn = document.getElementById
+if (testServerBtn) {
     testServerBtn.addEventListener('click', async function() {
         try {
             updateDebugInfo("开始测试服务器连接...");
             const response = await fetch('/api/health');
+            
+            updateDebugInfo(`收到响应: 状态码 ${response.status}`);
             
             if (!response.ok) {
                 const errorText = await response.text();
@@ -674,12 +672,10 @@ if (loginContainer) {
             
             const data = await response.json();
             updateDebugInfo(`服务器健康检查成功: ${JSON.stringify(data)}`);
-            alert(`服务器连接成功! 环境: ${data.environment}, 时间: ${data.timestamp}`);
+            alert(`服务器连接成功! 时间: ${data.timestamp}`);
         } catch (error) {
             updateDebugInfo(`服务器连接测试失败: ${error.message}`);
             alert(`服务器连接测试失败: ${error.message}`);
         }
     });
-    
-    loginContainer.appendChild(testServerBtn);
 }
