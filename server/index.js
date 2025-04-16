@@ -13,6 +13,10 @@ const PORT = config.server.port;
 // 中间件
 app.use(cors()); // 允许跨域请求
 app.use(express.json()); // 解析JSON请求体
+// API路由
+app.use('/api/auth', authRoutes);
+app.use('/api/feedback', feedbackRoutes);
+
 
 if (process.env.NODE_ENV === 'development' && process.env.HTTP_PROXY) {
     console.log('开发环境：设置 HTTP 代理:', process.env.HTTP_PROXY);
@@ -104,11 +108,12 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// API路由
-app.use('/api/auth', authRoutes);
-app.use('/api/feedback', feedbackRoutes);
 
-// 启动服务器
-app.listen(PORT, () => {
-    console.log(`服务器运行在 http://localhost:${PORT}`);
-});
+
+// 只在非 Vercel 环境下启动监听服务器
+if (process.env.VERCEL !== 'true') {
+    app.listen(PORT, () => {
+        console.log(`服务器运行在 http://localhost:${PORT}`);
+    });
+}
+module.exports = app;
