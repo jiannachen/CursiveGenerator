@@ -103,13 +103,6 @@ try {
 // 静态文件服务
 app.use(express.static(path.join(__dirname, '..')));
 
-// 添加健康检查端点
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
-
-
-
 // 只在非 Vercel 环境下启动监听服务器
 if (process.env.VERCEL !== 'true') {
     app.listen(PORT, () => {
@@ -117,3 +110,13 @@ if (process.env.VERCEL !== 'true') {
     });
 }
 module.exports = app;
+
+
+// 添加一个简单的健康检查端点
+app.get('/api/health', (req, res) => {
+    res.json({ 
+        status: 'ok', 
+        timestamp: new Date().toISOString(),
+        environment: process.env.VERCEL ? 'vercel' : 'local'
+    });
+});
