@@ -1,0 +1,99 @@
+/* 现代风格SaaS网站的变量定义 */
+:root {
+    --primary-color: #4f46e5; /* 主色调：靛蓝色 */
+    --primary-light: #818cf8; /* 主色调亮色版 */
+    --primary-dark: #3730a3; /* 主色调暗色版 */
+    --secondary-color: #f97316; /* 次要色调：橙色 */
+    --text-primary: #18181b; /* 主要文本颜色：近黑色 */
+    --text-secondary: #52525b; /* 次要文本颜色：深灰色 */
+    --background: #ffffff; /* 背景色：白色 */
+    --background-alt: #f9fafb; /* 替代背景色：浅灰色 */
+    --border-color: #e5e7eb; /* 边框颜色：浅灰色 */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* 小阴影 */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* 中等阴影 */
+    --radius-sm: 0.375rem; /* 小圆角 */
+    --radius-md: 0.5rem; /* 中等圆角 */
+    --radius-lg: 0.75rem; /* 大圆角 */
+    --transition: all 0.2s ease; /* 全局过渡效果 */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 无衬线字体栈 */
+  }
+  
+  /* 基础页面样式 */
+body {
+  font-family: var(--font-sans); /* 使用定义的字体 */
+  color: var(--text-primary); /* 设置文本颜色 */
+  background-color: var(--background); /* 设置背景色 */
+  line-height: 1.5; /* 行高 */
+  margin: 0; /* 移除默认边距 */
+  padding: 0; /* 移除默认内边距 */
+}
+
+/* 内容容器 */
+.container {
+  max-width: 1200px; /* 最大宽度 */
+  margin: 0 auto; /* 水平居中 */
+  padding: 1rem 1.5rem; /* 减小内边距，从2rem改为1rem */
+}
+
+/* 头部样式 */
+.header {
+  text-align: center; /* 文本居中 */
+  margin-bottom: 1.5rem; /* 减小底部外边距，从3rem改为1.5rem */
+}
+
+/* 标题样式 */
+.header h1 {
+  font-size: 2rem; /* 减小字体大小，从2.5rem改为2rem */
+  font-weight: 700; /* 字体粗细 */
+  color: var(--text-primary); /* 文本颜色 */
+  margin-bottom: 0.5rem; /* 减小底部外边距，从0.75rem改为0.5rem */
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark)); /* 渐变背景 */
+  -webkit-background-clip: text; /* 文字裁剪 */
+  -webkit-text-fill-color: transparent; /* 文字填充透明 */
+  background-clip: text; /* 标准文字裁剪属性 */
+}
+
+/* 头部描述文本 */
+.header p {
+  font-size: 1rem; /* 减小字体大小，从1.125rem改为1rem */
+  color: var(--text-secondary); /* 文本颜色 */
+  max-width: 36rem; /* 最大宽度 */
+  margin: 0 auto 0.5rem; /* 减小底部边距 */
+}
+
+/* 区块标题 */
+.section-title {
+  font-size: 1.125rem; /* 减小字体大小，从1.25rem改为1.125rem */
+  font-weight: 600; /* 字体粗细 */
+  margin-bottom: 0.75rem; /* 减小底部外边距，从1rem改为0.75rem */
+  color: var(--text-primary); /* 文本颜色 */
+}
+
+/* 文本输入区容器 */
+.text-input-container {
+  width: 95%;
+  max-width: 1152px;
+  margin: 0 auto 1.5rem; /* 减小底部边距，从2rem改为1.5rem */
+  position: relative;
+}
+
+/* 通知样式 */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}

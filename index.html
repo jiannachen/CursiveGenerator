@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursive Text Generator</title>
+    <link rel="alternate icon" type="image/x-icon" href="./favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Pacifico&family=Alex+Brush&family=Parisienne&family=Allura&family=Mr+Dafoe&family=Marck+Script&family=Tangerine&family=Qwigley&family=Kaushan+Script&family=Sacramento&family=Damion&family=Fuggles&family=Ruthie&family=Yellowtail&family=Lobster&family=Lovers+Quarrel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- 页面多语言 -->
+    <link rel="alternate" hreflang="zh-CN" href="https://yoursite.com/cn/privacy.html">
+    <link rel="alternate" hreflang="en" href="https://yoursite.com/privacy.html">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+       <!-- 基础样式 -->
+   <link rel="stylesheet" href="./css/base.css">
+    
+       <!-- 卡片样式 -->
+       <link rel="stylesheet" href="./css/cards.css">
+       
+       <!-- 按钮样式 -->
+       <link rel="stylesheet" href="./css/textarea.css">
+        <!-- 按钮样式 -->
+        <link rel="stylesheet" href="./css/effect.css">
+       
+       <!-- 导航栏样式 -->
+       <link rel="stylesheet" href="./css/nav.css">
+              <!-- 在响应式样式之前添加页脚样式 -->
+    <link rel="stylesheet" href="./css/footer.css">
+       <!-- 反馈样式 -->
+       <link rel="stylesheet" href="./css/feedback.css">
+             
+       <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+       <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+     <!-- 导航栏 -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+            <i class="fas fa-feather-alt"></i>
+            <span>Cursive Generator</span>
+        </a>
+        <div class="navbar-right">
+            <ul class="navbar-menu">
+                <li class="navbar-item active">
+                    <a href="index.html" class="navbar-link">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="guide.html" class="navbar-link">Guide</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">About</a>
+                </li>
+                <li class="navbar-item language-selector">
+                    <div class="current-lang">
+                        <span id="currentLang">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="language-dropdown">
+                        <a href="index.html" class="lang-option active" data-lang="en">EN</a>
+                        <a href="./cn/index.html" class="lang-option " data-lang="zh">中文</a>
+                        <!-- 未来可以在这里添加更多语言选项 -->
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>Cursive Text Generator</h1>
+            <p>Create beautiful stylized text for social media, designs, and more</p>
+        </header>
+        
+                <div class="section">
+            <h2 class="section-title">Visual Effects</h2>
+            <div class="vfx-options">
+                <button class="vfx-option active" data-vfx="default">Default</button>
+                <button class="vfx-option" data-vfx="tiktok">TikTok</button>
+                <button class="vfx-option" data-vfx="shadow">Shadow</button>
+                <button class="vfx-option" data-vfx="gloden">Golden</button>
+                <button class="vfx-option" data-vfx="neon">Neon</button>
+                <button class="vfx-option" data-vfx="papercut">PaperCut</button>
+                <button class="vfx-option" data-vfx="emboss">Emboss</button>
+            </div>
+        </div>
+
+        <div class="text-input-container">
+            <div class="textarea-controls">
+                <div class="toggle-container">
+                    <span class="toggle-label">Preview in Textarea</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="modeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="align-buttons">
+                    <button class="align-button" data-align="center" title="Text align">
+                        <i class="fas fa-align-center"></i>
+                    </button>
+                    <button class="copy-button tooltip" data-tooltip="Copy to clipboard" title="Copy text">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="textarea-wrapper">             
+                <textarea id="textInput" class="text-area" placeholder="Type your text here to transform it into beautiful cursive..."></textarea>
+            </div>
+        </div>
+ 
+        <div class="preview-container">
+            <div id="previewText" class="preview-text fade-in"></div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="clearBtn" class="btn btn-secondary">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+            <button id="saveBtn" class="btn btn-primary">
+                <i class="fas fa-download"></i> Save
+            </button>
+        </div>
+  
+
+        <div class="font-section">
+            <h2 class="section-title">Choose Your Font</h2>
+<!-- HTML for toggle switch -->
+            <div class="font-toggle-container">
+                <span class="font-toggle-label">Show Font Name</span>
+                <label class="font-toggle-switch">
+                <input type="checkbox" id="fontNameToggle">
+                <span class="font-toggle-slider"></span>
+                </label>
+            </div>
+            <div class="font-grid">
+                <div class="font-card" data-font-name="Dancing Script">
+                    <div class="font-name hidden">Dancing Script</div>
+                    <div class="font-preview">abc123</div>
+                  </div>
+            <div class="font-card" data-font-name="Great Vibes">
+                <div class="font-name hidden">Great Vibes</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Lovers Quarrel">
+                <div class="font-name hidden">Lovers Quarrel</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Pacifico">
+                <div class="font-name hidden">Pacifico</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Alex Brush">
+                <div class="font-name hidden">Alex Brush</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Parisienne">
+                <div class="font-name hidden">Parisienne</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Allura">
+                <div class="font-name hidden">Allura</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Mr Dafoe">
+                <div class="font-name hidden">Mr Dafoe</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Marck Script">
+                <div class="font-name hidden">Marck Script</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Tangerine">
+                <div class="font-name hidden">Tangerine</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Qwigley">
+                <div class="font-name hidden">Qwigley</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Kaushan Script">
+                <div class="font-name hidden">Kaushan Script</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Sacramento">
+                <div class="font-name hidden">Sacramento</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Segoe Script">
+                <div class="font-name hidden">Segoe Script</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Monotype Corsiva">
+                <div class="font-name hidden">Monotype Corsiva</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Ma Shan Zheng">
+                <div class="font-name hidden">Ma Shan Zheng</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Damion">
+                <div class="font-name hidden">Damion</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Fuggles">
+                <div class="font-name hidden">Fuggles</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Ruthie">
+                <div class="font-name hidden">Ruthie</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Yellowtail">
+                <div class="font-name hidden">Yellowtail</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Lobster">
+                <div class="font-name hidden">Lobster</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+        <section class="overview-section">
+        <div class="container">
+            <h2 class="section-title">About Cursive Generator</h2>
+            <div class="overview-content">
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Easy Conversion</h3>
+                    <p>Simply input your text and instantly transform it into beautiful cursive fonts, perfect for social media, design projects, and more.</p>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Multiple Fonts</h3>
+                    <p>Choose from over 20 carefully selected cursive fonts, ranging from elegant handwriting to playful artistic styles.</p>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Visual Effects</h3>
+                    <p>Enhance your text with various visual effects including shadows, neon glow, golden finish, and more for added visual impact.</p>
+                </div>
+            </div>
+            <div class="overview-guide">
+                <h3>Quick Start Guide</h3>
+                <ol class="guide-steps">
+                    <li><span class="step-number">1</span> Enter the text you want to convert in the text box</li>
+                    <li><span class="step-number">2</span> Select your preferred cursive font from the options below</li>
+                    <li><span class="step-number">3</span> Apply visual effects to enhance your text's appearance</li>
+                    <li><span class="step-number">4</span> Copy or download your generated cursive text</li>
+                </ol>
+                <div class="guide-link">
+                    <a href="guide.html" class="btn btn-outline">View Detailed Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 在浮动按钮之前添加页脚 -->
+        <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Cursive Generator</span>
+                </div>
+                <p class="footer-description">A simple and elegant cursive text generator that adds artistic flair to your text.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="guide.html">Guide</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:icstiss@gmail.com">icstiss@gmail.com</a></li>
+                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">Submit Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cursive Generator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 滚动到顶部按钮 -->
+    <div class="floating-action-button" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+<!-- 全局反馈按钮 -->
+<div class="feedback-button" id="feedbackButton">
+    <i class="fas fa-comment-alt"></i>
+</div>
+
+<!-- 反馈模态框 -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-modal-content">
+        <div class="feedback-modal-header">
+            <h3 class="feedback-modal-title">Submit Feedback</h3>
+            <button class="feedback-modal-close" id="closeFeedbackModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p>We value your feedback as it helps us continuously improve our product.</p>
+        <form id="globalFeedbackForm" class="global-feedback-form">
+            <div class="global-form-group">
+                <label for="globalEmail">Your Email</label>
+                <input type="email" id="globalEmail" name="email" placeholder="Enter your email (optional)">
+                <div class="global-form-helper">We may contact you via email for more information</div>
+            </div>
+            <div class="global-form-group">
+                <label for="globalFeedback">Feedback<span class="required">*</span></label>
+                <textarea id="globalFeedback" name="feedback" placeholder="Please share your thoughts, suggestions, or any issues you've encountered..." required></textarea>
+            </div>
+            <div class="global-form-submit">
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/feedback.js"></script>
+    <script src="./js/globe.js"></script>
+</body>
+</html>

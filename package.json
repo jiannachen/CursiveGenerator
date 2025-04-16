@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "express-validator": "^7.2.1",
+    "rate-limiter-flexible": "^7.0.0"
+  }
+}

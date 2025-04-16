@@ -1,0 +1,257 @@
+/* 全局反馈按钮 */
+.feedback-button {
+    position: fixed;
+    bottom: 6rem; /* 与返回顶部按钮错开 */
+    right: 2rem; /* 改为右下角 */
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 99;
+  }
+  
+  
+  .feedback-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+  
+  .feedback-button i {
+    font-size: 1.25rem;
+  }
+  
+  /* 反馈模态框 */
+  .feedback-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .feedback-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* 修复移动端媒体查询冲突 */
+  @media (max-width: 768px) {
+    .feedback-button {
+      width: 3rem;
+      height: 3rem;
+      bottom: 5rem; /* 与返回顶部按钮错开 */
+      right: 1.5rem; /* 保持在右下角 */
+    }
+    
+    .feedback-modal-content {
+      padding: 1.5rem;
+      width: 95%; /* 增加宽度，适合移动设备 */
+      max-width: 450px;
+    }
+    
+    .global-form-group label {
+      font-size: 0.85rem;
+    }
+    
+    .global-form-group input,
+    .global-form-group textarea {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.95rem;
+    }
+    
+    .global-form-submit {
+      justify-content: center; /* 移动端居中显示按钮 */
+    }
+    
+    .global-form-submit button {
+      width: 100%; /* 按钮占满宽度 */
+      padding: 0.75rem 1rem;
+    }
+  }
+  
+  .feedback-modal-content {
+    background-color: var(--background);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    max-height: 90vh; /* 限制最大高度 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+  }
+  
+  
+  .feedback-modal.active .feedback-modal-content {
+    transform: translateY(0);
+  }
+  
+  .feedback-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feedback-modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .feedback-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+  }
+  
+  .feedback-modal-close:hover {
+    color: var(--text-primary);
+  }
+  
+  /* Atlassian 风格的表单 */
+  .global-feedback-form {
+    margin-top: 1rem;
+  }
+  
+/* 表单元素自适应调整 */
+.global-form-group {
+  margin-bottom: 1.5rem;
+  width: 100%; /* 确保宽度100% */
+}
+  
+  .global-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+  }
+  
+  .global-form-group input,
+  .global-form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 3px;
+    background-color: var(--background);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    line-height: 1.5;
+    box-sizing: border-box; /* 确保padding不会增加宽度 */
+  }
+  
+  .global-form-group input:hover,
+  .global-form-group textarea:hover {
+    background-color: rgba(9, 30, 66, 0.04);
+  }
+  
+  .global-form-group input:focus,
+  .global-form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(76, 154, 255, 0.2);
+    
+    background-color: #fff;
+  }
+  
+  .global-form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .global-form-submit {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .global-form-submit button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 3px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .global-form-submit button:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  .global-form-submit button:active {
+    transform: translateY(1px);
+  }
+  
+  .global-form-helper {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+  
+ 
+  
+  /* 超小屏幕适配 */
+  @media (max-width: 480px) {
+    .feedback-modal-content {
+      padding: 1.25rem;
+      width: 92%;
+    }
+    
+    .feedback-modal-title {
+      font-size: 1.1rem;
+    }
+    
+    .global-form-group label {
+      font-size: 0.8rem;
+    }
+  }
+   /* 浮动操作按钮 */
+.floating-action-button {
+    position: fixed; /* 固定定位 */
+    bottom: 2rem; /* 底部距离 */
+    right: 2rem; /* 右侧距离 */
+    width: 3.5rem; /* 宽度 */
+    height: 3.5rem; /* 高度 */
+    border-radius: 50%; /* 圆形 */
+    background-color: var(--primary-color); /* 背景色 */
+    color: white; /* 文本颜色 */
+    display: flex; /* 弹性布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+    cursor: pointer; /* 鼠标指针样式 */
+    transition: var(--transition); /* 过渡效果 */
+    z-index: 99; /* 层级 */
+  }
+  
+  /* 浮动按钮悬停效果 */
+  .floating-action-button:hover {
+    background-color: var(--primary-dark); /* 背景色 */
+    transform: translateY(-2px); /* 上移 */
+  }
+  

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用指南 - 草书生成器</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="alternate" hreflang="zh-CN" href="https://yoursite.com/cn/guide.html">
+    <link rel="alternate" hreflang="en" href="https://yoursite.com/guide.html">
+
+    <!-- 基础样式 -->
+    <link rel="stylesheet" href="../css/base.css">
+       <!-- 导航栏样式 -->
+       <link rel="stylesheet" href="../css/nav.css">
+              <!-- 在响应式样式之前添加页脚样式 -->
+    <link rel="stylesheet" href="../css/footer.css">
+       <!-- 反馈样式 -->
+       <link rel="stylesheet" href="../css/feedback.css">
+
+       <link rel="stylesheet" href="../css/guide.css">
+             
+       <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+       <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-feather-alt"></i>
+                <span>草书生成器</span>
+            </a>
+            <div class="navbar-right">
+                <ul class="navbar-menu">
+                    <li class="navbar-item">
+                        <a href="./index.html" class="navbar-link">首页</a>
+                    </li>
+                    <li class="navbar-item active">
+                        <a href="./guide.html" class="navbar-link">使用指南</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="./about.html" class="navbar-link">关于我们</a>
+                    </li>
+                    <li class="navbar-item language-selector">
+                        <div class="current-lang">
+                            <span id="currentLang">中文</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="language-dropdown">
+                            <a href="../guide.html" class="lang-option " data-lang="en">EN</a>
+                            <a href="./guide.html" class="lang-option active" data-lang="zh">中文</a>
+                            <!-- 未来可以在这里添加更多语言选项 -->
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>使用指南</h1>
+            <p>详细了解如何使用 Cursive Text Generator 创建精美的文字效果</p>
+        </header>
+
+        <div class="guide-content">
+            <!-- 快速入门摘要 -->
+            <div class="guide-summary">
+                <h2><i class="fas fa-lightbulb"></i> 快速入门</h2>
+                <ol class="quick-steps">
+                    <li>在文本输入框中输入您想要转换的文字</li>
+                    <li>选择一种视觉效果和字体样式</li>
+                    <li>满意后点击"保存"保存为图片，以查看效果</li>
+                </ol>
+            </div>
+
+            <!-- 标签页导航 -->
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="basic">基本操作</button>
+                    <button class="tab-btn" data-tab="advanced">高级功能</button>
+                    <button class="tab-btn" data-tab="faq">常见问题</button>
+                </div>
+
+                <!-- 标签页内容 -->
+                <div class="tab-content">
+                    <!-- 基本操作标签页 -->
+                    <div class="tab-pane active" id="basic">
+                        <section class="guide-section">
+                            <div class="guide-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>输入文本</h3>
+                                    <p>在文本输入框中输入您想要转换的文字。您可以输入任何语言的文本，包括英文、中文等。</p>
+                                    <div class="guide-image">
+                                        <img src="../images/step1.png" alt="输入文本示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>选择视觉效果</h3>
+                                    <p>从顶部的视觉效果选项中选择一种效果。每种效果都会给您的文本带来不同的视觉风格：</p>
+                                    <ul class="guide-list">
+                                        <li><strong>Default</strong> - 默认样式，无特殊效果</li>
+                                        <li><strong>Gradation</strong> - 渐变色彩效果</li>
+                                        <li><strong>TikTok</strong> - TikTok风格的抖音效果</li>
+                                        <li><strong>Shadow</strong> - 阴影效果</li>
+                                        <li><strong>Golden</strong> - 金色效果</li>
+                                        <li><strong>Neon</strong> - 霓虹灯效果</li>
+                                        <li><strong>PaperCut</strong> - 剪纸效果</li>
+                                        <li><strong>Emboss</strong> - 浮雕效果</li>
+                                    </ul>
+                                    <div class="guide-image">
+                                        <img src="../images/step2.png" alt="选择视觉效果示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>选择字体</h3>
+                                    <p>在页面底部的字体选择区域，点击您喜欢的字体样式。您可以通过"Show Font Names"开关显示字体名称。</p>
+                                    <div class="guide-image">
+                                        <img src="../images/step3.png" alt="选择字体示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>保存图片</h3>
+                                    <p>对效果满意后，点击"Save"按钮将您的文本效果保存为图片。图片将自动下载到您的设备上。</p>
+                                    <div class="guide-image">
+                                        <img src="../images/step4.PNG" alt="保存图片示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- 高级功能标签页 -->
+                    <div class="tab-pane" id="advanced">
+                        <section class="guide-section">
+                            <div class="guide-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>文本对齐</h3>
+                                    <p>使用文本输入框上方的对齐按钮调整文本的对齐方式（左对齐、居中对齐或右对齐）。</p>
+                                    <div class="guide-image">
+                                        <img src="../images/advanced1.png" alt="文本对齐示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>复制文本</h3>
+                                    <p>使用复制按钮快速复制转换后的文本，方便您粘贴到社交媒体或其他应用中。</p>
+                                    <div class="guide-image">
+                                        <img src="../images/advanced2.png" alt="复制文本示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>在文本框中预览</h3>
+                                    <p>开启"Preview in Textarea"开关，可以直接在输入框中预览字体效果。</p>
+                                    <div class="guide-image">
+                                        <img src="../images/advanced3.png" alt="文本框预览示例" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- 常见问题标签页 -->
+                    <div class="tab-pane" id="faq">
+                        <section class="guide-section">
+                            <div class="faq-item">
+                                <h3 class="faq-question">为什么我的文本没有显示特效？</h3>
+                                <p class="faq-answer">Try these troubleshooting steps:</p>
+                                    <ol class="faq-steps">            
+                                        <li>确保您已选择了特效和字体；</li>
+                                        <li>刷新页面重试；</li>  
+                                        <li>如果问题持续，请点击右下角的反馈按钮来报告此问题。</li>
+                                   </ol>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3 class="faq-question">我可以在手机上使用这个工具吗？</h3>
+                                <p class="faq-answer">是的，Cursive Text Generator 完全支持移动设备。您可以在手机或平板电脑上使用所有功能。</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3 class="faq-question">保存的图片质量如何？</h3>
+                                <p class="faq-answer">保存的图片为高质量PNG格式，适合在社交媒体和设计项目中使用。</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3 class="faq-question">我可以使用这个工具生成的内容用于商业目的吗？</h3>
+                                <p class="faq-answer">是的，您可以将生成的文本效果用于个人和商业项目。请注意，某些字体可能有自己的许可限制。</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Cursive Generator</span>
+                </div>
+                <p class="footer-description">简单易用的草书生成工具，让您的文字更具艺术感。</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="guide.html">使用指南</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="privacy.html">隐私政策</a></li>
+                    <li><a href="terms.html">使用条款</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">联系我们</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:contact@gmail.com">icstiss@gmail.com</a></li>
+                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cursive Generator. 保留所有权利。</p>
+        </div>
+    </footer>
+    
+    <!-- 滚动到顶部按钮 -->
+    <div class="floating-action-button" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+        <!-- 全局反馈按钮 -->
+<div class="feedback-button" id="feedbackButton">
+    <i class="fas fa-comment-alt"></i>
+</div>
+  <!-- 反馈模态框 -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-modal-content">
+        <div class="feedback-modal-header">
+            <h3 class="feedback-modal-title">提交反馈</h3>
+            <button class="feedback-modal-close" id="closeFeedbackModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p>我们非常重视您的反馈，它将帮助我们不断改进产品。</p>
+        <form id="globalFeedbackForm" class="global-feedback-form">
+            <div class="global-form-group">
+                <label for="globalEmail">您的邮箱</label>
+                <input type="email" id="globalEmail" name="email" placeholder="请输入您的邮箱（选填）">
+                <div class="global-form-helper">我们可能会通过邮箱联系您了解更多信息</div>
+            </div>
+            <div class="global-form-group">
+                <label for="globalFeedback">反馈内容<span class="required">*</span></label>
+                <textarea id="globalFeedback" name="feedback" placeholder="请告诉我们您的想法、建议或遇到的问题..." required></textarea>
+            </div>
+            <div class="global-form-submit">
+                <button type="submit">提交反馈</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../js//globe.js"></script>
+<script src="../js//script.js"></script>
+<script src="../js//feedback.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+</body>
+</html>

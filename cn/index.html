@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>草书生成器</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Pacifico&family=Alex+Brush&family=Parisienne&family=Allura&family=Mr+Dafoe&family=Marck+Script&family=Tangerine&family=Qwigley&family=Kaushan+Script&family=Sacramento&family=Damion&family=Fuggles&family=Ruthie&family=Yellowtail&family=Lobster&family=Lovers+Quarrel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- 页面多语言 -->
+    <link rel="alternate" hreflang="zh-CN" href="https://yoursite.com/cn/index.html">
+    <link rel="alternate" hreflang="en" href="https://yoursite.com/index.html">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+       <!-- 基础样式 -->
+   <link rel="stylesheet" href="../css/base.css">    
+    
+       <!-- 导航栏样式 -->
+       <link rel="stylesheet" href="../css/nav.css">
+              <!-- 在响应式样式之前添加页脚样式 -->
+    <link rel="stylesheet" href="../css/footer.css">
+
+           <!-- 卡片样式 -->
+           <link rel="stylesheet" href="../css/cards.css">       
+           <!-- 文本区域样式 -->
+           <link rel="stylesheet" href="../css/textarea.css">   
+   <!-- 特效样式 -->
+   <link rel="stylesheet" href="../css/effect.css">
+       <!-- 反馈样式 -->
+       <link rel="stylesheet" href="../css/feedback.css">             
+       <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+       <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+     <!-- 导航栏 -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+            <i class="fas fa-feather-alt"></i>
+            <span>草书生成器</span>
+        </a>
+        <div class="navbar-right">
+            <ul class="navbar-menu">
+                <li class="navbar-item active">
+                    <a href="index.html" class="navbar-link">首页</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="guide.html" class="navbar-link">使用指南</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">关于我们</a>
+                </li>
+                <li class="navbar-item language-selector">
+                    <div class="current-lang">
+                        <span id="currentLang">中文</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="language-dropdown">
+                        <a href="../index.html" class="lang-option " data-lang="en">EN</a>
+                        <a href="./index.html" class="lang-option active" data-lang="zh">中文</a>
+                        <!-- 未来可以在这里添加更多语言选项 -->
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>草书文本生成器</h1>
+            <p>为社交媒体、设计等创建美丽的风格化文本</p>
+        </header>
+        
+        <div class="section">
+            <h2 class="section-title">视觉效果</h2>
+            <div class="vfx-options">
+                <button class="vfx-option active" data-vfx="default">默认</button>
+                <button class="vfx-option" data-vfx="tiktok">抖音风</button>
+                <button class="vfx-option" data-vfx="shadow">阴影</button>
+                <button class="vfx-option" data-vfx="gloden">金色</button>
+                <button class="vfx-option" data-vfx="neon">霓虹</button>
+                <button class="vfx-option" data-vfx="papercut">剪纸</button>
+                <button class="vfx-option" data-vfx="emboss">浮雕</button>
+            </div>
+        </div>
+
+     
+        <div class="text-input-container">
+            <div class="textarea-controls">
+                <div class="toggle-container">
+                    <span class="toggle-label">在文本框中预览</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="modeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="align-buttons">
+                    <button class="align-button" data-align="center" title="文本对齐">
+                        <i class="fas fa-align-center"></i>
+                    </button>
+                    <button class="copy-button tooltip" data-tooltip="复制到剪贴板" title="复制文本">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="textarea-wrapper">             
+                <textarea id="textInput" class="text-area" placeholder="在这里输入文字，将其转换为美丽的草书..."></textarea>
+            </div>
+        </div>
+
+
+ 
+        <div class="preview-container">
+            <div id="previewText" class="preview-text fade-in"></div>
+        </div>
+
+       
+
+
+        <div class="action-buttons">
+            <button id="clearBtn" class="btn btn-secondary">
+                <i class="fas fa-eraser"></i> 清空
+            </button>
+            <button id="saveBtn" class="btn btn-primary">
+                <i class="fas fa-download"></i> 保存
+            </button>
+        </div>
+    
+        <div class="font-section">
+            <h2 class="section-title">选择字体</h2>
+<!-- HTML for toggle switch -->
+            <div class="font-toggle-container">
+                <span class="font-toggle-label">显示字体名称</span>
+                <label class="font-toggle-switch">
+                <input type="checkbox" id="fontNameToggle">
+                <span class="font-toggle-slider"></span>
+                </label>
+            </div>
+            <div class="font-grid">
+                <div class="font-card" data-font-name="Dancing Script">
+                    <div class="font-name hidden">Dancing Script</div>
+                    <div class="font-preview">abc123</div>
+                  </div>
+            <div class="font-card" data-font-name="Great Vibes">
+                <div class="font-name hidden">Great Vibes</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Lovers Quarrel">
+                <div class="font-name hidden">Lovers Quarrel</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Pacifico">
+                <div class="font-name hidden">Pacifico</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Alex Brush">
+                <div class="font-name hidden">Alex Brush</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Parisienne">
+                <div class="font-name hidden">Parisienne</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Allura">
+                <div class="font-name hidden">Allura</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Mr Dafoe">
+                <div class="font-name hidden">Mr Dafoe</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Marck Script">
+                <div class="font-name hidden">Marck Script</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Tangerine">
+                <div class="font-name hidden">Tangerine</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Qwigley">
+                <div class="font-name hidden">Qwigley</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Kaushan Script">
+                <div class="font-name hidden">Kaushan Script</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Sacramento">
+                <div class="font-name hidden">Sacramento</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Segoe Script">
+                <div class="font-name hidden">Segoe Script</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Monotype Corsiva">
+                <div class="font-name hidden">Monotype Corsiva</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Ma Shan Zheng">
+                <div class="font-name hidden">Ma Shan Zheng</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Damion">
+                <div class="font-name hidden">Damion</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Fuggles">
+                <div class="font-name hidden">Fuggles</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Ruthie">
+                <div class="font-name hidden">Ruthie</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Yellowtail">
+                <div class="font-name hidden">Yellowtail</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            <div class="font-card" data-font-name="Lobster">
+                <div class="font-name hidden">Lobster</div>
+                <div class="font-preview">abc123</div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <section class="overview-section">
+        <div class="container">
+            <h2 class="section-title">关于草书生成器</h2>
+            <div class="overview-content">
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>轻松转换</h3>
+                    <p>只需输入文本，即可一键转换为精美草书字体，适用于社交媒体、设计作品等多种场景。</p>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>多种字体</h3>
+                    <p>提供20多种精选草书字体，从优雅的手写体到活泼的艺术字，满足不同风格需求。</p>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>视觉效果</h3>
+                    <p>多种视觉特效可选，包括阴影、霓虹灯、金色等，让您的文字更具视觉冲击力。</p>
+                </div>
+            </div>
+            <div class="overview-guide">
+                <h3>快速使用指南</h3>
+                <ol class="guide-steps">
+                    <li><span class="step-number">1</span> 在文本框中输入您想要转换的文字</li>
+                    <li><span class="step-number">2</span> 从下方选择您喜欢的草书字体</li>
+                    <li><span class="step-number">3</span> 应用视觉效果增强文字表现力</li>
+                    <li><span class="step-number">4</span> 复制或下载生成的草书字</li>
+                </ol>
+                <div class="guide-link">
+                    <a href="guide.html" class="btn btn-outline">查看详细使用指南 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+        <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Cursive Generator</span>
+                </div>
+                <p class="footer-description">一个简单优雅的草书文本生成器，为您的文字增添艺术感。</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="guide.html">使用指南</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="privacy.html">隐私政策</a></li>
+                    <li><a href="terms.html">使用条款</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">联系我们</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:icstiss@gmail.com">icstiss@gmail.com</a></li>
+                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cursive Generator. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <!-- 滚动到顶部按钮 -->
+    <div class="floating-action-button" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+<!-- 全局反馈按钮 -->
+<div class="feedback-button" id="feedbackButton">
+    <i class="fas fa-comment-alt"></i>
+</div>
+
+<!-- 反馈模态框 -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-modal-content">
+        <div class="feedback-modal-header">
+            <h3 class="feedback-modal-title">提交反馈</h3>
+            <button class="feedback-modal-close" id="closeFeedbackModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p>我们重视您的反馈，它有助于我们不断改进产品。</p>
+        <form id="globalFeedbackForm" class="global-feedback-form">
+            <div class="global-form-group">
+                <label for="globalEmail">您的邮箱</label>
+                <input type="email" id="globalEmail" name="email" placeholder="输入您的邮箱（可选）">
+                <div class="global-form-helper">我们可能会通过邮箱联系您获取更多信息</div>
+            </div>
+            <div class="global-form-group">
+                <label for="globalFeedback">反馈<span class="required">*</span></label>
+                <textarea id="globalFeedback" name="feedback" placeholder="请分享您的想法、建议或遇到的任何问题..." required></textarea>
+            </div>
+            <div class="global-form-submit">
+                <button type="submit">提交反馈</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../js//globe.js"></script>
+<script src="../js//script.js"></script>
+<script src="../js//feedback.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - Cursive Text Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Base styles -->
+    <link rel="stylesheet" href="./css/base.css">
+       <!-- Navigation styles -->
+       <link rel="stylesheet" href="./css/nav.css">
+              <!-- Footer styles before responsive styles -->
+    <link rel="stylesheet" href="./css/footer.css">
+       <!-- Feedback styles -->
+       <link rel="stylesheet" href="./css/feedback.css">
+
+       <link rel="stylesheet" href="./css/guide.css">
+             
+       <!-- Responsive styles (placed last to override previous styles) -->
+       <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-feather-alt"></i>
+                <span>Cursive Generator</span>
+            </a>
+            <div class="navbar-right">
+                <ul class="navbar-menu">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link">Home</a>
+                    </li>
+                    <li class="navbar-item active">
+                        <a href="guide.html" class="navbar-link">Guide</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="about.html" class="navbar-link">About</a>
+                    </li>
+                    <li class="navbar-item language-selector">
+                        <div class="current-lang">
+                            <span id="currentLang">EN</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="language-dropdown">
+                            <a href="guide.html" class="lang-option active" data-lang="en">EN</a>
+                            <a href="./cn/guide.html" class="lang-option " data-lang="zh">中文</a>
+                            <!-- 未来可以在这里添加更多语言选项 -->
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>User Guide</h1>
+            <p>Learn in detail how to use Cursive Text Generator to create beautiful text effects</p>
+        </header>
+
+        <div class="guide-content">
+            <!-- Quick start summary -->
+            <div class="guide-summary">
+                <h2><i class="fas fa-lightbulb"></i> Quick Start</h2>
+                <ol class="quick-steps">
+                    <li>Enter the text you want to convert in the text input box</li>
+                    <li>Choose a visual effect and font style</li>
+                    <li>Click 'Save' to save the image and see the effect.</li>
+                </ol>
+            </div>
+
+            <!-- Tab navigation -->
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="basic">Basic Operations</button>
+                    <button class="tab-btn" data-tab="advanced">Advanced Features</button>
+                    <button class="tab-btn" data-tab="faq">FAQ</button>
+                </div>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <!-- Basic operations tab -->
+                    <div class="tab-pane active" id="basic">
+                        <section class="guide-section">
+                            <div class="guide-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Enter Text</h3>
+                                    <p>Enter the text you want to convert in the text input box. You can enter text in any language, including English, Chinese, etc.</p>
+                                    <div class="guide-image">
+                                        <img src="./images/step1.png" alt="Text input example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Choose Visual Effect</h3>
+                                    <p>Select an effect from the visual effects options at the top. Each effect will give your text a different visual style:</p>
+                                    <ul class="guide-list">
+                                        <li><strong>Default</strong> - Default style, no special effects</li>
+                                        <li><strong>TikTok</strong> - TikTok style vibration effect</li>
+                                        <li><strong>Shadow</strong> - Shadow effect</li>
+                                        <li><strong>Golden</strong> - Gold effect</li>
+                                        <li><strong>Neon</strong> - Neon light effect</li>
+                                        <li><strong>PaperCut</strong> - Paper-cut effect</li>
+                                        <li><strong>Emboss</strong> - Embossed effect</li>
+                                    </ul>
+                                    <div class="guide-image">
+                                        <img src="./images/step2.png" alt="Visual effect selection example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Choose Font</h3>
+                                    <p>In the font selection area at the bottom of the page, click on the font style you like. You can display font names using the "Show Font Names" toggle.</p>
+                                    <div class="guide-image">
+                                        <img src="./images/step3.png" alt="Font selection example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>Save Image</h3>
+                                    <p>When you're satisfied with the effect, click the "Save" button to save your text effect as an image. The image will automatically download to your device.</p>
+                                    <div class="guide-image">
+                                        <img src="./images/step4.png" alt="Save image example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Advanced features tab -->
+                    <div class="tab-pane" id="advanced">
+                        <section class="guide-section">
+                            <div class="guide-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Text Alignment</h3>
+                                    <p>Use the alignment buttons above the text input box to adjust the text alignment (left, center, or right).</p>
+                                    <div class="guide-image">
+                                        <img src="./images/advanced1.png" alt="Text alignment example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Copy Text</h3>
+                                    <p>Use the copy button to quickly copy the converted text, making it easy to paste into social media or other applications.</p>
+                                    <div class="guide-image">
+                                        <img src="./images/advanced2.png" alt="Copy text example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Preview in Textarea</h3>
+                                    <p>Turn on the "Preview in Textarea" toggle to preview font effects directly in the input box.</p>
+                                    <div class="guide-image">
+                                        <img src="./images/advanced3.png" alt="Textarea preview example" class="guide-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- FAQ tab -->
+                    <div class="tab-pane" id="faq">
+                        <section class="guide-section">
+                            <div class="faq-item">
+                                <h3 class="faq-question">Why isn't my text showing special effects?</h3>
+                                <p class="faq-answer">Try these troubleshooting steps:</p>
+                                <ol class="faq-steps">
+                                    <li>Make sure you've selected both an effect and a font;</li>
+                                    <li>Refresh the page and try again;</li>
+                                    <li>If the problem persists, please click the feedback button in the bottom right corner to report this issue.</li>
+                                </ol>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3 class="faq-question">Can I use this tool on my phone?</h3>
+                                <p class="faq-answer">Yes, Cursive Text Generator fully supports mobile devices. You can use all features on your phone or tablet.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3 class="faq-question">What is the quality of the saved images?</h3>
+                                <p class="faq-answer">Saved images are high-quality PNG format, suitable for use in social media and design projects.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3 class="faq-question">Can I use the content generated by this tool for commercial purposes?</h3>
+                                <p class="faq-answer">Yes, you can use the generated text effects for both personal and commercial projects. Please note that some fonts may have their own licensing restrictions.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Cursive Generator</span>
+                </div>
+                <p class="footer-description">A simple and easy-to-use cursive generator that adds artistic flair to your text.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="guide.html">Guide</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:contact@gmail.com">icstiss@gmail.com</a></li>
+                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">Submit Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cursive Generator. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scroll to top button -->
+    <div class="floating-action-button" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+        <!-- Global feedback button -->
+<div class="feedback-button" id="feedbackButton">
+    <i class="fas fa-comment-alt"></i>
+</div>
+  <!-- Feedback modal -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-modal-content">
+        <div class="feedback-modal-header">
+            <h3 class="feedback-modal-title">Submit Feedback</h3>
+            <button class="feedback-modal-close" id="closeFeedbackModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p>We value your feedback as it helps us continuously improve our product.</p>
+        <form id="globalFeedbackForm" class="global-feedback-form">
+            <div class="global-form-group">
+                <label for="globalEmail">Your Email</label>
+                <input type="email" id="globalEmail" name="email" placeholder="Enter your email (optional)">
+                <div class="global-form-helper">We may contact you via email for more information</div>
+            </div>
+            <div class="global-form-group">
+                <label for="globalFeedback">Feedback<span class="required">*</span></label>
+                <textarea id="globalFeedback" name="feedback" placeholder="Please share your thoughts, suggestions, or any issues you've encountered..." required></textarea>
+            </div>
+            <div class="global-form-submit">
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="./js/script.js"></script>
+<script src="./js/feedback.js"></script>
+<script src="./js/globe.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</body>
+</html>

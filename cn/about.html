@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 - 草书生成器</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 多语言seo优化 -->
+    <link rel="alternate" hreflang="zh-CN" href="https://yoursite.com/cn/about.html">
+    <link rel="alternate" hreflang="en" href="https://yoursite.com/about.html">
+   <!-- 基础样式 -->
+   <link rel="stylesheet" href="../css/base.css">
+       
+       <!-- 导航栏样式 -->
+       <link rel="stylesheet" href="../css/nav.css">
+              <!-- 在响应式样式之前添加页脚样式 -->
+    <link rel="stylesheet" href="../css/footer.css">
+       <!-- 反馈样式 -->
+       <link rel="stylesheet" href="../css/feedback.css">
+
+       <link rel="stylesheet" href="../css/about.css">
+             
+       <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+       <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-feather-alt"></i>
+                <span>草书生成器</span>
+            </a>
+            <div class="navbar-right">
+                <ul class="navbar-menu">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link">首页</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="guide.html" class="navbar-link">使用指南</a>
+                    </li>
+                    <li class="navbar-item active">
+                        <a href="about.html" class="navbar-link">关于我们</a>
+                    </li>
+                    <li class="navbar-item language-selector">
+                        <div class="current-lang">
+                            <span id="currentLang">中文</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="language-dropdown">
+                            <a href="../about.html" class="lang-option " data-lang="en">EN</a>
+                            <a href="about.html" class="lang-option active" data-lang="zh">中文</a>
+                            <!-- 未来可以在这里添加更多语言选项 -->
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>关于 Cursive Generator</h1>
+            <p>创建美丽的花体文字，为您的设计和社交媒体增添独特风格</p>
+        </header>
+        
+        <div class="about-section">
+            <div class="about-card">
+                <h2 class="section-title">项目介绍</h2>
+                <p>Cursive Generator 是一个简单易用的在线工具，旨在帮助用户快速创建美观的花体文字。无论是用于社交媒体、设计作品、个人签名还是其他创意项目，我们的工具都能满足您的需求。</p>
+                <p>通过丰富的字体选择和视觉效果，您可以轻松地将普通文本转换为独特的艺术字体，无需安装任何软件或具备设计技能。</p>
+            </div>
+
+            <div class="about-card">
+                <h2 class="section-title">特色功能</h2>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 多种精选花体字体</li>
+                    <li><i class="fas fa-check-circle"></i> 丰富的视觉效果选项</li>
+                    <li><i class="fas fa-check-circle"></i> 实时预览功能</li>
+                    <li><i class="fas fa-check-circle"></i> 一键复制文本</li>
+                    <li><i class="fas fa-check-circle"></i> 导出为图片功能</li>
+                    <li><i class="fas fa-check-circle"></i> 响应式设计，支持各种设备</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <h2 class="section-title">使用场景</h2>
+                <div class="usage-scenarios">
+                    <div class="scenario">
+                        <i class="fas fa-hashtag"></i>
+                        <h3>社交媒体</h3>
+                        <p>为您的Instagram、Twitter、Facebook等社交媒体帖子创建吸引眼球的标题和内容。</p>
+                    </div>
+                    <div class="scenario">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>设计项目</h3>
+                        <p>为海报、邀请函、贺卡等设计作品添加精美的文字元素。</p>
+                    </div>
+                    <div class="scenario">
+                        <i class="fas fa-signature"></i>
+                        <h3>个人签名</h3>
+                        <p>创建独特的个人签名用于邮件、文档或其他个人用途。</p>
+                    </div>
+                    <div class="scenario">
+                        <i class="fas fa-store"></i>
+                        <h3>品牌营销</h3>
+                        <p>为品牌宣传材料创建具有辨识度的文字样式。</p>
+                    </div>
+                </div>
+            </div>
+
+    
+
+            <div class="about-card">
+                <h2 class="section-title">版本历史</h2>
+                <div class="version-history">
+                    <div class="version">
+                        <span class="version-tag">v1.0.0</span>
+                        <span class="version-date">2023年10月</span>
+                        <p>初始版本发布，包含基本的字体转换功能和视觉效果。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <h2 class="section-title">开发团队</h2>
+                <p>Cursive Generator 由一个热爱设计和编程的小团队开发。我们致力于创建简单实用的工具，帮助用户在日常生活和工作中展现创意。</p>
+            </div>
+              <!-- 在浮动按钮之前添加页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Cursive Generator</span>
+                </div>
+                <p class="footer-description">简单易用的草书生成工具，让您的文字更具艺术感。</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="guide.html">使用指南</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="privacy.html">隐私政策</a></li>
+                    <li><a href="terms.html">使用条款</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">联系我们</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:contact@gmail.com">icstiss@gmail.com</a></li>
+                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Cursive Generator. 保留所有权利。</p>
+        </div>
+    </footer>
+
+
+
+ <!-- 滚动到顶部按钮 -->
+<div class="floating-action-button" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <!-- 全局反馈按钮 -->
+<div class="feedback-button" id="feedbackButton">
+    <i class="fas fa-comment-alt"></i>
+</div>
+
+<!-- 反馈模态框 -->
+<div class="feedback-modal" id="feedbackModal">
+    <div class="feedback-modal-content">
+        <div class="feedback-modal-header">
+            <h3 class="feedback-modal-title">提交反馈</h3>
+            <button class="feedback-modal-close" id="closeFeedbackModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p>我们非常重视您的反馈，它将帮助我们不断改进产品。</p>
+        <form id="globalFeedbackForm" class="global-feedback-form">
+            <div class="global-form-group">
+                <label for="globalEmail">您的邮箱</label>
+                <input type="email" id="globalEmail" name="email" placeholder="请输入您的邮箱（选填）">
+                <div class="global-form-helper">我们可能会通过邮箱联系您了解更多信息</div>
+            </div>
+            <div class="global-form-group">
+                <label for="globalFeedback">反馈内容<span class="required">*</span></label>
+                <textarea id="globalFeedback" name="feedback" placeholder="请告诉我们您的想法、建议或遇到的问题..." required></textarea>
+            </div>
+            <div class="global-form-submit">
+                <button type="submit">提交反馈</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <script src="../js/globe.js"></script>
+    <script src="../js/script.js"></script>
+    
+    <script src="../js/feedback.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</body>
+</html>
