@@ -654,7 +654,7 @@ async function markAsRead(feedbackId) {
 }
 
 // 在登录按钮下方添加一个测试按钮
-const testServerBtn = document.getElementById
+const testServerBtn = document.getElementById('testServerBtn');
 if (testServerBtn) {
     testServerBtn.addEventListener('click', async function() {
         try {
