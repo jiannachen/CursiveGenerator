@@ -652,30 +652,3 @@ async function markAsRead(feedbackId) {
         alert("更新状态失败，请重试");
     }
 }
-
-// 在登录按钮下方添加一个测试按钮
-const testServerBtn = document.getElementById('testServerBtn');
-if (testServerBtn) {
-    testServerBtn.addEventListener('click', async function() {
-        try {
-            updateDebugInfo("开始测试服务器连接...");
-            const response = await fetch('/api/health');
-            
-            updateDebugInfo(`收到响应: 状态码 ${response.status}`);
-            
-            if (!response.ok) {
-                const errorText = await response.text();
-                updateDebugInfo(`服务器健康检查失败: ${response.status}, 内容: ${errorText}`);
-                alert(`服务器连接失败: ${response.status} ${response.statusText}`);
-                return;
-            }
-            
-            const data = await response.json();
-            updateDebugInfo(`服务器健康检查成功: ${JSON.stringify(data)}`);
-            alert(`服务器连接成功! 时间: ${data.timestamp}`);
-        } catch (error) {
-            updateDebugInfo(`服务器连接测试失败: ${error.message}`);
-            alert(`服务器连接测试失败: ${error.message}`);
-        }
-    });
-}
