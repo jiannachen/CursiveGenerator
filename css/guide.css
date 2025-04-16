@@ -21,6 +21,13 @@
   display: flex;
   margin-bottom: 2.5rem;
   position: relative;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #DFE1E6; /* 添加底部边框作为分隔线 */
+}
+
+.guide-step:last-child {
+  border-bottom: none; /* 最后一个步骤不需要底部边框 */
+  padding-bottom: 0;
 }
 
 .step-number {
