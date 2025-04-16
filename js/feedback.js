@@ -267,35 +267,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初始化 Firebase
     initFirebase();
-
-// 删除反馈 - 需要管理员权限
-router.delete('/:id', verifyToken, async (req, res) => {
-    try {
-        const { id } = req.params;
-        
-        // 检查反馈是否存在
-        const snapshot = await admin.database().ref(`feedback/${id}`).once('value');
-        if (!snapshot.exists()) {
-            return res.status(404).json({ 
-                success: false, 
-                message: '反馈不存在' 
-            });
-        }
-        
-        // 删除反馈
-        await admin.database().ref(`feedback/${id}`).remove();
-        
-        res.json({ 
-            success: true, 
-            message: '反馈已成功删除'
-        });
-    } catch (error) {
-        console.error('删除反馈失败:', error);
-        res.status(500).json({ 
-            success: false, 
-            message: '删除反馈失败: ' + error.message 
-        });
-    }
-});
-
 });

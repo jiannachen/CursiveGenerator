@@ -195,13 +195,34 @@ router.put('/:id/read', verifyToken, async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 });
+
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
         const { id } = req.params;
-        await admin.database().ref(`feedback/${id}`).remove();
-        res.json({ success: true });
+        
+        // 先检查反馈是否存在
+        const feedbackRef = admin.database().ref(`feedback/${id}`);
+        const snapshot = await feedbackRef.once('value');
+        
+        if (!snapshot.exists()) {
+            return res.status(404).json({ 
+                success: false, 
+                message: '找不到指定的反馈记录' 
+            });
+        }
+        
+        // 执行删除操作
+        await feedbackRef.remove();
+        res.json({ 
+            success: true, 
+            message: '反馈已成功删除'
+        });
     } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+        console.error('删除反馈失败:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: '删除反馈失败: ' + error.message 
+        });
     }
 });
 
