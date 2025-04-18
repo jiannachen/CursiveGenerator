@@ -180,91 +180,10 @@ input:checked + .toggle-slider:before {
   background-color: #fff; /* 聚焦时背景变白 */
 }
 
-/* 预览文本容器 */
-.preview-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-  position: relative; /* 为装饰元素添加定位 */
-  max-width: 1248px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* 添加这个新样式 - 预览图片容器的基本样式重置 */
-.preview-image-container[class*="vfx-"] {
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
 
-/* 然后为每种特效单独定义预览容器样式 */
-.preview-image-container.vfx-gradation {
-  background-color: #0a0a0a !important;
-  background-image: 
-    linear-gradient(135deg, rgba(0, 98, 255, 0.15) 0%, rgba(209, 0, 255, 0.15) 100%) !important;
-  border: 1px solid rgba(78, 0, 255, 0.3) !important;
-  box-shadow: 0 0 25px rgba(138, 0, 255, 0.3) !important;
-}
 
-.preview-image-container.vfx-papercut {
-  background-color: #111 !important;
-  background-image: 
-    linear-gradient(45deg, rgba(255, 0, 80, 0.2) 0%, transparent 70%),
-    linear-gradient(135deg, rgba(0, 242, 234, 0.2) 0%, transparent 70%) !important;
-  border: 1px solid rgba(255, 0, 80, 0.3) !important;
-  border-radius: 5px !important;
-  box-shadow: 0 0 15px rgba(255, 0, 80, 0.3), 0 0 15px rgba(0, 242, 234, 0.3) !important;
-}
 
-.preview-image-container.vfx-emboss {
-  background-color: #e8e8e8 !important;
-  background-image: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-    linear-gradient(45deg, rgba(0, 0, 0, 0.05) 0%, transparent 50%) !important;
-  border: 1px solid #d0d0d0 !important;
-  box-shadow: 
-    inset 1px 1px 3px rgba(255, 255, 255, 0.8),
-    inset -1px -1px 3px rgba(0, 0, 0, 0.2) !important;
-}
 
-.preview-image-container.vfx-neon {
-  background-color: #000 !important;
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 115, 230, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 20% 20%, rgba(0, 115, 230, 0.2) 0%, transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(0, 115, 230, 0.2) 0%, transparent 30%) !important;
-  border-color: rgba(0, 115, 230, 0.5) !important;
-}
-
-.preview-image-container.vfx-gloden {
-  background-color: #0a0a0a !important;
-  background-image: 
-    repeating-linear-gradient(45deg, rgba(191, 149, 63, 0.1), rgba(191, 149, 63, 0.1) 2px, transparent 2px, transparent 8px),
-    repeating-linear-gradient(-45deg, rgba(251, 245, 183, 0.1), rgba(251, 245, 183, 0.1) 2px, transparent 2px, transparent 8px) !important;
-  border-color: rgba(191, 149, 63, 0.3) !important;
-  border-width: 2px !important;
-}
-
-.preview-image-container.vfx-tiktok {
-  background-color: #111 !important;
-  background-image: 
-    linear-gradient(45deg, rgba(255, 0, 80, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 0, 80, 0.1) 75%),
-    linear-gradient(-45deg, rgba(0, 242, 234, 0.1) 25%, transparent 25%, transparent 75%, rgba(0, 242, 234, 0.1) 75%) !important;
-  background-size: 60px 60px !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.preview-image-container.vfx-shadow {
-  background-color: #f5f5f5 !important;
-  background-image: 
-    linear-gradient(135deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%) !important;
-  background-size: 40px 40px !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-}
 
 .preview-container::before {
   content: '';
@@ -283,44 +202,7 @@ input:checked + .toggle-slider:before {
 .preview-container:hover::before {
   opacity: 1;
 }
-
-.preview-text {
-  text-align: inherit;
-  position: relative;
-  width: 100%;
-  min-height: 30px;
-  margin: 1.5rem auto;
-  padding: 0.5rem; /* 进一步减小内边距，从0.75rem改为0.5rem */
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
-  font-size: 1.4rem !important; /* 进一步减小字体大小，从24px改为20px */
-  color: #333;
-  line-height: 1; /* 保持行高为1 */
-  text-align: center;
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  background-color: #fff;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgba(79, 70, 229, 0.03) 0px,
-    rgba(79, 70, 229, 0.03) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  border: 1px solid rgba(79, 70, 229, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.preview-text:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-}
-
-
-
+/* 基础预览文本样式 */
 
 
 /* 按钮容器 */
@@ -408,23 +290,3 @@ input:checked + .toggle-slider:before {
   }
 }
 
-/* 通知样式 */
-.notification {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 20px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.notification.show {
-  transform: translateY(0);
-  opacity: 1;
-}

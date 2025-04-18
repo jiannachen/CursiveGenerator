@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /guide.html
+Allow: /about.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /cn/
+
+# 不索引资源文件
+Disallow: /js/
+Disallow: /css/
+Disallow: /server/
+Disallow: /*.php$
+Disallow: /*.json$
+Disallow: /*.config$
+Disallow: /*.env$
+
+# 不索引特定元素（注意：robots.txt不能精确控制页面内元素，这需要在HTML中使用noindex标记）
+
+# 网站地图
+Sitemap: https://cursivegenerator.online/sitemap.xml

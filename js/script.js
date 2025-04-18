@@ -116,9 +116,12 @@ document.addEventListener('DOMContentLoaded', function() {
             textInput.className = 'text-area';
             
             // 添加当前特效类
-            if (currentVfx !== 'default') {
-                textInput.classList.add(`vfx-${currentVfx}`);
+            if (currentVfx === 'default') {
+              tempContainer.classList.add('vfx-default');
+            } else {
+                tempContainer.classList.add(`vfx-${currentVfx}`);
             }
+          
         }
         
         addRippleEffect(btn);
@@ -145,6 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // 添加当前特效类
       if (currentVfx !== 'default') {
           previewText.classList.add(`vfx-${currentVfx}`);
+      }else{
+        previewText.classList.add('vfx-default'); 
       }
       
       // 添加当前对齐类 - 直接使用currentAlignment变量
@@ -181,6 +186,9 @@ document.addEventListener('DOMContentLoaded', function() {
           textInput.className = 'text-area';
           if (currentVfx !== 'default') {
               textInput.classList.add(`vfx-${currentVfx}`);
+          }
+          else{
+            tempContainer.classList.add('vfx-default');
           }
           
           // 应用当前对齐方式
@@ -222,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const containerWidth = screenWidth > 768 ? '600px' : (screenWidth - 40) + 'px';
         tempContainer.style.width = containerWidth;
         tempContainer.style.padding = '20px';
-        tempContainer.style.backgroundColor = '#ffffff';
+         //tempContainer.style.backgroundColor = '#ffffff';
         
         // 创建预览文本元素
         const tempText = document.createElement('div');
@@ -239,17 +247,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // 根据屏幕宽度调整字体大小
         tempText.style.fontSize = screenWidth > 768 ? '36px' : '28px';
         tempText.style.lineHeight = '1.5';
-        tempText.style.color = '#333';
+        //tempText.style.color = '#333';
         
         // 应用当前特效
         if (currentVfx !== 'default') {
           tempText.classList.add(`vfx-${currentVfx}`);
         }
+        else{
+          tempText.classList.add(`vfx-default`)
+        }
         
         // 添加到临时容器
         tempContainer.appendChild(tempText);
         document.body.appendChild(tempContainer);
-        
+        // 给样式应用一点时间
+    setTimeout(() => {
         // 使用html2canvas将临时容器转换为图片
         html2canvas(tempContainer, {
             backgroundColor:null,
@@ -277,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.removeChild(tempContainer);
             }
         });
+      }, 100)
     }
     // Add ripple effect
     function addRippleEffect(element) {

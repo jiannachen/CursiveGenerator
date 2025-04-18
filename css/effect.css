@@ -1,35 +1,91 @@
-/* TikTok风格特效 - 更现代的设计 */
-/* TikTok风格特效 - 更现代的设计 */
-.vfx-tiktok {
-    color: white;
-    text-shadow: 
-      -1px -1px 0 #ff0050,  /* 减小阴影偏移 */
-      1px -1px 0 #ff0050,
-      -1px 1px 0 #00f2ea,
-      1px 1px 0 #00f2ea,
-      0 0 8px rgba(255, 0, 80, 0.5);  /* 减小发光效果 */
-    padding: 5px 10px;
-    position: relative;
-    font-weight: 500;  /* 从bold改为500 */
-    letter-spacing: 0.5px;  /* 减小字母间距 */
+/* 基础样式定义 */
+.preview-text,
+.preview-image-container {
+  text-align: inherit;
+  position: relative;
+  width: 100%;
+  min-height: 30px;
+  margin: 1.5rem auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
+  font-size: 1.4rem !important;
+  color: #333;
+  line-height: 1;
+  text-align: center;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  transition: all 0.3s ease;
+}
+/* 预览文本容器 */
+.preview-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  position: relative; /* 为装饰元素添加定位 */
+  max-width: 1248px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* TikTok特效背景 */
+.preview-text:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+/* 默认效果 */
+/* 默认效果 */
+.vfx-default {
+  color: #333 !important;
+  text-shadow: none;
+  padding: 5px 10px;
+  position: relative;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+.preview-text.vfx-default,
+.text-area.vfx-default,
+.preview-image-container.vfx-default {
+  background-color: #f5f5f5 !important; /* 浅灰色背景 */
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(150, 150, 150, 0.05) 0px, rgba(150, 150, 150, 0.05) 2px, transparent 2px, transparent 8px),
+    repeating-linear-gradient(-45deg, rgba(150, 150, 150, 0.05) 0px, rgba(150, 150, 150, 0.05) 2px, transparent 2px, transparent 8px) !important;
+  border: 2px solid rgba(150, 150, 150, 0.5) !important; /* 灰色边框 */
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(150, 150, 150, 0.2) !important;
+}
+/* TikTok风格特效 */
+.vfx-tiktok {
+  color: white !important;
+  text-shadow: 
+    -1px -1px 0 #ff0050,
+    1px -1px 0 #ff0050,
+    -1px 1px 0 #00f2ea,
+    1px 1px 0 #00f2ea,
+    0 0 8px rgba(255, 0, 80, 0.5);
+  padding: 5px 10px;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 .preview-text.vfx-tiktok,
 .text-area.vfx-tiktok,
 .preview-image-container.vfx-tiktok {
-  background-color: #111;
+  background-color: #111 !important;
   background-image: 
-    linear-gradient(45deg, rgba(255, 0, 80, 0.15) 0%, transparent 70%),  /* 减小颜色强度 */
-    linear-gradient(135deg, rgba(0, 242, 234, 0.15) 0%, transparent 70%);
-  border: 1px solid rgba(255, 0, 80, 0.2);  /* 减小边框强度 */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 0, 80, 0.2), 0 0 10px rgba(0, 242, 234, 0.2); 
+    linear-gradient(45deg, rgba(255, 0, 80, 0.15) 0%, transparent 70%),
+    linear-gradient(135deg, rgba(0, 242, 234, 0.15) 0%, transparent 70%) !important;
+  border: 1px solid rgba(255, 0, 80, 0.2) !important;
+  border-radius: 5px !important;
+  box-shadow: 0 0 10px rgba(255, 0, 80, 0.2), 0 0 10px rgba(0, 242, 234, 0.2) !important; 
 }
 
-
+/* 阴影特效 */
 .vfx-shadow {
-  color: #222;
+  color: #222 !important;
   text-shadow: 
     1px 1px 0 #555,
     2px 2px 0 #666,
@@ -42,133 +98,118 @@
   letter-spacing: 0.5px;
 }
 
-/* 阴影特效背景 */
 .preview-text.vfx-shadow,
 .text-area.vfx-shadow,
 .preview-image-container.vfx-shadow {
-background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-border: 1px solid #ccc;
-border-radius: 5px;
+  background: linear-gradient(135deg, #f8f8f8, #e5e5e5) !important;
+  border: 1px solid #bbb !important;
+  border-radius: 8px !important;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.02) 0px, rgba(0, 0, 0, 0.02) 5px, transparent 5px, transparent 10px),
+    repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.02) 0px, rgba(0, 0, 0, 0.02) 5px, transparent 5px, transparent 10px) !important;
+  background-size: 15px 15px !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
 }
 
-
-/* 金色特效 - 更奢华的设计 */
+/* 金色特效 */
 .vfx-gloden {
-    color: #bf953f; /* 使用纯金色 */
-    text-shadow: 0 2px 5px rgba(191, 149, 63, 0.3); /* 增强阴影效果 */
-    padding: 5px 10px;
-    position: relative;
-    font-weight: bold;
+  color: #d4af37 !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 5px rgba(212, 175, 55, 0.5);
+  padding: 5px 10px;
+  position: relative;
+  font-weight: bold;
 }
 
-/* 金色特效背景 */
 .preview-text.vfx-gloden,
-.text-area.vfx-gloden {
-  background-color: transparent; /* 改为透明背景 */
-  border-color: rgba(191, 149, 63, 0.3);
-  border-width: 2px;
+.text-area.vfx-gloden,
+.preview-image-container.vfx-gloden {
+  background-color: #2a2a2a !important;
+
+  border: 2px solid rgba(212, 175, 55, 0.5) !important;
+  border-radius: 5px !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4) !important;
 }
 
-
-/* 霓虹特效 - 更炫酷的设计 */
+/* 霓虹特效 */
 .vfx-neon {
-    color: #fff;
-    text-shadow: 
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 15px #0073e6,
-      0 0 20px #0073e6,
-      0 0 25px #0073e6,
-      0 0 30px #0073e6;
-    padding: 5px 10px;
-    position: relative;
+  color: #fff !important;
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #0073e6,
+    0 0 20px #0073e6,
+    0 0 25px #0073e6,
+    0 0 30px #0073e6;
+  padding: 5px 10px;
+  position: relative;
 }
 
-/* 霓虹特效背景 */
 .preview-text.vfx-neon,
-.text-area.vfx-neon {
-  background-color: #000;
+.text-area.vfx-neon,
+.preview-image-container.vfx-neon {
+  background-color: #000 !important;
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(0, 115, 230, 0.3) 0%, transparent 50%),
     radial-gradient(circle at 20% 20%, rgba(0, 115, 230, 0.2) 0%, transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(0, 115, 230, 0.2) 0%, transparent 30%);
-  border-color: rgba(0, 115, 230, 0.5);
+    radial-gradient(circle at 80% 80%, rgba(0, 115, 230, 0.2) 0%, transparent 30%) !important;
+  border: 1px solid rgba(0, 115, 230, 0.5) !important;
+  border-radius: 5px !important;
+  box-shadow: 0 0 20px rgba(0, 115, 230, 0.3) !important;
 }
 
-/* 剪纸特效 - 传统中国窗花风格 */
+/* 剪纸特效 */
 .vfx-papercut {
-    color: #c02c38 !important; /* 确保使用鲜艳的红色 */
-    text-shadow: 
-      0 0 1px #fff,
-      0 0 2px #fff,
-      1px 1px 0 #ff9999;
-    font-weight: bold;
-    letter-spacing: 1px;
-    position: relative;
-    padding: 10px 15px;
-    z-index: 1;
+  color: #c02c38 !important;
+  text-shadow: 
+    0 0 1px #fff,
+    0 0 2px #fff,
+    1px 1px 0 #ff9999;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 10px 15px;
+  z-index: 1;
 }
 
-/* 剪纸特效背景 */
 .preview-text.vfx-papercut,
 .text-area.vfx-papercut,
 .preview-image-container.vfx-papercut {
-  background-color: #fffaf0;
+  background-color: #fffaf0 !important;
   background-image: 
     repeating-linear-gradient(45deg, rgba(230, 0, 0, 0.05) 0px, rgba(230, 0, 0, 0.05) 2px, transparent 2px, transparent 8px),
-    repeating-linear-gradient(-45deg, rgba(230, 0, 0, 0.05) 0px, rgba(230, 0, 0, 0.05) 2px, transparent 2px, transparent 8px);
-  border: 2px solid rgba(230, 0, 0, 0.5);
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(230, 0, 0, 0.1);
+    repeating-linear-gradient(-45deg, rgba(230, 0, 0, 0.05) 0px, rgba(230, 0, 0, 0.05) 2px, transparent 2px, transparent 8px) !important;
+  border: 2px solid rgba(230, 0, 0, 0.5) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(230, 0, 0, 0.1) !important;
 }
 
-/* 修复剪纸特效装饰的选择器 */
+
+
+/* 剪纸特效装饰 */
 .preview-text.vfx-papercut::before,
-.text-area.vfx-papercut::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px solid rgba(230, 0, 0, 0.3);
-    border-radius: 15px;
-    z-index: -1;
-    pointer-events: none;
-    background-image: 
-      radial-gradient(circle at 10px 10px, transparent 8px, rgba(255, 240, 240, 0.5) 8px),
-      radial-gradient(circle at calc(100% - 10px) 10px, transparent 8px, rgba(255, 240, 240, 0.5) 8px),
-      radial-gradient(circle at 10px calc(100% - 10px), transparent 8px, rgba(255, 240, 240, 0.5) 8px),
-      radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), transparent 8px, rgba(255, 240, 240, 0.5) 8px);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+.text-area.vfx-papercut::before,
+.preview-image-container.vfx-papercut::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid rgba(230, 0, 0, 0.3);
+  border-radius: 15px;
+  z-index: -1;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 10px 10px, transparent 8px, rgba(255, 240, 240, 0.5) 8px),
+    radial-gradient(circle at calc(100% - 10px) 10px, transparent 8px, rgba(255, 240, 240, 0.5) 8px),
+    radial-gradient(circle at 10px calc(100% - 10px), transparent 8px, rgba(255, 240, 240, 0.5) 8px),
+    radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), transparent 8px, rgba(255, 240, 240, 0.5) 8px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-/* 浮雕特效 - 更精致的设计 */
-/* 浮雕特效 - 更精致的设计 */
-.vfx-emboss {
-  color: rgba(68, 68, 68, 0.9);
-  text-shadow: 
-    -1px -1px 1px rgba(0, 0, 0, 0.5),
-    1px 1px 1px rgba(255, 255, 255, 0.8);
-  padding: 8px 12px;
-  position: relative;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* 浮雕特效背景 */
-.preview-text.vfx-emboss,
-.text-area.vfx-emboss,
-.preview-image-container.vfx-emboss {
-background: #d5d5d5;
-background-image: 
-  linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
-  linear-gradient(45deg, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
-border: 1px solid #bbb;
-border-radius: 5px;
-box-shadow: 
-  inset 2px 2px 5px rgba(255, 255, 255, 0.9),
-  inset -2px -2px 5px rgba(0, 0, 0, 0.2),
-  0 1px 2px rgba(0, 0, 0, 0.1);
-}
