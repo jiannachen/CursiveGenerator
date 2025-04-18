@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const containerWidth = screenWidth > 768 ? '600px' : (screenWidth - 40) + 'px';
         tempContainer.style.width = containerWidth;
         tempContainer.style.padding = '20px';
-         //tempContainer.style.backgroundColor = '#ffffff';
+        //tempContainer.style.backgroundColor = '#ffffff';
         
         // 创建预览文本元素
         const tempText = document.createElement('div');
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.removeChild(tempContainer);
             }
         });
-      }, 100)
+      }, 300)
     }
     // Add ripple effect
     function addRippleEffect(element) {

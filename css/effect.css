@@ -172,7 +172,7 @@
   font-weight: bold;
   letter-spacing: 1px;
   position: relative;
-  padding: 10px 15px;
+  padding: 5px 10px;
   z-index: 1;
 }
 
@@ -212,4 +212,26 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+/* 浮雕特效 */
+.vfx-emboss {
+  color: #333 !important;
+  text-shadow: 
+    -1px -1px 0 rgba(0, 0, 0, 0.4),
+    1px 1px 0 rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 
+.preview-text.vfx-emboss,
+.text-area.vfx-emboss,
+.preview-image-container.vfx-emboss {
+  background-color: #d0d0d0 !important;
+  border: 1px solid #999 !important;
+  border-radius: 8px !important;
+  box-shadow: 
+    inset 2px 2px 3px rgba(255, 255, 255, 0.7),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
