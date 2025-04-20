@@ -11,7 +11,11 @@ const app = express();
 const PORT = config.server.port;
 
 // 中间件
-app.use(cors()); // 允许跨域请求
+app.use(cors({
+    origin: '*', // 允许所有来源，或者指定你的域名
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
 app.use(express.json()); // 解析JSON请求体
 // API路由
 app.use('/api/auth', authRoutes);
