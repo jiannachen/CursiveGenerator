@@ -17,6 +17,11 @@ app.use(express.json()); // 解析JSON请求体
 app.use('/api/auth', authRoutes);
 app.use('/api/feedback', feedbackRoutes);
 
+// 设置正确的MIME类型
+express.static.mime.define({'application/xml': ['xml']});
+// 添加静态文件服务
+app.use(express.static(path.join(__dirname, '..')));
+
 
 if (process.env.NODE_ENV === 'development' && process.env.HTTP_PROXY) {
     console.log('开发环境：设置 HTTP 代理:', process.env.HTTP_PROXY);
@@ -111,5 +116,3 @@ if (process.env.VERCEL !== 'true') {
 }
 module.exports = app;
 
-// 添加静态文件服务
-app.use(express.static(path.join(__dirname, '..')));
