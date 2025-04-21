@@ -5,15 +5,16 @@
     { "src": "css/**", "use": "@vercel/static" },
     { "src": "js/**", "use": "@vercel/static" },
     { "src": "server/*.html", "use": "@vercel/static" },
+    { "src": "server/*.js", "use": "@vercel/static" },
     { "src": "server/index.js", "use": "@vercel/node" },
     { "src": "cn/**", "use": "@vercel/static" },
     { "src": "images/**", "use": "@vercel/static" },
     { "src": "*.ico", "use": "@vercel/static" },
-    { "src": "*.xml", "use": "@vercel/static" },
-    { "src": "sitemap.xml", "use": "@vercel/static" }
+    { "src": "*.xml", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/server/index.js" },
+    { "src": "/server/admin.js", "dest": "/server/admin.js" },
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
     { "src": "/(.*\\.(js|css|jpg|png|svg|xml))", "dest": "/$1" },
     { "src": "/server/(.*)", "dest": "/server/$1" },
