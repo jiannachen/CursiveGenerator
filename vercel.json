@@ -1,12 +1,18 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@vercel/node", "config": { "includeFiles": ["server/**"], "packagePath": "package.json" } },
+    { 
+      "src": "package.json", 
+      "use": "@vercel/node", 
+      "config": { 
+        "includeFiles": ["server/**", "firebase-service-account.json"] 
+      } 
+    },
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "css/**", "use": "@vercel/static" },
     { "src": "js/**", "use": "@vercel/static" },
     { "src": "server/*.html", "use": "@vercel/static" },
-    { "src": "server/*.js", "use": "@vercel/static", "config": { "includeFiles": ["server/**"] } },
+    { "src": "server/admin.js", "use": "@vercel/static" },
     { "src": "cn/**", "use": "@vercel/static" },
     { "src": "images/**", "use": "@vercel/static" },
     { "src": "*.ico", "use": "@vercel/static" },
