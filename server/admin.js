@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 在登录按钮点击事件中，确保正确发送POST请求
 
+// ... 现有代码 ...
+
 document.getElementById('loginBtn').addEventListener('click', function() {
     const password = document.getElementById('password').value;
     
@@ -73,23 +75,34 @@ document.getElementById('loginBtn').addEventListener('click', function() {
         }
         return response.json();
     })
-    // ... 其余代码保持不变 ...
-
     .then(data => {
         if (data.success && data.token) {
             // 登录成功，保存token
-            localStorage.setItem('adminToken', data.token);
+            localStorage.setItem('authToken', data.token); // 修改这里，使用authToken而不是adminToken
+            
+            // 设置token过期时间
+            const expireTime = Date.now() + tokenExpireTime;
+            localStorage.setItem('tokenExpireTime', expireTime);
+            
+            // 更新全局变量
+            authToken = data.token;
+            
             // 显示管理面板
             document.getElementById('loginContainer').style.display = 'none';
             document.getElementById('adminContainer').style.display = 'flex';
+            
+            updateDebugInfo("登录成功，令牌已保存");
+            
             // 加载反馈数据
-            loadFeedbackData();
+            loadFeedback(); // 修改这里，使用loadFeedback而不是loadFeedbackData
         } else {
             alert('登录失败: ' + (data.message || '未知错误'));
+            updateDebugInfo("登录失败: " + (data.message || '未知错误'));
         }
     })
     .catch(error => {
         console.error('登录请求错误:', error);
+        updateDebugInfo("登录请求错误: " + error.message);
         alert('登录请求错误: ' + error.message);
     })
     .finally(() => {
@@ -98,6 +111,8 @@ document.getElementById('loginBtn').addEventListener('click', function() {
         this.disabled = false;
     });
 });
+
+// ... 现有代码 ...
    
     
     // 退出登录
