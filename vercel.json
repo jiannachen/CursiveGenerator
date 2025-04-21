@@ -19,9 +19,13 @@
     { "src": "*.xml", "use": "@vercel/static" }
   ],
   "routes": [
+
+    { "src": "/api/health", "methods": ["GET"], "dest": "/server/index.js" },
+  
     { "src": "/api/auth/(.*)", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "dest": "/server/index.js" },
     { "src": "/api/feedback/(.*)", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "dest": "/server/index.js" },
     { "src": "/api/(.*)", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "dest": "/server/index.js" },
+    
     { "src": "/server/admin.js", "dest": "/server/admin.js" },
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
     { "src": "/(.*\\.(js|css|jpg|png|svg|xml))", "dest": "/$1" },

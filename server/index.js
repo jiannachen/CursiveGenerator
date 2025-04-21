@@ -11,40 +11,57 @@ const app = express();
 const PORT = config.server.port;
 
 // 中间件
+// ... 现有代码 ...
+
+// 中间件
 app.use(cors({
     origin: '*', // 允许所有来源，或者指定你的域名
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
-  }));
+}));
 app.use(express.json()); // 解析JSON请求体
 
-// 添加在API路由注册之前
-app.get('/api/test', (req, res) => {
-    res.json({ success: true, message: 'API服务器正常工作' });
-  });
-
-// 添加请求日志中间件
+// 添加Vercel环境检测
 app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path} - 环境: ${process.env.VERCEL ? 'Vercel' : 'Local'}`);
+    // 在响应头中添加环境信息，便于调试
+    res.setHeader('X-Environment', process.env.VERCEL ? 'Vercel' : 'Local');
     next();
+});
+
+// 添加健康检查路由 - 放在最前面确保优先级
+app.get('/api/health', (req, res) => {
+    res.json({ 
+        success: true, 
+        message: 'API服务器健康检查',
+        environment: process.env.VERCEL ? 'Vercel' : 'Local',
+        timestamp: new Date().toISOString()
+    });
 });
 
 // 添加根路径测试路由
 app.get('/api', (req, res) => {
-    res.json({ success: true, message: 'API服务器根路径正常工作' });
+    res.json({ 
+        success: true, 
+        message: 'API服务器根路径正常工作',
+        environment: process.env.VERCEL ? 'Vercel' : 'Local'
+    });
 });
-// API路由
+
+// API路由 - 确保在静态文件中间件之前
 app.use('/api/auth', authRoutes);
 app.use('/api/feedback', feedbackRoutes);
 
-// 方法1: 使用express.static的options参数设置MIME类型(推荐)
+// 静态文件中间件 - 放在API路由之后
 app.use(express.static(path.join(__dirname, '..'), {
     setHeaders: (res, path) => {
       if (path.endsWith('.xml')) {
         res.set('Content-Type', 'application/xml');
       }
     }
-  }));
+}));
+
+// ... 其他代码保持不变 ...
 
 
 if (process.env.NODE_ENV === 'development' && process.env.HTTP_PROXY) {
