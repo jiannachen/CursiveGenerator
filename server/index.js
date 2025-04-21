@@ -1,42 +1,5 @@
 // ... 现有代码 ...
 
-// 初始化Express应用
-const app = express();
-const PORT = config.server.port;
-
-// 中间件
-app.use(cors({
-    origin: '*', // 允许所有来源，或者指定你的域名
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-app.use(express.json()); // 解析JSON请求体
-
-// 添加请求日志中间件
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
-    next();
-});
-
-// 添加健康检查路由
-app.get('/api/health', (req, res) => {
-    res.json({ 
-        success: true, 
-        message: 'API服务器健康检查',
-        environment: process.env.VERCEL ? 'Vercel' : 'Local',
-        timestamp: new Date().toISOString()
-    });
-});
-
-// 添加根路径测试路由
-app.get('/api', (req, res) => {
-    res.json({ 
-        success: true, 
-        message: 'API服务器根路径正常工作',
-        environment: process.env.VERCEL ? 'Vercel' : 'Local'
-    });
-});
-
 // 添加一个临时的登录路由，绕过Firebase
 app.post('/api/auth/login', (req, res) => {
     try {
@@ -79,9 +42,11 @@ app.post('/api/auth/login', (req, res) => {
     }
 });
 
-// API路由 - 暂时注释掉，使用上面的临时路由
-// app.use('/api/auth', authRoutes);
-// app.use('/api/feedback', feedbackRoutes);
+// API路由 - 只注册 feedback 路由，因为 auth.js 已被删除
+// const authRoutes = require('./routes/auth').router; // 已删除
+const feedbackRoutes = require('./routes/feedback');
+// app.use('/api/auth', authRoutes); // 已删除
+app.use('/api/feedback', feedbackRoutes);
 
 // 静态文件中间件
 app.use(express.static(path.join(__dirname, '..'), {
@@ -92,14 +57,44 @@ app.use(express.static(path.join(__dirname, '..'), {
     }
 }));
 
-// 暂时注释掉 Firebase 初始化代码
-/*
+// 恢复 Firebase 初始化代码
 try {
-    // ... Firebase 初始化代码 ...
+    // 显示更多配置信息（注意不要泄露敏感信息）
+    console.log('Firebase配置:', {
+        projectId: config.firebase.projectId,
+        databaseURL: config.firebase.databaseURL,
+        hasServiceAccount: !!process.env.GOOGLE_APPLICATION_CREDENTIALS || !!require('./firebase-service-account.json')
+    });
+    
+    // 优先使用环境变量中的服务账号路径
+    if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+        admin.initializeApp({
+            databaseURL: config.firebase.databaseURL
+        });
+        console.log('使用 GOOGLE_APPLICATION_CREDENTIALS 环境变量初始化 Firebase');
+    } else {
+        // 使用本地服务账号文件
+        const serviceAccount = require('./firebase-service-account.json');
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            databaseURL: config.firebase.databaseURL
+        });
+        console.log('使用本地服务账号文件初始化 Firebase');
+    }
+    
+    console.log('Firebase Admin 初始化成功');
+    
+    // 检查连接状态
+    checkFirebaseConnection().then(connected => {
+        if (connected) {
+            console.log('Firebase 连接测试成功');
+        } else {
+            console.warn('Firebase 连接测试失败，但服务器将继续运行');
+        }
+    });
 } catch (error) {
     console.error('Firebase Admin 初始化失败:', error);
 }
-*/
 
 // 只在非 Vercel 环境下启动监听服务器
 if (process.env.VERCEL !== 'true') {
