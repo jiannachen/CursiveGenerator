@@ -72,9 +72,28 @@ const verifyToken = (req, res, next) => {
     }
 };
 
-// 添加一个测试路由，用于验证API是否正常工作
+// 修改测试路由，添加更多调试信息
 router.get('/test', (req, res) => {
-    res.json({ success: true, message: 'Auth API 正常工作' });
+    console.log('测试路由被访问:', {
+        headers: req.headers,
+        method: req.method,
+        path: req.path,
+        url: req.url
+    });
+    
+    res.json({ 
+        success: true, 
+        message: 'Auth API 正常工作',
+        environment: process.env.VERCEL ? 'Vercel' : 'Local',
+        timestamp: new Date().toISOString()
+    });
 });
+
+// 添加根路径路由，用于测试最基本的API访问
+router.get('/', (req, res) => {
+    console.log('Auth根路径被访问');
+    res.json({ success: true, message: 'Auth API 根路径正常' });
+});
+
 
 module.exports = { router, verifyToken };

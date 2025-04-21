@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const admin = require('firebase-admin');
 const path = require('path');
-const { router: authRouter } = require('./routes/auth');
-const feedbackRouter = require('./routes/feedback');
+const authRoutes = require('./routes/auth').router;
+const feedbackRoutes = require('./routes/feedback');
 const config = require('./config');
 
 // 初始化Express应用
@@ -29,9 +29,13 @@ app.use((req, res, next) => {
     next();
 });
 
+// 添加根路径测试路由
+app.get('/api', (req, res) => {
+    res.json({ success: true, message: 'API服务器根路径正常工作' });
+});
 // API路由
-app.use('/api/auth', authRouter);
-app.use('/api/feedback', feedbackRouter);
+app.use('/api/auth', authRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 // 方法1: 使用express.static的options参数设置MIME类型(推荐)
 app.use(express.static(path.join(__dirname, '..'), {
