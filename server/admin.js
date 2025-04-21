@@ -41,8 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 登录功能
-    const loginBtn = document.getElementById('loginBtn');
+
 // 在登录按钮点击事件中，确保正确发送POST请求
+
 document.getElementById('loginBtn').addEventListener('click', function() {
     const password = document.getElementById('password').value;
     
@@ -50,7 +51,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 登录中...';
     this.disabled = true;
     
-    // 发送登录请求
+    // 发送登录请求 - 修改URL确保与服务器路由匹配
     fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -59,11 +60,15 @@ document.getElementById('loginBtn').addEventListener('click', function() {
         body: JSON.stringify({ password: password })
     })
     .then(response => {
+        // 添加更详细的错误日志
         if (!response.ok) {
+            console.error('登录请求失败:', response.status, response.statusText);
+            updateDebugInfo(`登录请求失败: ${response.status} ${response.statusText}`);
             throw new Error('登录失败: ' + response.status + ' ' + response.statusText);
         }
         return response.json();
     })
+
     .then(data => {
         if (data.success && data.token) {
             // 登录成功，保存token
