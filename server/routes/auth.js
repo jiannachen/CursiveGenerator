@@ -6,20 +6,37 @@ const router = express.Router();
 
 // 管理员登录
 router.post('/login', (req, res) => {
-    const { password } = req.body;
-    
-    // 验证密码
-    if (password === config.admin.password) {
-        // 生成JWT令牌
-        const token = jwt.sign(
-            { role: 'admin' },
-            config.jwt.secret,
-            { expiresIn: config.jwt.expiresIn }
-        );
+    try {
+        const { username, password } = req.body;
         
-        res.json({ success: true, token });
-    } else {
-        res.status(401).json({ success: false, message: '密码错误' });
+        // 记录请求信息，帮助调试
+        console.log('登录请求:', { 
+            body: req.body,
+            hasPassword: !!password
+        });
+        
+        // 验证密码
+        if (password === config.admin.password) {
+            // 生成JWT令牌
+            const token = jwt.sign(
+                { role: 'admin' },
+                config.jwt.secret,
+                { expiresIn: config.jwt.expiresIn }
+            );
+            
+            console.log('登录成功，已生成令牌');
+            res.json({ success: true, token });
+        } else {
+            console.log('密码错误');
+            res.status(401).json({ success: false, message: '密码错误' });
+        }
+    } catch (error) {
+        console.error('登录处理出错:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: '服务器内部错误',
+            error: error.message
+        });
     }
 });
 
