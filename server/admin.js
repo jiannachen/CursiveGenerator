@@ -42,81 +42,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 登录功能
     const loginBtn = document.getElementById('loginBtn');
-if (loginBtn) {
-    loginBtn.addEventListener('click', async function() {
-        const password = document.getElementById('password').value;
-        
-        try {
-            updateDebugInfo("开始发送登录请求...");
-            updateDebugInfo(`请求URL: /api/auth/login, 方法: POST`);
-            
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ password })
-            });
-            
-            updateDebugInfo(`收到响应: 状态码 ${response.status}`);
-            
-            // 检查响应状态
-            if (!response.ok) {
-                let errorText = '';
-                try {
-                    errorText = await response.text();
-                    updateDebugInfo(`错误响应内容: ${errorText}`);
-                } catch (e) {
-                    updateDebugInfo(`无法读取错误响应内容: ${e.message}`);
-                }
-                
-                // 尝试解析错误响应为JSON
-                try {
-                    const errorJson = JSON.parse(errorText);
-                    updateDebugInfo(`错误详情: ${JSON.stringify(errorJson)}`);
-                    throw new Error(errorJson.message || `服务器返回错误: ${response.status}`);
-                } catch (e) {
-                    // 如果不是JSON，使用原始错误文本
-                    throw new Error(`服务器返回错误: ${response.status} ${response.statusText}`);
-                }
-            }
-            
-            // 尝试解析 JSON
-            let data;
-            try {
-                const responseText = await response.text();
-                updateDebugInfo(`响应内容: ${responseText}`);
-                
-                // 尝试将文本解析为JSON
-                data = JSON.parse(responseText);
-                updateDebugInfo("成功解析服务器响应为JSON");
-            } catch (e) {
-                updateDebugInfo(`JSON 解析错误: ${e.message}`);
-                throw new Error('服务器返回了无效的 JSON 数据');
-            }
-            
-            if (data.success) {
-                authToken = data.token;
-                // 保存登录状态和过期时间
-                localStorage.setItem('authToken', authToken);
-                localStorage.setItem('tokenExpireTime', String(Date.now() + tokenExpireTime));
-                
-                document.getElementById('loginContainer').style.display = 'none';
-                document.getElementById('adminContainer').style.display = 'flex';
-                updateDebugInfo("登录成功，开始加载反馈数据");
-                loadFeedback();
-            } else {
-                alert('密码错误');
-                updateDebugInfo("登录失败：" + (data.message || '密码错误'));
-            }
-        } catch (error) {
-            console.error('登录请求失败:', error);
-            updateDebugInfo("登录请求失败: " + error.message);
-            alert('登录请求失败: ' + error.message);
-        }
-    });
-}
+// 在登录按钮点击事件中，确保正确发送POST请求
+document.getElementById('loginBtn').addEventListener('click', function() {
+    const password = document.getElementById('password').value;
     
+    // 显示加载状态
+    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 登录中...';
+    this.disabled = true;
+    
+    // 发送登录请求
+    fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ password: password })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('登录失败: ' + response.status + ' ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success && data.token) {
+            // 登录成功，保存token
+            localStorage.setItem('adminToken', data.token);
+            // 显示管理面板
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('adminContainer').style.display = 'flex';
+            // 加载反馈数据
+            loadFeedbackData();
+        } else {
+            alert('登录失败: ' + (data.message || '未知错误'));
+        }
+    })
+    .catch(error => {
+        console.error('登录请求错误:', error);
+        alert('登录请求错误: ' + error.message);
+    })
+    .finally(() => {
+        // 恢复按钮状态
+        this.innerHTML = '登录';
+        this.disabled = false;
+    });
+});
    
     
     // 退出登录
