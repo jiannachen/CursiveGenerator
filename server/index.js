@@ -17,10 +17,18 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
   }));
 app.use(express.json()); // 解析JSON请求体
+
+
+
+// 添加请求日志中间件
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+    next();
+});
+
 // API路由
 app.use('/api/auth', authRoutes);
 app.use('/api/feedback', feedbackRoutes);
-
 
 // 方法1: 使用express.static的options参数设置MIME类型(推荐)
 app.use(express.static(path.join(__dirname, '..'), {
@@ -30,6 +38,7 @@ app.use(express.static(path.join(__dirname, '..'), {
       }
     }
   }));
+
 
 if (process.env.NODE_ENV === 'development' && process.env.HTTP_PROXY) {
     console.log('开发环境：设置 HTTP 代理:', process.env.HTTP_PROXY);
