@@ -51,8 +51,15 @@ document.getElementById('loginBtn').addEventListener('click', function() {
     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 登录中...';
     this.disabled = true;
     
-    // 发送登录请求 - 修改URL确保与服务器路由匹配
-    fetch('/api/auth/login', {
+    // 添加调试信息
+    updateDebugInfo("正在发送登录请求...");
+    
+    // 使用完整URL
+    const apiUrl = window.location.origin + '/api/auth/login';
+    updateDebugInfo("请求URL: " + apiUrl);
+    
+    // 发送登录请求
+    fetch(apiUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -60,14 +67,13 @@ document.getElementById('loginBtn').addEventListener('click', function() {
         body: JSON.stringify({ password: password })
     })
     .then(response => {
-        // 添加更详细的错误日志
+        updateDebugInfo("收到响应: " + response.status + " " + response.statusText);
         if (!response.ok) {
-            console.error('登录请求失败:', response.status, response.statusText);
-            updateDebugInfo(`登录请求失败: ${response.status} ${response.statusText}`);
             throw new Error('登录失败: ' + response.status + ' ' + response.statusText);
         }
         return response.json();
     })
+    // ... 其余代码保持不变 ...
 
     .then(data => {
         if (data.success && data.token) {
