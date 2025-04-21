@@ -7,8 +7,10 @@ const router = express.Router();
 // 管理员登录
 router.post('/login', (req, res) => {
     try {
-        const { username, password } = req.body;
-        
+        const { password } = req.body;
+        if (!password) {
+            return res.status(400).json({ success: false, message: '缺少密码参数' });
+        }
         // 记录请求信息，帮助调试
         console.log('登录请求:', { 
             body: req.body,
