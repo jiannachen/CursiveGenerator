@@ -1,8 +1,13 @@
-// 创建一个独立的 API 路由文件，专门用于处理登录请求
-const config = require('../../../server/config');
+// Vercel API 路由文件
+const config = require('../../server/config');
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res) => {
+  // 只处理 POST 请求
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, message: '方法不允许' });
+  }
+  
   try {
     console.log('收到登录请求:', { 
       headers: req.headers,
