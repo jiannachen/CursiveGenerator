@@ -5,10 +5,12 @@
   gap: 1rem;
   margin-bottom: 2rem;
   justify-content: center; /* 居中显示 */
-  padding: 0.5rem 0; /* 增加内边距 */
+  padding: 0.75rem 0; /* 增加内边距 */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  position: relative; /* 添加定位 */
+  z-index: 1; /* 确保在其他元素之上 */
 }
 
 .vfx-option {
@@ -23,6 +25,7 @@
   color: var(--text-primary);
   position: relative; /* 为波纹效果添加定位 */
   overflow: hidden; /* 隐藏溢出内容 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 添加轻微阴影 */
 }
 
 .vfx-option:hover {
@@ -43,12 +46,17 @@
   display: flex;
   align-items: center;
   margin-bottom: 0; /* 移除底部边距 */
+  background-color: var(--background-light); /* 添加背景色 */
+  padding: 0.4rem 0.8rem; /* 添加内边距 */
+  border-radius: 16px; /* 圆角 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 轻微阴影 */
 }
 
 .toggle-label {
   margin-right: 0.5rem; /* 减小右边距 */
   font-size: 0.85rem; /* 减小字体大小 */
   color: var(--text-secondary);
+  font-weight: 500; /* 增加字重 */
 }
 
 .toggle-switch {
@@ -86,6 +94,7 @@
   background-color: white;
   transition: var(--transition);
   border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 添加滑块阴影 */
 }
 
 input:checked + .toggle-slider {
@@ -99,7 +108,7 @@ input:checked + .toggle-slider:before {
 /* 对齐按钮样式 */
 .align-button,
 .copy-button {
- width: 2rem;
+  width: 2rem;
   height: 2rem;
   display: flex;
   align-items: center;
@@ -112,7 +121,9 @@ input:checked + .toggle-slider:before {
   color: var(--text-secondary);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* 添加轻微阴影 */
 }
+
 .align-buttons {
   display: flex;
   gap: 0.5rem;
@@ -127,12 +138,33 @@ input:checked + .toggle-slider:before {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.align-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+
+
+
+/* 当开启预览模式时隐藏预览区域的复制按钮 */
+input:checked ~ .preview-controls {
+  display: none;
+}
+
+
 .textarea-controls {
   display: flex;
   justify-content: space-between; /* 两端对齐 */
   align-items: center;
   margin-bottom: 0.75rem;
   width: 100%;
+  max-width: 1200px; /* 添加最大宽度限制 */
+  margin-left: auto; /* 添加水平居中 */
+  margin-right: auto; /* 添加水平居中 */
+  background-color: var(--background-light); /* 添加背景色 */
+  padding: 0.5rem 0; /* 添加内边距 */
+  box-sizing: border-box; /* 确保内边距计入宽度 */
 }
 
 .text-input-container {
@@ -141,25 +173,32 @@ input:checked + .toggle-slider:before {
   margin-right: auto;
   width: 100%;
   position: relative;
+  margin-bottom: 0.75rem; /* 减小底部边距 */
 }
+
 
 .textarea-wrapper {
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+
+  transition: box-shadow 0.3s ease;
 }
 
+.textarea-wrapper:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 悬停时增强阴影 */
+}
 
 
 
 /* 文本输入框 */
 .text-area {
   text-align: center;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-  font-size: 1.2rem;
+  width: 100%; /* 填充父容器 */
+  margin: 0; /* 移除自动边距，避免不一致 */
+  padding: 1rem; /* 调整内边距与预览区域更协调 */
+  font-size: 1.4rem; /* 调整为与预览区域一致 */
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   min-height: 5rem;
@@ -167,16 +206,17 @@ input:checked + .toggle-slider:before {
   transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
   background-color: var(--background);
-  box-sizing: border-box;
+  box-sizing: border-box; /* 确保 padding 和 border 包含在宽高内 */
   font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
-  line-height: 1.6;
+  line-height: 1.4; /* 调整行高更接近预览区域 */
   -webkit-tap-highlight-color: transparent;
+  overflow-y: auto; /* 当内容超出高度时显示滚动条 */
 }
 
 .text-area:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.15); /* 使用RGB变量 */
   background-color: #fff; /* 聚焦时背景变白 */
 }
 
@@ -184,26 +224,57 @@ input:checked + .toggle-slider:before {
 
 
 
+/* 基础样式定义 - 预览文本样式 */
+.preview-text,
+.preview-image-container {
+  display: block;
+  width: 100%;
+  max-width: 1200px; /* 与其他元素保持一致的最大宽度 */
+  min-height: 30px;
+  margin: 1rem auto 2rem auto; /* 上右下左边距，使用auto实现水平居中 */
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
+  font-size: 1.4rem !important;
+  color: #333;
+  line-height: 1.4;
+  text-align: center;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-md);
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  position: relative; /* 为装饰元素添加定位上下文 */
+}
 
-.preview-container::before {
+
+
+.preview-text:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 简化装饰元素 */
+.preview-text::before {
   content: '';
   position: absolute;
-  top: -5px;
+  top: -3px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 5px;
-  background: linear-gradient(90deg, var(--primary-color), #a594e0);
-  border-radius: 5px 5px 0 0;
+  width: 40px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.preview-container:hover::before {
+.preview-text:hover::before {
   opacity: 1;
 }
-/* 基础预览文本样式 */
-
 
 /* 按钮容器 */
 .action-buttons {
@@ -214,6 +285,7 @@ input:checked + .toggle-slider:before {
   max-width: 1248px;
   margin-left: auto;
   margin-right: auto;
+  padding: 1rem 0; /* 添加垂直内边距 */
 }
 
 /* 基础按钮样式 */

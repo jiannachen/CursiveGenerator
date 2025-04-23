@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyButton = document.querySelector('.copy-button');
     const scrollToTopBtn = document.getElementById('scrollToTop');
     const alignButton = document.querySelector('.align-button'); // 修改为单个按钮
+    const previewCopyButton = document.getElementById('previewCopyBtn'); // 获取预览区域复制按钮
 
     initGuideTabs();
     const isMainPage = textInput && previewText && clearBtn && saveBtn;
@@ -19,14 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!isMainPage) {
       console.log('当前页面不包含文本生成器组件，跳过相关功能初始化');
       return;
-  }
+    }
 
-       // 在这里调用 initGuideTabs 函数
+    // 在这里调用 initGuideTabs 函数
       
     // Initialize
     let currentFont = 'Dancing Script';
     let currentVfx = 'default';
-      let currentAlignment = 'center';
+    let currentAlignment = 'center';
     const alignments = ['left', 'center', 'right']; // 对齐方式数组
 
     updatePreview();
@@ -72,6 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (copyButton) {
         copyButton.addEventListener('click', copyToClipboard);
     }
+    
+    // 为预览区域的复制按钮添加事件监听器
+    if (previewCopyButton) {
+        previewCopyButton.addEventListener('click', function() {
+            copyStyledText();
+            addRippleEffect(previewCopyButton);
+        });
+    }
+    
     // Scroll to top functionality
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener('click', () => {
@@ -117,15 +127,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 添加当前特效类
             if (currentVfx === 'default') {
-              tempContainer.classList.add('vfx-default');
+              textInput.classList.add('vfx-default');
             } else {
-                tempContainer.classList.add(`vfx-${currentVfx}`);
+              textInput.classList.add(`vfx-${currentVfx}`);
             }
-          
         }
         
         addRippleEffect(btn);
-    });
+      });
     });
     // Apply font to preview items
     function applyFontToItems() {
@@ -175,45 +184,65 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
+
     function toggleMode() {
       const isChecked = modeToggle.checked;
-        
+      const previewControls = document.querySelector('.preview-controls');
+
+      // --- 清理旧样式 ---
+      // 移除所有可能的 VFX 类
+      vfxBtns.forEach(btn => {
+          const vfxClass = `vfx-${btn.getAttribute('data-vfx')}`;
+          // 确保只移除实际的特效类，而不是 'vfx-default' (如果它不是一个真正的类)
+          if (vfxClass !== 'vfx-default' || textInput.classList.contains('vfx-default')) {
+             textInput.classList.remove(vfxClass);
+          }
+      });
+      // 如果 'vfx-default' 是一个实际应用的类，也移除它
+      // textInput.classList.remove('vfx-default'); // 根据你的 CSS 决定是否需要这行
+
       if (isChecked) {
-          // 开启预览模式：应用字体和特效
+          // --- 开启预览模式 ---
           textInput.style.fontFamily = currentFont;
-          
-          // 应用当前特效
-          textInput.className = 'text-area';
+          textInput.style.textAlign = currentAlignment;
+          // 可以考虑强制设置 line-height，但这可能覆盖某些字体的最佳显示效果
+          textInput.style.lineHeight = '1.6';
+
+          // 应用当前特效类
           if (currentVfx !== 'default') {
               textInput.classList.add(`vfx-${currentVfx}`);
+          } else {
+            // 如果 'vfx-default' 是一个需要添加的类
+            // textInput.classList.add('vfx-default');
           }
-          else{
-            tempContainer.classList.add('vfx-default');
-          }
-          
-          // 应用当前对齐方式
-          textInput.style.textAlign = currentAlignment;
+
+          // 隐藏预览区域相关元素
+          if (previewText) previewText.style.display = 'none';
+          if (previewCopyButton) previewCopyButton.style.display = 'none'; // 使用 'none' 隐藏
+          if (previewControls) previewControls.style.display = 'none';
+
       } else {
-          // 关闭预览模式：恢复默认样式
-          textInput.style.fontFamily = '';
-          textInput.className = 'text-area';
+          // --- 关闭预览模式 ---
+          textInput.style.fontFamily = ''; // 恢复默认字体
+          textInput.style.textAlign = 'center'; // 恢复默认对齐或初始对齐
+          // textInput.style.lineHeight = ''; // 恢复默认行高
+
+          // VFX 类已在上面清除
+
+          // 显示预览区域相关元素
+          if (previewText) previewText.style.display = 'block'; // 或 'flex' 等原始 display 值
+          if (previewCopyButton) previewCopyButton.style.display = 'flex'; // 恢复 display
+          if (previewControls) previewControls.style.display = 'flex'; // 恢复 display
       }
-      
-      // 更新显示状态
-      textInput.style.display = 'block';
-      previewText.style.display = isChecked ? 'none' : 'block';
     }
-    // Copy to clipboard
-    function copyToClipboard() {
-        const textToCopy = previewText.textContent;
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            showNotification('Text copied!');
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
-        addRippleEffect(copyButton);
-    }
-    // Save as imagege
+
+   
+
+
+   
+    
+    // Save as image
     function saveAsImage() {
         // 添加波纹效果
         addRippleEffect(saveBtn);
@@ -393,9 +422,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (downloadPreviewBtn) {
       downloadPreviewBtn.addEventListener('click', downloadPreviewImage);
     }
+    
+    // 暴露函数到全局作用域，以便其他地方调用
+    window.openPreviewModal = openPreviewModal;
   });
 
-// 语言切换功能
 // 语言切换功能
 document.addEventListener('DOMContentLoaded', function() {
   // 获取当前页面路径
@@ -425,18 +456,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
  
   
-  // 全局语言切换函数
-  function switchLanguage(lang) {
-      // 保存语言设置到localStorage
-      localStorage.setItem('preferredLanguage', lang);
-      
-      // 触发语言变化事件
-      const event = new Event('languageChanged');
-      window.dispatchEvent(event);
-      document.dispatchEvent(event);
-      
-      console.log('语言已切换为:', lang);
-  }
+// 全局语言切换函数
+function switchLanguage(lang) {
+    // 保存语言设置到localStorage
+    localStorage.setItem('preferredLanguage', lang);
+    
+    // 触发语言变化事件
+    const event = new Event('languageChanged');
+    window.dispatchEvent(event);
+    document.dispatchEvent(event);
+    
+    console.log('语言已切换为:', lang);
+}
 
 // 指南页面标签切换功能
 function initGuideTabs() {
@@ -502,16 +533,38 @@ function initGuideTabs() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-const fontNameToggle = document.getElementById('fontNameToggle');
-const fontGrid = document.querySelector('.font-grid');
+  const fontNameToggle = document.getElementById('fontNameToggle');
+  const fontGrid = document.querySelector('.font-grid');
 
-if (fontNameToggle && fontGrid) {
-  fontNameToggle.addEventListener('change', function() {
-    if (this.checked) {
-      fontGrid.classList.add('show-font-names');
-    } else {
-      fontGrid.classList.remove('show-font-names');
+  if (fontNameToggle && fontGrid) {
+    fontNameToggle.addEventListener('change', function() {
+      if (this.checked) {
+        fontGrid.classList.add('show-font-names');
+      } else {
+        fontGrid.classList.remove('show-font-names');
+      }
+    });
+  }
+  
+  // 显示通知函数 - 全局定义以便其他地方调用
+  window.showNotification = function(message) {
+    // 检查是否已存在通知元素
+    let notification = document.querySelector('.notification');
+    
+    // 如果不存在，创建一个
+    if (!notification) {
+      notification = document.createElement('div');
+      notification.className = 'notification';
+      document.body.appendChild(notification);
     }
-  });
-}
+    
+    // 设置消息内容
+    notification.textContent = message;
+    notification.classList.add('show');
+    
+    // 3秒后隐藏通知
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 3000);
+  };
 });
