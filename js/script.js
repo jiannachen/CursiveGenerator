@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('当前页面不包含文本生成器组件，跳过相关功能初始化');
       return;
     }
+    
 
     // 在这里调用 initGuideTabs 函数
       
@@ -567,4 +568,147 @@ document.addEventListener('DOMContentLoaded', function() {
       notification.classList.remove('show');
     }, 3000);
   };
+  setTimeout(initAccordion, 100); // 短暂延迟确保DOM完全渲染
+});
+// ... 现有代码 ...
+
+// 添加手风琴效果初始化函数
+
+function initAccordion() {
+  console.log('初始化手风琴效果');
+  // 检查是否在移动端视图
+  const isMobile = window.innerWidth <= 768;
+  
+  const containers = document.querySelectorAll('.guide-steps-container, .tips-container');
+  console.log('找到容器数量:', containers.length);
+  
+  containers.forEach(container => {
+      const header = container.querySelector('h3');
+      const content = container.querySelector('.guide-steps, .tips-list');
+      
+      if (header && content) {
+          // 添加指示器
+          if (!header.querySelector('.accordion-icon')) {
+              const icon = document.createElement('span');
+              icon.className = 'accordion-icon';
+              icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+              header.appendChild(icon);
+          }
+          
+          // 重置内容样式
+          content.style.transition = 'max-height 0.3s ease-out';
+          
+          if (isMobile) {
+              // 移动端默认收起
+              content.style.overflow = 'hidden';
+              content.style.maxHeight = '0px';
+              container.classList.remove('open');
+          } else {
+              // 非移动端显示所有内容
+              content.style.maxHeight = 'none';
+              content.style.overflow = 'visible';
+              container.classList.remove('open');
+          }
+          
+          // 移除旧的事件监听器
+          if (header.accordionHandler) {
+              header.removeEventListener('click', header.accordionHandler);
+          }
+          
+          // 创建新的事件处理函数
+          header.accordionHandler = function() {
+              if (window.innerWidth <= 768) {
+                  const isOpen = container.classList.contains('open');
+                  
+                  // 关闭所有其他面板
+                  containers.forEach(c => {
+                      if (c !== container && c.classList.contains('open')) {
+                          c.classList.remove('open');
+                          const otherContent = c.querySelector('.guide-steps, .tips-list');
+                          const otherIcon = c.querySelector('.accordion-icon i');
+                          if (otherContent) {
+                              otherContent.style.maxHeight = '0px';
+                          }
+                          if (otherIcon) {
+                              otherIcon.className = 'fas fa-chevron-down';
+                          }
+                      }
+                  });
+                  
+                  // 切换当前面板
+                  if (!isOpen) {
+                      container.classList.add('open');
+                      
+                      // 先设置一个较大的值，确保内容能完全展开
+                      content.style.maxHeight = '2000px';
+                      
+                      // 获取实际高度
+                      setTimeout(() => {
+                          const actualHeight = content.scrollHeight;
+                          content.style.maxHeight = actualHeight + 'px';
+                          console.log('设置面板高度:', actualHeight + 'px');
+                      }, 10);
+                      
+                      const icon = header.querySelector('.accordion-icon i');
+                      if (icon) {
+                          icon.className = 'fas fa-chevron-up';
+                      }
+                  } else {
+                      container.classList.remove('open');
+                      content.style.maxHeight = '0px';
+                      const icon = header.querySelector('.accordion-icon i');
+                      if (icon) {
+                          icon.className = 'fas fa-chevron-down';
+                      }
+                  }
+              }
+          };
+          
+          // 添加点击事件
+          header.addEventListener('click', header.accordionHandler);
+          
+          // 默认打开第一个面板（仅在移动端）
+          if (isMobile && containers[0] === container) {
+              setTimeout(() => {
+                  header.accordionHandler();
+              }, 200);
+          }
+      }
+  });
+}
+
+// 添加窗口大小变化监听
+window.addEventListener('resize', function() {
+  const containers = document.querySelectorAll('.guide-steps-container, .tips-container');
+  const isMobile = window.innerWidth <= 768;
+  
+  containers.forEach(container => {
+      const content = container.querySelector('.guide-steps, .tips-list');
+      const header = container.querySelector('h3');
+      const icon = header?.querySelector('.accordion-icon i');
+      
+      if (content) {
+          if (!isMobile) {
+              // 在非移动端视图中显示所有内容
+              content.style.maxHeight = 'none';
+              content.style.overflow = 'visible';
+          } else {
+              // 在移动端视图中根据开关状态设置
+              content.style.transition = 'max-height 0.3s ease-out';
+              content.style.overflow = 'hidden';
+              
+              if (container.classList.contains('open')) {
+                  // 重新计算高度以确保完全展开
+                  content.style.maxHeight = 'none';
+                  const actualHeight = content.scrollHeight;
+                  content.style.maxHeight = actualHeight + 'px';
+                  
+                  if (icon) icon.className = 'fas fa-chevron-up';
+              } else {
+                  content.style.maxHeight = '0px';
+                  if (icon) icon.className = 'fas fa-chevron-down';
+              }
+          }
+      }
+  });
 });

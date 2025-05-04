@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN"> <!-- 修改语言为中文 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>草书生成器</title>
-    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico">
-    <meta name="description" content="免费在线花体字生成器，轻松创建美丽的花体字文本，适用于社交媒体、设计项目等。">
-    <meta name="keywords" content="花体字生成器,花体字,艺术字,字体转换,在线工具">
-
-    <meta name="robots" content="index, follow">    
-    
+    <title>花体字生成器 - 输入文字生成花体字</title> <!-- 修改标题 -->
+    <link rel="alternate icon" type="image/x-icon" href="./favicon.ico">
+    <!-- 修改描述 -->
+    <meta name="description" content="免费在线花体字生成器。只需在文本框中输入单词或消息，即可为社交媒体、设计等生成漂亮的花体字。">
+    <!-- 修改关键词 -->
+    <meta name="keywords" content="花体字生成器, 生成花体字, 输入生成, 花式文字, 书法字体, 文本转换器, 在线工具, 时尚字体, 手写生成器, 社交媒体文字, 漂亮文字, 字体转换器, 文本效果, 艺术文字, 将常规文本转换为花体字, 花体字母符号, 输入单词">
+    <meta name="robots" content="index, follow">
+    <!-- 去掉对部分div样式的收录索引 -->
     <meta name="googlebot" content="noindex:class:feedback-modal">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,27 +20,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- 页面多语言 -->
-    <link rel="alternate" hreflang="zh-CN" href="https://yoursite.com/cn/index.html">
-    <link rel="alternate" hreflang="en" href="https://yoursite.com/index.html">
+    <link rel="alternate" hreflang="zh-CN" href="https://yoursite.com/cn/privacy.html">
+    <link rel="alternate" hreflang="en" href="https://yoursite.com/privacy.html">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
        <!-- 基础样式 -->
-   <link rel="stylesheet" href="../css/base.css">    
-    
-       <!-- 导航栏样式 -->
-       <link rel="stylesheet" href="../css/nav.css">
-              <!-- 在响应式样式之前添加页脚样式 -->
-    <link rel="stylesheet" href="../css/footer.css">
+   <link rel="stylesheet" href="./css/base.css">
 
-           <!-- 卡片样式 -->
-           <link rel="stylesheet" href="../css/cards.css">       
-           <!-- 文本区域样式 -->
-           <link rel="stylesheet" href="../css/textarea.css">   
-   <!-- 特效样式 -->
-   <link rel="stylesheet" href="../css/effect.css">
+       <!-- 卡片样式 -->
+       <link rel="stylesheet" href="./css/cards.css">
+
+       <!-- 按钮样式 -->
+       <link rel="stylesheet" href="./css/textarea.css">
+        <!-- 按钮样式 -->
+        <link rel="stylesheet" href="./css/effect.css">
+
+       <!-- 导航栏样式 -->
+       <link rel="stylesheet" href="./css/nav.css">
+              <!-- 在响应式样式之前添加页脚样式 -->
+    <link rel="stylesheet" href="./css/footer.css">
        <!-- 反馈样式 -->
-       <link rel="stylesheet" href="../css/feedback.css">             
+       <link rel="stylesheet" href="./css/feedback.css">
+
        <!-- 响应式样式（放在最后以覆盖前面的样式） -->
-       <link rel="stylesheet" href="../css/responsive.css">
+       <link rel="stylesheet" href="./css/responsive.css">
+       <link rel="stylesheet" href="./css/about.css">
+       <link rel="stylesheet" href="./css/guide.css">
+
+
 </head>
 <body>
      <!-- 导航栏 -->
@@ -47,102 +54,83 @@
     <div class="navbar-container">
         <a href="index.html" class="navbar-logo">
             <i class="fas fa-feather-alt"></i>
-            <span>草书生成器</span>
+            <span>花体字生成器</span> <!-- 修改 Logo 文本 -->
         </a>
-        <div class="navbar-right">
-            <ul class="navbar-menu">
-                <li class="navbar-item active">
-                    <a href="index.html" class="navbar-link">首页</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="guide.html" class="navbar-link">使用指南</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="about.html" class="navbar-link">关于我们</a>
-                </li>
-                <li class="navbar-item language-selector">
-                    <div class="current-lang">
-                        <span id="currentLang">中文</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="language-dropdown">
-                        <a href="../index.html" class="lang-option " data-lang="en">EN</a>
-                        <a href="./index.html" class="lang-option active" data-lang="zh">中文</a>
-                        <!-- 未来可以在这里添加更多语言选项 -->
-                    </div>
-                </li>
-            </ul>
-            <button class="navbar-toggle" id="navbarToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+        <div class="language-selector">
+            <div class="current-lang">
+                <span id="currentLang">中文</span> <!-- 修改当前语言显示 -->
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown">
+                <a href="../index.html" class="lang-option" data-lang="en">EN</a> <!-- 调整英文链接 -->
+                <a href="index.html" class="lang-option active" data-lang="zh">中文</a> <!-- 调整中文链接 -->
+                <!-- 未来可以在这里添加更多语言选项 -->
+            </div>
     </div>
 </nav>
 
     <div class="container">
-        <header class="header">
-            <h1>草书文本生成器</h1>
-            <p>为社交媒体、设计等创建美丽的风格化文本</p>
+        <header class="header" id="text-generator-section">
+            <h1>花体字生成器</h1> <!-- 修改主标题 -->
+            <p>只需输入文本即可生成花体字。输入单词或消息，将其转换为漂亮的风格化文本。</p> <!-- 修改副标题 -->
         </header>
-        
-        <div class="section">
-            <h2 class="section-title">视觉效果</h2>
+
+        <div class="section" id="visual-effects-section">
+            <h2 class="section-title">为您的花体字添加视觉效果</h2> <!-- 修改效果区标题 -->
             <div class="vfx-options">
-                <button class="vfx-option active" data-vfx="default">默认</button>
-                <button class="vfx-option" data-vfx="tiktok">抖音风</button>
-                <button class="vfx-option" data-vfx="shadow">阴影</button>
-                <button class="vfx-option" data-vfx="gloden">金色</button>
-                <button class="vfx-option" data-vfx="neon">霓虹</button>
-                <button class="vfx-option" data-vfx="papercut">剪纸</button>
-                <button class="vfx-option" data-vfx="emboss">浮雕</button>
+                <button class="vfx-option active" data-vfx="default">默认</button> <!-- 修改按钮文本 -->
+                <button class="vfx-option" data-vfx="tiktok">抖音</button> <!-- 修改按钮文本 -->
+                <button class="vfx-option" data-vfx="shadow">阴影</button> <!-- 修改按钮文本 -->
+                <button class="vfx-option" data-vfx="gloden">金色</button> <!-- 修改按钮文本 -->
+                <button class="vfx-option" data-vfx="neon">霓虹</button> <!-- 修改按钮文本 -->
+                <button class="vfx-option" data-vfx="papercut">剪纸</button> <!-- 修改按钮文本 -->
+                <button class="vfx-option" data-vfx="emboss">浮雕</button> <!-- 修改按钮文本 -->
             </div>
         </div>
 
-     
-        <div class="text-input-container">
+        <div class="text-input-container" id="input-section">
             <div class="textarea-controls">
                 <div class="toggle-container">
-                    <span class="toggle-label">在文本框中预览</span>
+                    <span class="toggle-label">在文本框中预览</span> <!-- 修改切换标签 -->
                     <label class="toggle-switch">
                         <input type="checkbox" id="modeToggle">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
                 <div class="align-buttons">
-                    <button class="align-button" data-align="center" title="文本对齐">
+                    <button class="align-button" data-align="center" title="文本对齐"> <!-- 修改按钮标题 -->
                         <i class="fas fa-align-center"></i>
                     </button>
-
                 </div>
             </div>
-            <div class="textarea-wrapper">             
-                <textarea id="textInput" class="text-area" placeholder="在这里输入文字，将其转换为美丽的草书..."></textarea>
+            <div class="textarea-wrapper">
+                <textarea id="textInput" class="text-area" placeholder="在此处输入单词或消息以生成漂亮的花体字。只需输入即可看到转换效果..."></textarea> <!-- 修改占位符文本 -->
             </div>
         </div>
-
-
-            <div id="previewText" class="preview-text fade-in"></div>
+        <div id="previewText" class="preview-text" aria-label="生成的花体字预览"></div> <!-- 修改 aria-label -->
 
         <div class="action-buttons">
             <button id="clearBtn" class="btn btn-secondary">
-                <i class="fas fa-eraser"></i> 清空
+                <i class="fas fa-eraser"></i> 清除 <!-- 修改按钮文本 -->
             </button>
             <button id="saveBtn" class="btn btn-primary">
-                <i class="fas fa-download"></i> 保存
+                <i class="fas fa-download"></i> 保存生成的文本 <!-- 修改按钮文本 -->
             </button>
         </div>
-    
-        <div class="font-section">
-            <h2 class="section-title">选择字体</h2>
+
+
+        <div class="font-section" id="font-selection-section">
+            <h2 class="section-title">选择您的花体字样式</h2> <!-- 修改字体区标题 -->
 <!-- HTML for toggle switch -->
             <div class="font-toggle-container">
-                <span class="font-toggle-label">显示字体名称</span>
+                <span class="font-toggle-label">显示字体名称</span> <!-- 修改切换标签 -->
                 <label class="font-toggle-switch">
                 <input type="checkbox" id="fontNameToggle">
                 <span class="font-toggle-slider"></span>
                 </label>
             </div>
             <div class="font-grid">
+                <!-- Font cards remain unchanged in structure, only the hidden font names are not user-facing text -->
                 <div class="font-card" data-font-name="Dancing Script">
                     <div class="font-name hidden">Dancing Script</div>
                     <div class="font-preview">abc123</div>
@@ -229,81 +217,187 @@
             </div>
             </div>
         </div>
+    </div>
+
+<!-- Redesigned Guide Section -->
+<!-- 调整后的Guide Section HTML结构 -->
+<section class="guide-section" id="guide-section">
+    <div class="container">
+        <h2 class="section-title">如何使用花体字生成器</h2> <!-- 修改指南区标题 -->
+        <p class="section-subtitle">按照这些简单的步骤，在几秒钟内创建漂亮的花体字</p> <!-- 修改指南区副标题 -->
+
+        <div class="guide-content-wrapper">
+            <!-- 步骤区域 -->
+            <div class="guide-steps-area">
+                <div class="guide-area-header">
+                    <h3 class="guide-area-title"><i class="fas fa-list-ol"></i>快速入门指南</h3> <!-- 修改步骤区标题 -->
+                </div>
+                <div class="guide-steps-content">
+                    <ol class="guide-steps-list">
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">1</div>
+                            <div class="guide-step-content">
+                                <h4>输入您的文本</h4> <!-- 修改步骤标题 -->
+                                <p>在上面的文本输入框中输入任何单词或消息。</p> <!-- 修改步骤描述 -->
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">2</div>
+                            <div class="guide-step-content">
+                                <h4>观看它转换</h4> <!-- 修改步骤标题 -->
+                                <p>您的文本将自动以所选的花体字生成。</p> <!-- 修改步骤描述 -->
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">3</div>
+                            <div class="guide-step-content">
+                                <h4>选择字体样式</h4> <!-- 修改步骤标题 -->
+                                <p>从输入框下方的字体选项中选择您喜欢的花体字样式。</p> <!-- 修改步骤描述 -->
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">4</div>
+                            <div class="guide-step-content">
+                                <h4>添加视觉效果</h4> <!-- 修改步骤标题 -->
+                                <p>使用阴影、霓虹或金色效果增强您的文本。</p> <!-- 修改步骤描述 -->
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">5</div>
+                            <div class="guide-step-content">
+                                <h4>保存您的创作</h4> <!-- 修改步骤标题 -->
+                                <p>将您精美生成的花体字下载为图像。</p> <!-- 修改步骤描述 -->
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 提示区域 -->
+            <div class="guide-tips-area">
+                <div class="guide-area-header">
+                    <h3 class="guide-area-title"><i class="fas fa-lightbulb"></i>获得最佳效果的提示</h3> <!-- 修改提示区标题 -->
+                </div>
+                <div class="guide-tips-content">
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>尝试多种字体</h4> <!-- 修改提示标题 -->
+                                <p>不同的样式适合不同的文本和目的。</p> <!-- 修改提示描述 -->
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>尝试各种效果</h4> <!-- 修改提示标题 -->
+                                <p>视觉效果可以显著增强外观。</p> <!-- 修改提示描述 -->
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-align-center"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>使用文本对齐</h4> <!-- 修改提示标题 -->
+                                <p>居中对齐文本以获得平衡、专业的外观。</p> <!-- 修改提示描述 -->
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>边输入边预览</h4> <!-- 修改提示标题 -->
+                                <p>启用预览以在输入区域查看即时更改。</p> <!-- 修改提示描述 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <section class="overview-section">
-        <div class="container">
-            <h2 class="section-title">关于草书生成器</h2>
-            <div class="overview-content">
-                <div class="overview-item">
-                    <div class="overview-icon">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3>轻松转换</h3>
-                    <p>只需输入文本，即可一键转换为精美草书字体，适用于社交媒体、设计作品等多种场景。</p>
+</section>
+
+<section class="overview-section" id="about-section">
+    <div class="container">
+        <h2 class="section-title">关于花体字生成器</h2> <!-- 修改关于区标题 -->
+        <div class="overview-content">
+            <div class="overview-item">
+                <div class="overview-icon">
+                    <i class="fas fa-magic"></i>
                 </div>
-                <div class="overview-item">
-                    <div class="overview-icon">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <h3>多种字体</h3>
-                    <p>提供20多种精选草书字体，从优雅的手写体到活泼的艺术字，满足不同风格需求。</p>
-                </div>
-                <div class="overview-item">
-                    <div class="overview-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>视觉效果</h3>
-                    <p>多种视觉特效可选，包括阴影、霓虹灯、金色等，让您的文字更具视觉冲击力。</p>
-                </div>
+                <h3>轻松生成花体字</h3> <!-- 修改概览项标题 -->
+                <p>只需在文本框中输入单词或消息，即可为您的社交媒体、设计等即时生成漂亮的花体字。</p> <!-- 修改概览项描述 -->
             </div>
-            <div class="overview-guide">
-                <h3>快速使用指南</h3>
-                <ol class="guide-steps">
-                    <li><span class="step-number">1</span> 在文本框中输入您想要转换的文字</li>
-                    <li><span class="step-number">2</span> 从下方选择您喜欢的草书字体</li>
-                    <li><span class="step-number">3</span> 应用视觉效果增强文字表现力</li>
-                    <li><span class="step-number">4</span> 复制或下载生成的草书字</li>
-                </ol>
-                <div class="guide-link">
-                    <a href="guide.html" class="btn btn-outline">查看详细使用指南 <i class="fas fa-arrow-right"></i></a>
+            <div class="overview-item">
+                <div class="overview-icon">
+                    <i class="fas fa-font"></i>
                 </div>
+                <h3>多种花体字</h3> <!-- 修改概览项标题 -->
+                <p>从 20 多种精心挑选的花体字中进行选择，将您输入的文本生成优雅的手写风格。</p> <!-- 修改概览项描述 -->
+            </div>
+            <div class="overview-item">
+                <div class="overview-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>文本视觉效果</h3> <!-- 修改概览项标题 -->
+                <p>在您输入并生成花体字后，使用包括阴影、霓虹灯和金色效果在内的视觉效果来增强它。</p> <!-- 修改概览项描述 -->
             </div>
         </div>
-    </section>
 
-    <!-- 页脚 -->
+        <!-- 精简但保留关键词的内容 -->
+        <div class="about-content">
+            <h3>为什么选择我们的花体字生成器？</h3> <!-- 修改关于内容标题 -->
+            <p>我们的工具使您只需输入文本即可轻松生成花体字。输入一次单词或消息，即可将其即时转换为漂亮的花体字样式。</p> <!-- 修改关于内容描述 -->
+
+            <h3>花体字使用场景</h3> <!-- 修改用例标题 -->
+            <ul class="use-cases">
+                <li><i class="fas fa-hashtag"></i> <strong>社交媒体</strong> - 输入并生成花体字，让您的帖子以优雅的字体脱颖而出</li> <!-- 修改用例描述 -->
+                <li><i class="fas fa-palette"></i> <strong>数字设计</strong> - 将常规输入的文本转换为艺术花体字，用于创意项目</li> <!-- 修改用例描述 -->
+                <li><i class="fas fa-envelope"></i> <strong>邀请函</strong> - 只需输入您的消息，即可添加优雅漂亮的花体字样式</li> <!-- 修改用例描述 -->
+                <li><i class="fas fa-signature"></i> <strong>签名</strong> - 输入您的姓名并生成独特的签名花体字样式</li> <!-- 修改用例描述 -->
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <!-- 在浮动按钮之前添加页脚 -->
         <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
                 <div class="footer-logo">
                     <i class="fas fa-feather-alt"></i>
-                    <span>Cursive Generator</span>
+                    <span>花体字生成器</span> <!-- 修改页脚 Logo 文本 -->
                 </div>
-                <p class="footer-description">一个简单优雅的草书文本生成器，为您的文字增添艺术感。</p>
+                <p class="footer-description">一个简单的工具，通过输入文本生成花体字。输入单词，即时生成漂亮的花体字。</p> <!-- 修改页脚描述 -->
             </div>
-            
+
             <div class="footer-section">
-                <h3 class="footer-title">快速链接</h3>
+                <h3 class="footer-title">快速链接</h3> <!-- 修改页脚标题 -->
                 <ul class="footer-links">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="guide.html">使用指南</a></li>
-                    <li><a href="about.html">关于我们</a></li>
-                    <li><a href="privacy.html">隐私政策</a></li>
-                    <li><a href="terms.html">使用条款</a></li>
+                    <li><a href="#">首页</a></li> <!-- 修改链接文本 -->
+                    <li><a href="#guide-section">指南</a></li> <!-- 修改链接文本 -->
+                    <li><a href="#about-section">关于</a></li> <!-- 修改链接文本 -->
+                    <li><a href="privacy.html">隐私政策</a></li> <!-- 修改链接文本 -->
+                    <li><a href="terms.html">使用条款</a></li> <!-- 修改链接文本 -->
                 </ul>
             </div>
-            
+
             <div class="footer-section">
-                <h3 class="footer-title">联系我们</h3>
+                <h3 class="footer-title">联系我们</h3> <!-- 修改页脚标题 -->
                 <ul class="footer-contact">
                     <li><i class="fas fa-envelope"></i> <a href="mailto:icstiss@gmail.com">icstiss@gmail.com</a></li>
-                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li>
+                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li> <!-- 修改链接文本 -->
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Cursive Generator. 保留所有权利。</p>
+            <p>&copy; 2025 花体字生成器。保留所有权利。</p> <!-- 修改版权信息 -->
         </div>
     </footer>
 
@@ -321,33 +415,66 @@
 <div class="feedback-modal" id="feedbackModal">
     <div class="feedback-modal-content">
         <div class="feedback-modal-header">
-            <h3 class="feedback-modal-title">提交反馈</h3>
+            <h3 class="feedback-modal-title">提交反馈</h3> <!-- 修改模态框标题 -->
             <button class="feedback-modal-close" id="closeFeedbackModal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <p>我们重视您的反馈，它有助于我们不断改进产品。</p>
+        <p>我们重视您的反馈，因为它有助于我们不断改进产品。</p> <!-- 修改模态框描述 -->
         <form id="globalFeedbackForm" class="global-feedback-form">
             <div class="global-form-group">
-                <label for="globalEmail">您的邮箱</label>
-                <input type="email" id="globalEmail" name="email" placeholder="输入您的邮箱（可选）">
-                <div class="global-form-helper">我们可能会通过邮箱联系您获取更多信息</div>
+                <label for="globalEmail">您的邮箱</label> <!-- 修改标签文本 -->
+                <input type="email" id="globalEmail" name="email" placeholder="输入您的邮箱（可选）"> <!-- 修改占位符文本 -->
+                <div class="global-form-helper">我们可能会通过电子邮件与您联系以获取更多信息</div> <!-- 修改帮助文本 -->
             </div>
             <div class="global-form-group">
-                <label for="globalFeedback">反馈<span class="required">*</span></label>
-                <textarea id="globalFeedback" name="feedback" placeholder="请分享您的想法、建议或遇到的任何问题..." required></textarea>
+                <label for="globalFeedback">反馈<span class="required">*</span></label> <!-- 修改标签文本 -->
+                <textarea id="globalFeedback" name="feedback" placeholder="请分享您的想法、建议或遇到的任何问题..." required></textarea> <!-- 修改占位符文本 -->
             </div>
             <div class="global-form-submit">
-                <button type="submit">提交反馈</button>
+                <button type="submit">提交反馈</button> <!-- 修改按钮文本 -->
             </div>
         </form>
     </div>
 </div>
-<script src="../js//globe.js"></script>
-<script src="../js//script.js"></script>
-<script src="../js//feedback.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/feedback.js"></script>
+    <script src="./js/globe.js"></script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "花体字生成器", // 修改名称
+          "url": "https://cursivegenerator.online", // 保持 URL
+          "description": "免费在线花体字生成器。只需在文本框中输入单词或消息，即可为社交媒体、设计等生成漂亮的花体字。", // 修改描述
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [ // 修改功能列表
+            "通过输入文本生成花体字",
+            "多种花体字",
+            "视觉效果",
+            "文本对齐选项",
+            "图像下载"
+          ],
+          "softwareVersion": "1.0",
+          "potentialAction": {
+            "@type": "UseAction",
+            "target": "https://cursivegenerator.online" // 保持目标 URL
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://cursivegenerator.online" // 保持页面 ID
+          }
+        }
+        </script>
+    
+
 </body>
 </html>

@@ -1,85 +1,93 @@
 /* 响应式样式 */
+
 /* 通用移动设备适配 */
 @media (max-width: 768px) {
+  /* 字体网格适配 */
   .font-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 1rem;
   }
   
+  /* 按钮组适配 */
   .action-buttons {
-    flex-direction: column; /* 垂直排列 */
-    align-items: center; /* 居中对齐 */
-    gap: 0.75rem; /* 减小按钮间距 */
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
   }
   
   .btn {
-    width: 100%; /* 宽度 */
-    max-width: 320px; /* 最大宽度 */
-    padding: 0.7rem 1.2rem; /* 调整内边距 */
-    font-size: 0.95rem; /* 调整字体大小 */
+    width: 100%;
+    max-width: 320px;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
   }
   
+  /* 特效选项适配 */
   .vfx-options {
-    justify-content: center; /* 居中对齐 */
-    gap: 0.6rem; /* 减小选项间距 */
-    padding: 0.5rem 0.25rem; /* 调整内边距 */
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.25rem;
+    flex-wrap: wrap;
   }
   
   .vfx-option {
-    padding: 0.5rem 0.9rem; /* 调整内边距 */
-    font-size: 0.85rem; /* 减小字体 */
-    border-radius: 16px; /* 调整圆角 */
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    border-radius: 16px;
   }
   
+  /* 文本区域适配 */
   .text-area {
-    width: 100%; /* 宽度 */
-    max-width: 100%; /* 最大宽度 */
-    padding: 0.8rem; /* 内边距 */
-    min-height: 4rem; /* 调整最小高度 */
-    font-size: 1.2rem; /* 调整字体大小 */
-    line-height: 1.5; /* 调整行高 */
-    border-radius: 6px; /* 圆角 */
+    width: 100%;
+    max-width: 100%;
+    padding: 0.8rem;
+    min-height: 4rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    border-radius: 6px;
   }
   
   .text-area:focus {
-    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2); /* 聚焦阴影 */
+    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
   }
   
+  /* 预览区域适配 */
   .preview-text,
   .preview-image-container {
-    width: 100%; /* 宽度 */
-    padding: 0.8rem; /* 内边距 */
-    font-size: 1.2rem !important; /* 字体大小 */
-    line-height: 1.5; /* 行高 */
-    min-height: 60px; /* 最小高度 */
-    margin-top: 0.75rem !important; /* 减小上边距 */
-    margin-bottom: 1.5rem !important; /* 减小下边距 */
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.2rem !important;
+    line-height: 1.5;
+    min-height: 60px;
+    margin-top: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
   }
   
-  /* 重新设计textarea-controls布局 */
+  /* 文本区域控件适配 */
   .textarea-controls {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.4rem 0.5rem;
-    justify-content: space-between; /* 两端对齐 */
+    justify-content: space-between;
     align-items: center;
   }
   
   .toggle-container {
-    flex: 1; /* 允许伸缩 */
-    min-width: 180px; /* 设置最小宽度 */
-    margin: 0; /* 移除边距 */
-    display: flex; /* 确保内部元素对齐 */
-    align-items: center; /* 垂直居中 */
+    flex: 1;
+    min-width: 180px;
+    margin: 0;
+    display: flex;
+    align-items: center;
   }
   
   .align-buttons {
     display: flex;
-    justify-content: flex-end; /* 靠右对齐 */
-    flex: 0 0 auto; /* 不伸缩 */
+    justify-content: flex-end;
+    flex: 0 0 auto;
   }
   
+  /* 浮动按钮适配 */
   .floating-action-button {
     width: 3rem;
     height: 3rem;
@@ -87,10 +95,11 @@
     right: 1.5rem;
   }
   
+  /* 字体卡片适配 */
   .font-card {
     height: 80px;
-    width: 90%; /* 调整卡片宽度 */
-    margin: 0 auto; /* 居中显示 */
+    width: 90%;
+    margin: 0 auto;
     padding: 10px;
   }
   
@@ -119,13 +128,20 @@
     height: 14px;
     font-size: 0.6rem;
   }
-  
-  /* 语言选择器移动端样式 */
+
+
+  /* 语言选择器适配 */
   .language-selector {
     margin-right: 1rem;
-    flex-direction: column;
+    /* 移除下面这行，不再强制居中对齐 */
+    /* flex-direction: column; */
+    /* 移除下面这行，不再强制居中对齐 */
+    /* align-items: center; */
+    /* 保持右对齐 */
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    width: auto; /* 修改为自动宽度，不再占据整行 */
   }
   
   .language-dropdown {
@@ -139,13 +155,14 @@
     z-index: 101;
   }
   
+
   .language-dropdown .lang-option {
-    padding: 12px 15px; /* 增大点击区域 */
-    font-size: 1rem; /* 增大字体 */
+    padding: 12px 15px;
+    font-size: 1rem;
     text-align: center;
   }
   
-  /* Footer移动端样式 */
+  /* 页脚适配 */
   .footer {
     padding: 3rem 0 1.5rem;
   }
@@ -165,55 +182,597 @@
     gap: 1rem;
   }
   
-  /* 内容区域适配 */
-  .overview-content {
-    grid-template-columns: 1fr;
+  /* 关于和指南部分适配 */
+  .overview-section,
+  .guide-section {
+    padding: 3rem 0;
   }
   
-  .overview-guide {
+  .overview-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .overview-item {
     padding: 1.5rem;
+  }
+  
+  .overview-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .about-content {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  .about-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .use-cases li {
+    margin-bottom: 0.8rem;
+  }
+
+  /* 指南部分适配 - 改为上下布局 */
+  .guide-content {
+    display: flex !important; /* 强制使用flex布局 */
+    flex-direction: column !important; /* 强制垂直方向 */
+    grid-template-columns: 1fr !important; /* 覆盖可能的网格设置 */
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+  
+  .guide-steps-container, 
+  .tips-container {
+    width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+  }
+  
+  /* 使标题更加突出 */
+  .guide-steps-container h3, 
+  .tips-container h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    text-align: center;
+  }
+  
+  /* 确保内容区域有足够的间距 */
+  .guide-steps,
+  .tips-list {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .step-number {
+    min-width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    margin-right: 0.8rem;
+  }
+  
+  .tips-list li i {
+    min-width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    margin-right: 0.8rem;
+  }
+  
+  .detailed-guide {
+    padding: 1.5rem;
+  }
+  
+  .detailed-guide h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .detailed-guide ul li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
+  
+  /* 页脚简化 */
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+  
+  .footer-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-bottom {
+    padding-top: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  /* 反馈模态框调整 */
+  .feedback-modal-content {
+    width: 90%;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .feedback-modal-title {
+    font-size: 1.2rem;
+  }
+  
+  .global-form-group {
+    margin-bottom: 0.8rem;
+  }
+  
+  /* 浮动按钮调整位置 */
+  .floating-action-button,
+  .feedback-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .feedback-button {
+    bottom: 4rem;
+  }
+  
+/* 响应式设计 - 小屏幕适配 */
+@media (max-width: 768px) {
+  .guide-section {
+    padding: 3rem 0;
+  }
+  
+  .guide-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-header {
+    padding: 1.25rem;
+  }
+  
+  .card-header i {
+    font-size: 1.25rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .guide-steps, .tips-list {
+    padding: 1.25rem;
+  }
+  
+  .guide-steps li, .tips-list li {
+    padding: 0.75rem 0;
+  }
+  
+  .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+  
+  .tips-list li i {
+    font-size: 1.1rem;
+  }
+  
+  .tip-content strong {
+    font-size: 0.95rem;
+  }
+  
+  .tip-content span {
+    font-size: 0.85rem;
+  }
+  .guide-section {
+    padding: 3rem 0;
+  }
+  
+  .guide-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-header {
+    padding: 1.25rem;
+  }
+  
+  .card-header i {
+    font-size: 1.25rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .guide-steps, .tips-list {
+    padding: 1.25rem;
+  }
+  
+  .guide-steps li, .tips-list li {
+    padding: 0.75rem 0;
+  }
+  
+  .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+  
+  .tips-list li i {
+    font-size: 1.1rem;
+  }
+  
+  .tip-content strong {
+    font-size: 0.95rem;
+  }
+  
+  .tip-content span {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* 更小屏幕的设备 (480px以下) */
+@media (max-width: 480px) {
+  /* 指南内容垂直布局 - 改为手风琴模式 */
+  .guide-content {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .guide-section .container {
+    padding: 0 1rem;
+  }
+  
+  .card-header {
+    padding: 1rem;
+  }
+  
+  .guide-steps, .tips-list {
+    padding: 1rem;
+  }
+  
+  .guide-steps li, .tips-list li {
+    padding: 0.5rem 0;
+  }
+  
+  .guide-steps-container, 
+  .tips-area {
+    padding: 0; /* 移除内边距，由内部元素控制 */
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 新版指南模块的移动端适配 */
+  .guide-steps-area,
+  .guide-tips-area {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .guide-area-header {
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .guide-area-title {
+    font-size: 1.2rem;
+  }
+  
+  .guide-area-title i {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .guide-steps-content,
+  .guide-tips-content {
+    padding: 1.5rem;
+  }
+  
+  .guide-steps-list {
+    gap: 1.5rem;
+  }
+  
+  .guide-step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+  }
+  
+  .guide-step-content h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .guide-step-content p {
+    font-size: 0.9rem;
+  }
+  
+  .tips-grid {
+    gap: 1.2rem;
+  }
+  
+  .tip-item {
+    padding: 1rem;
+  }
+  
+  .tip-icon {
+    font-size: 1rem;
+  }
+  
+  .tip-content h4 {
+    font-size: 0.95rem;
+  }
+  
+  .tip-content p {
+    font-size: 0.85rem;
+  }
+  
+  /* 步骤连接线调整 */
+  .guide-step-item:not(:last-child)::after {
+    height: calc(100% + 1rem);
+  }
+  
+  /* 优化use-cases布局 */
+  .use-cases li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .use-cases li i {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .use-cases li strong {
+    font-size: 0.9rem;
+    display: inline;
+    color: var(--text-primary);
+  }
+
+  .use-cases li span {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    display: block;
+    color: var(--text-secondary);
+    padding-left: 1.3rem;
+    margin-top: 0.3rem;
+  }
+}
+
+/* ... 现有代码 ... */
+  
+  .guide-steps-container h3, 
+  .tips-container h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 1rem;
+    position: relative;
+    cursor: pointer;
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* 移除原有的标题下划线 */
+  .guide-steps-container h3:after, 
+  .tips-container h3:after {
+    display: none;
+  }
+  
+  /* 添加展开/折叠指示器 */
+  .guide-steps-container h3:before, 
+  .tips-container h3:before {
+    content: '+';
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  /* 展开状态的样式 */
+  .guide-steps-container.open h3:before, 
+  .tips-container.open h3:before {
+    content: '−';
+  }
+  
+  /* 内容区域默认隐藏 */
+  .guide-steps, 
+  .tips-list {
+    display: none;
+    padding: 1rem;
+    background-color: #fff;
+  }
+  
+  /* 展开状态显示内容 */
+  .guide-steps-container.open .guide-steps, 
+  .tips-container.open .tips-list {
+    display: block;
+  }
+  
+  /* 步骤列表简化 */
+  .guide-steps li,
+  .tips-list li {
+    padding: 0.7rem 0;
+    margin-bottom: 0.6rem;
+    border-radius: 0;
+    font-size: 0.85rem;
+    align-items: flex-start;
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 1px dashed var(--border-color-light);
+  }
+  
+  .guide-steps li:last-child,
+  .tips-list li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .step-number {
+    min-width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    margin-top: 0.1rem;
+  }
+  
+  .tips-container {
+    background-color: #f4f5f7;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .tips-list li {
+    position: relative;
+    padding: 16px 0 16px 48px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e1e4e8;
+  }
+
+  .tips-list li:last-child {
+    border-bottom: none;
+  }
+
+  .tips-list li i {
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    color: #0052CC;
+    background-color: #deebff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tips-list li strong {
+    display: block;
+    font-size: 15px;
+    color: #172B4D;
+    margin-bottom: 8px;
+  }
+
+  .tips-list li span {
+    display: block;
+    font-size: 14px;
+    color: #5E6C84;
+    line-height: 1.5;
+  }
+
+
+
+  /* 优化use-cases布局 - 不修改HTML结构 */
+  .use-cases li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .use-cases li i {
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .use-cases li strong {
+    font-size: 0.9rem;
+    display: inline;
+    color: var(--text-primary);
+  }
+
+  .use-cases li span {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    display: block;
+    color: var(--text-secondary);
+    padding-left: 1.3rem;
+    margin-top: 0.3rem;
   }
 }
 
 /* 平板适配 (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
+  /* 预览区域适配 */
   .preview-text,
   .preview-image-container {
-    width: 100%; /* 宽度 */
-    padding: 0.5rem 0.5rem; /* 内边距 */
-    font-size: 1.8rem !important; /* 字体大小 */
-    line-height: 1.6; /* 行高 */
-    border-radius: 8px; /* 圆角 */
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    font-size: 1.8rem !important;
+    line-height: 1.6;
+    border-radius: 8px;
   }
   
   .text-area {
-    width: 100%; /* 宽度 */
-    font-size: 1.3rem; /* 字体大小 */
-    padding: 1rem; /* 内边距 */
-    line-height: 1.5; /* 行高 */
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 1rem;
+    line-height: 1.5;
   }
   
   .vfx-options {
-    gap: 0.8rem; /* 选项间距 */
-    padding: 0.6rem 0; /* 内边距 */
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    flex-wrap: wrap;
   }
   
   .vfx-option {
-    padding: 0.55rem 1.1rem; /* 内边距 */
-    font-size: 0.9rem; /* 字体大小 */
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
   }
   
   .btn {
-    padding: 0.75rem 1.5rem; /* 内边距 */
-    font-size: 0.95rem; /* 字体大小 */
-    min-width: 140px; /* 最小宽度 */
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    min-width: 140px;
   }
   
   .action-buttons {
-    gap: 1rem; /* 按钮间距 */
+    gap: 1rem;
   }
   
-  /* Footer平板适配 */
+  /* 页脚平板适配 */
   .footer-container {
     grid-template-columns: 1fr 1fr;
   }
@@ -221,27 +780,76 @@
   .footer-section:first-child {
     grid-column: 1 / -1;
   }
+  
+  /* 关于和指南部分平板适配 */
+  .overview-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .overview-item {
+    padding: 1.8rem;
+  }
+  
+  .about-content {
+    padding: 2.5rem;
+  }
+  
+  /* 平板上也保持垂直布局 */
+  .guide-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* 但可以让内容区域更宽敞 */
+  .guide-steps-container, 
+  .tips-container {
+    padding: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .detailed-guide {
+    padding: 2rem;
+  }
+  
+  /* 恢复正常布局，移除手风琴效果 */
+  .guide-steps-container h3, 
+  .tips-container h3 {
+    cursor: default;
+  }
+  
+  .guide-steps-container h3:before, 
+  .tips-container h3:before {
+    display: none;
+  }
+  
+  .guide-steps, 
+  .tips-list {
+    display: block;
+  }
 }
 
 /* 触屏设备优化 */
 @media (pointer: coarse) {
   .text-area {
-    min-height: 4.5rem; /* 最小高度 */
-    padding: 1rem 0.9rem; /* 内边距 */
-    line-height: 1.7; /* 行高 */
+    min-height: 4.5rem;
+    padding: 1rem 0.9rem;
+    line-height: 1.7;
   }
   
   .preview-text:active {
-    transform: scale(0.98); /* 缩放反馈 */
-    transition: transform 0.2s ease; /* 过渡效果 */
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
   }
   
   .vfx-option {
-    padding: 0.6rem 1.2rem; /* 增大点击区域 */
+    padding: 0.6rem 1.2rem;
   }
   
   .btn {
-    padding: 0.75rem 1.5rem; /* 增大点击区域 */
+    padding: 0.75rem 1.5rem;
   }
   
   /* 增强触屏设备上的点击反馈 */
@@ -251,21 +859,28 @@
     transform: scale(0.95);
     opacity: 0.9;
   }
+  
+  /* 关于和指南部分触屏优化 */
+  .guide-steps li:active,
+  .tips-list li:active,
+  .overview-item:active {
+    transform: scale(0.98);
+  }
 }
 
 /* 桌面端优化 (1024px以上) */
 @media (min-width: 1024px) {
   .preview-text,
   .preview-image-container {
-    width: 100%; /* 宽度 */
-    font-size: 2rem !important; /* 字体大小 */
-    line-height: 1.6; /* 行高 */
-    padding: 1rem 1rem; /* 内边距 */
+    width: 100%;
+    font-size: 2rem !important;
+    line-height: 1.6;
+    padding: 1rem 1rem;
   }
   
   .text-area {
-    font-size: 1.4rem; /* 字体大小 */
-    line-height: 1.5; /* 行高 */
+    font-size: 1.4rem;
+    line-height: 1.5;
   }
   
   /* 优化桌面端悬停效果 */
@@ -273,15 +888,43 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   }
+  
+  /* 关于和指南部分桌面优化 */
+  .overview-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  /* 在桌面端恢复左右布局 */
+  .guide-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    display: grid;
+  }
+  
+  .about-content {
+    padding: 3rem;
+  }
+  
+  .guide-steps-container, 
+  .tips-container {
+    padding: 2.5rem;
+    height: 100%;
+  }
+  
+  .detailed-guide {
+    padding: 2.5rem;
+  }
+  
 }
 
 /* 超大屏幕适配 (1440px以上) */
 @media (min-width: 1440px) {
   .preview-text,
   .preview-image-container {
-    max-width: 1200px; /* 最大宽度 */
-    font-size: 2.2rem !important; /* 字体大小 */
-    padding: 1.8rem 2.5rem; /* 内边距 */
+    max-width: 1200px;
+    font-size: 2.2rem !important;
+    padding: 1.8rem 2.5rem;
   }
   
   .container {
@@ -293,96 +936,44 @@
   }
   
   .text-area {
-    font-size: 1.5rem; /* 字体大小 */
-    line-height: 1.6; /* 行高 */
-  }
-}
-
-/* 更小屏幕的设备 (480px以下) */
-@media (max-width: 480px) {
-  .font-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.8rem;
+    font-size: 1.5rem;
+    line-height: 1.6;
   }
   
-  .font-card {
-    height: 70px;
-    width: 90%; /* 调整宽度 */
+  /* 关于和指南部分超大屏幕适配 */
+  .overview-section .container,
+  .guide-section .container {
+    max-width: 1400px;
   }
   
-  .font-preview {
-    font-size: 1.1rem;
+  .overview-content {
+    gap: 2.5rem;
   }
   
-  .preview-text,
-  .preview-image-container {
-    font-size: 1.1rem !important; /* 减小字体大小 */
-    padding: 0.7rem; /* 减小内边距 */
-    line-height: 1.4; /* 减小行高 */
+  .overview-item {
+    padding: 2.5rem;
   }
   
-  .text-area {
-    font-size: 1.1rem; /* 减小字体大小 */
-    padding: 0.7rem; /* 减小内边距 */
-    min-height: 3.5rem; /* 减小最小高度 */
+  .about-content {
+    padding: 3.5rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .vfx-option {
-    padding: 0.4rem 0.8rem; /* 减小内边距 */
-    font-size: 0.8rem; /* 减小字体大小 */
+  .guide-content {
+    gap: 2.5rem;
   }
   
-  btn {
-    padding: 0.6rem 1.2rem; /* 减小内边距 */
-    font-size: 0.9rem; /* 减小字体大小 */
-    min-width: 100px; /* 减小最小宽度 */
+  .guide-steps-container, 
+  .tips-container {
+    padding: 3rem;
   }
   
-  .action-buttons {
-    gap: 0.6rem; /* 减小按钮间距 */
-  }
-  
-  /* 优化小屏幕上的控件布局 */
-  .textarea-controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* 两端对齐 */
-    align-items: center;
-    padding: 0.5rem;
-    gap: 0.75rem;
-    width: 100%;
-  }
-  
-  .toggle-container {
-    display: inline-flex; /* 改为内联弹性布局 */
-    align-items: center;
-    width: auto; /* 自动宽度 */
-    margin: 0;
-    flex: 0 0 auto; /* 不伸缩 */
-    background-color: var(--background-light);
-    padding: 0.4rem 0.6rem;
-    border-radius: 12px;
-  }
-  
-  .align-buttons {
-    display: inline-flex; /* 改为内联弹性布局 */
-    width: auto;
-    flex: 0 0 auto; /* 不伸缩 */
-  }
-  
-  
-  .align-button,
-  .copy-button {
-    width: 1.8rem; /* 减小按钮尺寸 */
-    height: 1.8rem; /* 减小按钮尺寸 */
-  }
-  
-  .toggle-switch {
-    width: 2.2rem; /* 减小开关宽度 */
-    height: 1.2rem; /* 减小开关高度 */
-  }
-  
-  .toggle-label {
-    font-size: 0.8rem; /* 减小标签字体 */
+  .detailed-guide {
+    padding: 3rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

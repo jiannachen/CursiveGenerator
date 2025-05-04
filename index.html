@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursive Text Generator</title>
+    <title>Cursive Text Generator - Type and Generate Cursive Fonts</title>
     <link rel="alternate icon" type="image/x-icon" href="./favicon.ico">
-    <meta name="description" content="Free online cursive text generator to type a word or message and instantly convert regular text into cursive letter symbols. Transform your text into elegant cursive fonts for social media, designs, and more.">
-    <meta name="keywords" content="cursive text generator, fancy text, calligraphy font, text converter, online tool, stylish fonts, handwriting generator, social media text, beautiful text, font changer, text effects, artistic text, convert regular text into cursive, cursive letter symbols, type a word"> 
+    <meta name="description" content="Free online cursive text generator. Simply type a word or message in the text box and generate beautiful cursive fonts for social media, designs, and more.">
+    <meta name="keywords" content="cursive text generator, generate cursive font, type and generate, fancy text, calligraphy font, text converter, online tool, stylish fonts, handwriting generator, social media text, beautiful text, font changer, text effects, artistic text, convert regular text into cursive, cursive letter symbols, type a word"> 
     <meta name="robots" content="index, follow">    
     <!-- 去掉对部分div样式的收录索引 -->
     <meta name="googlebot" content="noindex:class:feedback-modal">
@@ -41,6 +41,10 @@
              
        <!-- 响应式样式（放在最后以覆盖前面的样式） -->
        <link rel="stylesheet" href="./css/responsive.css">
+       <link rel="stylesheet" href="./css/about.css">
+       <link rel="stylesheet" href="./css/guide.css">
+
+       
 </head>
 <body>
      <!-- 导航栏 -->
@@ -50,44 +54,27 @@
             <i class="fas fa-feather-alt"></i>
             <span>Cursive Generator</span>
         </a>
-        <div class="navbar-right">
-            <ul class="navbar-menu">
-                <li class="navbar-item active">
-                    <a href="index.html" class="navbar-link">Home</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="guide.html" class="navbar-link">Guide</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="about.html" class="navbar-link">About</a>
-                </li>
-                <li class="navbar-item language-selector">
-                    <div class="current-lang">
-                        <span id="currentLang">EN</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="language-dropdown">
-                        <a href="index.html" class="lang-option active" data-lang="en">EN</a>
-                        <a href="./cn/index.html" class="lang-option " data-lang="zh">中文</a>
-                        <!-- 未来可以在这里添加更多语言选项 -->
-                    </div>
-                </li>
-            </ul>
-            <button class="navbar-toggle" id="navbarToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+        <div class="language-selector">
+            <div class="current-lang">
+                <span id="currentLang">EN</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown">
+                <a href="index.html" class="lang-option active" data-lang="en">EN</a>
+                <a href="./cn/index.html" class="lang-option" data-lang="zh">中文</a>
+                <!-- 未来可以在这里添加更多语言选项 -->
+            </div>
     </div>
 </nav>
 
     <div class="container">
-        <header class="header">
+        <header class="header" id="text-generator-section">
             <h1>Cursive Text Generator</h1>
-            <p>Create beautiful stylized text for social media, designs, and more</p>
+            <p>Generate cursive font simply by typing in text. Type a word or message and transform it into beautiful stylized text.</p>
         </header>
         
-                <div class="section">
-            <h2 class="section-title">Visual Effects</h2>
+        <div class="section" id="visual-effects-section">
+            <h2 class="section-title">Visual Effects for Your Cursive Text</h2>
             <div class="vfx-options">
                 <button class="vfx-option active" data-vfx="default">Default</button>
                 <button class="vfx-option" data-vfx="tiktok">TikTok</button>
@@ -99,7 +86,7 @@
             </div>
         </div>
 
-        <div class="text-input-container">
+        <div class="text-input-container" id="input-section">
             <div class="textarea-controls">
                 <div class="toggle-container">
                     <span class="toggle-label">Preview in Textarea</span>
@@ -115,23 +102,23 @@
                 </div>
             </div>
             <div class="textarea-wrapper">             
-                <textarea id="textInput" class="text-area" placeholder="Type your text here to transform it into beautiful cursive..."></textarea>
+                <textarea id="textInput" class="text-area" placeholder="Type a word or message here to generate beautiful cursive text. Simply type and see the transformation happen instantly..."></textarea>
             </div>
         </div>
-        <div id="previewText" class="preview-text"></div>
+        <div id="previewText" class="preview-text" aria-label="Generated cursive text preview"></div>
 
         <div class="action-buttons">
             <button id="clearBtn" class="btn btn-secondary">
                 <i class="fas fa-eraser"></i> Clear
             </button>
             <button id="saveBtn" class="btn btn-primary">
-                <i class="fas fa-download"></i> Save
+                <i class="fas fa-download"></i> Save Generated Text
             </button>
         </div>
   
 
-        <div class="font-section">
-            <h2 class="section-title">Choose Your Font</h2>
+        <div class="font-section" id="font-selection-section">
+            <h2 class="section-title">Choose Your Cursive Font Style</h2>
 <!-- HTML for toggle switch -->
             <div class="font-toggle-container">
                 <span class="font-toggle-label">Show Font Name</span>
@@ -229,46 +216,152 @@
         </div>
     </div>
 
-        <section class="overview-section">
-        <div class="container">
-            <h2 class="section-title">About Cursive Generator</h2>
-            <div class="overview-content">
-                <div class="overview-item">
-                    <div class="overview-icon">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3>Easy Conversion</h3>
-                    <p>Simply input your text and instantly transform it into beautiful cursive fonts, perfect for social media, design projects, and more.</p>
+<!-- Redesigned Guide Section -->
+<!-- 调整后的Guide Section HTML结构 -->
+<section class="guide-section" id="guide-section">
+    <div class="container">
+        <h2 class="section-title">How to Use Cursive Text Generator</h2>
+        <p class="section-subtitle">Follow these simple steps to create beautiful cursive text in seconds</p>
+
+        <div class="guide-content-wrapper">
+            <!-- 步骤区域 -->
+            <div class="guide-steps-area">
+                <div class="guide-area-header">
+                    <h3 class="guide-area-title"><i class="fas fa-list-ol"></i>Quick Start Guide</h3>
                 </div>
-                <div class="overview-item">
-                    <div class="overview-icon">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <h3>Multiple Fonts</h3>
-                    <p>Choose from over 20 carefully selected cursive fonts, ranging from elegant handwriting to playful artistic styles.</p>
-                </div>
-                <div class="overview-item">
-                    <div class="overview-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>Visual Effects</h3>
-                    <p>Enhance your text with various visual effects including shadows, neon glow, golden finish, and more for added visual impact.</p>
+                <div class="guide-steps-content">
+                    <ol class="guide-steps-list">
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">1</div>
+                            <div class="guide-step-content">
+                                <h4>Type Your Text</h4>
+                                <p>Enter any word or message in the text input box above.</p>
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">2</div>
+                            <div class="guide-step-content">
+                                <h4>Watch it Transform</h4>
+                                <p>Your text will automatically generate in the selected cursive font.</p>
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">3</div>
+                            <div class="guide-step-content">
+                                <h4>Choose Font Style</h4>
+                                <p>Select your preferred cursive style from the font options below the input.</p>
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">4</div>
+                            <div class="guide-step-content">
+                                <h4>Add Visual Effects</h4>
+                                <p>Enhance your text with effects like shadow, neon, or golden finish.</p>
+                            </div>
+                        </li>
+                        <li class="guide-step-item">
+                            <div class="guide-step-number">5</div>
+                            <div class="guide-step-content">
+                                <h4>Save Your Creation</h4>
+                                <p>Download your beautifully generated cursive text as an image.</p>
+                            </div>
+                        </li>
+                    </ol>
                 </div>
             </div>
-            <div class="overview-guide">
-                <h3>Quick Start Guide</h3>
-                <ol class="guide-steps">
-                    <li><span class="step-number">1</span> Enter the text you want to convert in the text box</li>
-                    <li><span class="step-number">2</span> Select your preferred cursive font from the options below</li>
-                    <li><span class="step-number">3</span> Apply visual effects to enhance your text's appearance</li>
-                    <li><span class="step-number">4</span> Copy or download your generated cursive text</li>
-                </ol>
-                <div class="guide-link">
-                    <a href="guide.html" class="btn btn-outline">View Detailed Guide <i class="fas fa-arrow-right"></i></a>
+
+            <!-- 提示区域 -->
+            <div class="guide-tips-area">
+                <div class="guide-area-header">
+                    <h3 class="guide-area-title"><i class="fas fa-lightbulb"></i>Tips for Best Results</h3>
+                </div>
+                <div class="guide-tips-content">
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Try Multiple Fonts</h4>
+                                <p>Different styles suit different texts and purposes.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Experiment with Effects</h4>
+                                <p>Visual effects can significantly enhance appearance.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-align-center"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Use Text Alignment</h4>
+                                <p>Center text for a balanced, professional look.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Preview as You Type</h4>
+                                <p>Enable preview to see instant changes in the input area.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="overview-section" id="about-section">
+    <div class="container">
+        <h2 class="section-title">About Cursive Text Generator</h2>
+        <div class="overview-content">
+            <div class="overview-item">
+                <div class="overview-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Easy Cursive Text Generation</h3>
+                <p>Simply type a word or message in the text box and instantly generate beautiful cursive fonts for your social media, designs, and more.</p>
+            </div>
+            <div class="overview-item">
+                <div class="overview-icon">
+                    <i class="fas fa-font"></i>
+                </div>
+                <h3>Multiple Cursive Fonts</h3>
+                <p>Choose from 20+ carefully selected cursive fonts to generate elegant handwriting styles from your typed text.</p>
+            </div>
+            <div class="overview-item">
+                <div class="overview-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Text Visual Effects</h3>
+                <p>After you type and generate your cursive text, enhance it with visual effects including shadows, neon glow, and golden finish.</p>
+            </div>
+        </div>
+        
+        <!-- 精简但保留关键词的内容 -->
+        <div class="about-content">
+            <h3>Why Choose Our Cursive Text Generator?</h3>
+            <p>Our tool makes it simple to generate cursive fonts by just typing your text. Type a word or message once, and transform it instantly into beautiful cursive styles.</p>
+            
+            <h3>Cursive Text Use Cases</h3>
+            <ul class="use-cases">
+                <li><i class="fas fa-hashtag"></i> <strong>Social Media</strong> - Type and generate cursive text to make your posts stand out with elegant fonts</li>
+                <li><i class="fas fa-palette"></i> <strong>Digital Design</strong> - Transform regular typed text into artistic cursive for creative projects</li>
+                <li><i class="fas fa-envelope"></i> <strong>Invitations</strong> - Add elegance with beautiful cursive text styles by simply typing your message</li>
+                <li><i class="fas fa-signature"></i> <strong>Signatures</strong> - Type your name and generate a distinctive cursive style for your signature</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
     <!-- 在浮动按钮之前添加页脚 -->
         <footer class="footer">
@@ -278,15 +371,15 @@
                     <i class="fas fa-feather-alt"></i>
                     <span>Cursive Generator</span>
                 </div>
-                <p class="footer-description">A simple and elegant cursive text generator that adds artistic flair to your text.</p>
+                <p class="footer-description">A simple tool to generate cursive fonts by typing your text. Type a word, generate beautiful cursive instantly.</p>
             </div>
             
             <div class="footer-section">
                 <h3 class="footer-title">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="guide.html">Guide</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#guide-section">Guide</a></li>
+                    <li><a href="#about-section">About</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="terms.html">Terms of Use</a></li>
                 </ul>
@@ -346,5 +439,71 @@
     <script src="./js/script.js"></script>
     <script src="./js/feedback.js"></script>
     <script src="./js/globe.js"></script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Cursive Text Generator",
+          "url": "https://cursivegenerator.online",
+          "description": "Free online cursive text generator. Simply type a word or message in the text box and generate beautiful cursive fonts for social media, designs, and more.",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Generate cursive font by typing text",
+            "Multiple cursive fonts",
+            "Visual effects",
+            "Text alignment options",
+            "Image download"
+          ],
+          "screenshot": "https://cursivegenerator.online/images/screenshot.jpg",
+          "softwareVersion": "1.0",
+          "potentialAction": {
+            "@type": "UseAction",
+            "target": "https://cursivegenerator.online"
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://cursivegenerator.online"
+          }
+        }
+        </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How to use Cursive Text Generator?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Simply type a word or message in the input box and watch it transform into cursive. 1. Type your text in the input box. 2. Select your preferred cursive font style. 3. Choose and apply visual effects to your cursive text. 4. Download your generated cursive text."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What can I use cursive text for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can use cursive text for social media posts, digital designs, invitations, and creating distinctive signatures. Just type your text and generate beautiful cursive instantly."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I generate cursive text?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "To generate cursive text, simply type your word or message in the text input area. The text will automatically transform into cursive. You can then select different font styles and visual effects to customize your cursive text."
+              }
+            }
+          ]
+        }
+        </script>
+
 </body>
 </html>

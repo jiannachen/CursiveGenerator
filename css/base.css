@@ -7,6 +7,7 @@
     --text-primary: #18181b; /* 主要文本颜色：近黑色 */
     --text-secondary: #52525b; /* 次要文本颜色：深灰色 */
     --background: #ffffff; /* 背景色：白色 */
+    --bg-light: #f8f9fa;
     --background-alt: #f9fafb; /* 替代背景色：浅灰色 */
     --border-color: #e5e7eb; /* 边框颜色：浅灰色 */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* 小阴影 */
@@ -16,9 +17,10 @@
     --radius-lg: 0.75rem; /* 大圆角 */
     --transition: all 0.2s ease; /* 全局过渡效果 */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 无衬线字体栈 */
-  }
-  
-  /* 基础页面样式 */
+    --primary-color-rgb: 79, 70, 229; /* 主色调RGB值，用于rgba */
+}
+
+/* 基础页面样式 */
 body {
   font-family: var(--font-sans); /* 使用定义的字体 */
   color: var(--text-primary); /* 设置文本颜色 */
@@ -26,6 +28,8 @@ body {
   line-height: 1.5; /* 行高 */
   margin: 0; /* 移除默认边距 */
   padding: 0; /* 移除默认内边距 */
+  scroll-behavior: smooth; /* 添加平滑滚动效果 */
+  scroll-padding-top: 80px; /* 为固定导航栏预留空间 */
 }
 
 /* 内容容器 */
@@ -67,14 +71,15 @@ body {
   font-weight: 600; /* 字体粗细 */
   margin-bottom: 0.75rem; /* 减小底部外边距，从1rem改为0.75rem */
   color: var(--text-primary); /* 文本颜色 */
+  position: relative; /* 为锚点定位做准备 */
 }
 
-/* 文本输入区容器 */
-.text-input-container {
-  width: 95%;
-  max-width: 1152px;
-  margin: 0 auto 1.5rem; /* 减小底部边距，从2rem改为1.5rem */
+/* 锚点目标样式 */
+.section-anchor {
+  display: block;
   position: relative;
+  top: -80px; /* 与scroll-padding-top相匹配 */
+  visibility: hidden;
 }
 
 /* 通知样式 */

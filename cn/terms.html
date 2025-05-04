@@ -39,35 +39,18 @@
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
                 <i class="fas fa-feather-alt"></i>
-                <span>草书生成器</span>
+                <span>Cursive Generator</span>
             </a>
-            <div class="navbar-right">
-                <ul class="navbar-menu">
-                    <li class="navbar-item">
-                        <a href="index.html" class="navbar-link">首页</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="guide.html" class="navbar-link">使用指南</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="about.html" class="navbar-link">关于我们</a>
-                    </li>
-                    <li class="navbar-item language-selector">
-                        <div class="current-lang">
-                            <span id="currentLang">中文</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="language-dropdown">
-                            <a href="../terms.html" class="lang-option " data-lang="en">EN</a>
-                            <a href="./terms.html" class="lang-option active" data-lang="zh">中文</a>
-                            <!-- 未来可以在这里添加更多语言选项 -->
-                        </div>
-                    </li>
-                </ul>
-                <button class="navbar-toggle" id="navbarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <div class="language-selector">
+                <div class="current-lang">
+                    <span id="currentLang">EN</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown">
+                    <a href="index.html" class="lang-option active" data-lang="en">EN</a>
+                    <a href="./cn/index.html" class="lang-option" data-lang="zh">中文</a>
+                    <!-- 未来可以在这里添加更多语言选项 -->
+                </div>
         </div>
     </nav>
 
