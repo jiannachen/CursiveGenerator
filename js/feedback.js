@@ -5,7 +5,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeFeedbackModal = document.getElementById('closeFeedbackModal');
     const openFeedbackBtn = document.getElementById('openFeedbackBtn');
     const globalFeedbackForm = document.getElementById('globalFeedbackForm');
-    
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+       // Scroll to top functionality
+       if (scrollToTopBtn) {
+        // 初始状态隐藏按钮
+        scrollToTopBtn.style.display = 'none';
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        
+        // 点击按钮滚动到顶部
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
     // 多语言消息
     const messages = {
         en: {
@@ -132,6 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if(closeFeedbackModal) {
         closeFeedbackModal.addEventListener('click', closeFeedbackModalFunc);
     }
+       // 添加ESC键关闭功能
+       document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && feedbackModal.classList.contains('active')) {
+            closeFeedbackModalFunc();
+        }
+    });
     
     // 页脚中的反馈链接
     if(openFeedbackBtn) {

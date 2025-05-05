@@ -21,17 +21,18 @@
     <link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/terms.html">
     <link rel="alternate" hreflang="en" href="https://cursivegenerator.online/terms.html">
     
-    <!-- 导航栏样式 -->
-            <!-- 基础样式 -->
-   <link rel="stylesheet" href="../cn/base.css">    
-    <link rel="stylesheet" href="../css/nav.css">
-           <!-- 在响应式样式之前添加页脚样式 -->
- <link rel="stylesheet" href="../css/footer.css">
-    <!-- 反馈样式 -->
-    <link rel="stylesheet" href="../css/feedback.css">
-          
-    <!-- 响应式样式（放在最后以覆盖前面的样式） -->
-    <link rel="stylesheet" href="../css/responsive.css">
+     <!-- 基础样式引用 -->
+     <link rel="stylesheet" href="../css/base.css">
+    
+     <!-- 导航栏样式 -->
+     <link rel="stylesheet" href="../css/nav.css">
+            <!-- 在响应式样式之前添加页脚样式 -->
+  <link rel="stylesheet" href="../css/footer.css">
+     <!-- 反馈样式 -->
+     <link rel="stylesheet" href="../css/feedback.css">
+           
+     <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+     <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -39,18 +40,19 @@
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
                 <i class="fas fa-feather-alt"></i>
-                <span>Cursive Generator</span>
+                <span>草书生成器</span>
             </a>
             <div class="language-selector">
                 <div class="current-lang">
-                    <span id="currentLang">EN</span>
+                    <span id="currentLang">中文</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="language-dropdown">
-                    <a href="index.html" class="lang-option active" data-lang="en">EN</a>
-                    <a href="./cn/index.html" class="lang-option" data-lang="zh">中文</a>
+                    <a href="../terms.html" class="lang-option" data-lang="en">EN</a>
+                    <a href="terms.html" class="lang-option active" data-lang="zh">中文</a>
                     <!-- 未来可以在这里添加更多语言选项 -->
                 </div>
+            </div>
         </div>
     </nav>
 
@@ -179,6 +181,8 @@
     <div class="floating-action-button" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
+
+    <!-- 反馈按钮 -->
     <div class="feedback-button" id="feedbackButton">
         <i class="fas fa-comment-alt"></i>
     </div>
@@ -210,8 +214,7 @@
         </div>
     </div>
     
-        <script src="../js/script.js"></script>
-     
+    <script src="../js/script.js"></script>     
     <script src="../js/globe.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>

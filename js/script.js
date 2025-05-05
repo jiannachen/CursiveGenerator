@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fontItems = document.querySelectorAll('.font-card');
     const vfxBtns = document.querySelectorAll('.vfx-option');
     const copyButton = document.querySelector('.copy-button');
-    const scrollToTopBtn = document.getElementById('scrollToTop');
+
     const alignButton = document.querySelector('.align-button'); // 修改为单个按钮
     const previewCopyButton = document.getElementById('previewCopyBtn'); // 获取预览区域复制按钮
 
@@ -83,15 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Scroll to top functionality
-    if (scrollToTopBtn) {
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
+ 
     // Font items click events
     fontItems.forEach(item => {
       item.addEventListener('click', () => {

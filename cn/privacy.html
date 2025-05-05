@@ -34,22 +34,23 @@
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+      <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
                 <i class="fas fa-feather-alt"></i>
-                <span>Cursive Generator</span>
+                <span>草书生成器</span>
             </a>
             <div class="language-selector">
                 <div class="current-lang">
-                    <span id="currentLang">EN</span>
+                    <span id="currentLang">中文</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="language-dropdown">
-                    <a href="index.html" class="lang-option active" data-lang="en">EN</a>
-                    <a href="./cn/index.html" class="lang-option" data-lang="zh">中文</a>
+                    <a href="../privacy.html" class="lang-option" data-lang="en">EN</a>
+                    <a href="privacy.html" class="lang-option active" data-lang="zh">中文</a>
                     <!-- 未来可以在这里添加更多语言选项 -->
                 </div>
+            </div>
         </div>
     </nav>
 
@@ -198,6 +199,8 @@
     <div class="floating-action-button" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
+
+    <!-- 反馈按钮 -->
     <div class="feedback-button" id="feedbackButton">
         <i class="fas fa-comment-alt"></i>
     </div>
@@ -229,9 +232,9 @@
         </div>
     </div>
     
-    <script src="../js//script.js"></script>
-    <script src="../js//feedback.js"></script>
-    <script src="../js//globe.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/feedback.js"></script>
+    <script src="../js/globe.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
