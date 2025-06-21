@@ -1,74 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 英文版本 -->
   <url>
     <loc>https://cursivegenerator.online/index.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/index.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/guide.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/guide.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/about.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/about.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/privacy.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/privacy.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/terms.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/terms.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/cn/index.html</loc>
-    <lastmod>2023-12-01</lastmod>
+    <lastmod>2025-6-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/index.html"/>
   </url>
+  
   <url>
-    <loc>https://cursivegenerator.online/cn/guide.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/guide.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/cn/about.html</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/about.html"/>
-  </url>
-  <url>
-    <loc>https://cursivegenerator.online/cn/privacy.html</loc>
-    <lastmod>2023-12-01</lastmod>
+    <loc>https://cursivegenerator.online/privacy.html</loc>
+    <lastmod>2025-6-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/privacy.html"/>
   </url>
+  
   <url>
-    <loc>https://cursivegenerator.online/cn/terms.html</loc>
-    <lastmod>2023-12-01</lastmod>
+    <loc>https://cursivegenerator.online/terms.html</loc>
+    <lastmod>2025-6-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/terms.html"/>
   </url>
+  
+  <!-- 中文版本 -->
+  <url>
+    <loc>https://cursivegenerator.online/cn/index.html</loc>
+    <lastmod>2025-6-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/index.html"/>
+  </url>
+  
+  <url>
+    <loc>https://cursivegenerator.online/cn/privacy.html</loc>
+    <lastmod>2025-6-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/privacy.html"/>
+  </url>
+  
+  <url>
+    <loc>https://cursivegenerator.online/cn/terms.html</loc>
+    <lastmod>2025-6-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cursivegenerator.online/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/terms.html"/>
+  </url>
+  
 </urlset>

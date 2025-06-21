@@ -1,9 +1,9 @@
 /* 概览部分样式 - 现代友好风格 */
 .overview-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background-color: var(--background-light);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
-  margin-top: 3rem;
+  margin-top: 0rem;
 }
 
 .overview-section .container {

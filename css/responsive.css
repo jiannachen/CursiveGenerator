@@ -101,6 +101,8 @@
     width: 90%;
     margin: 0 auto;
     padding: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
   }
   
   .font-card h3 {
@@ -730,6 +732,9 @@
     padding-left: 1.3rem;
     margin-top: 0.3rem;
   }
+  .font-preview-img {
+    max-height: 50px;
+}
 }
 
 /* 平板适配 (768px - 1024px) */
@@ -976,4 +981,119 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+@media (max-width: 480px) {
+  /* 现有样式... */
+   
+  /* 字体网格小屏幕适配 */
+  .font-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 增加最小宽度 */
+    gap: 0.8rem; /* 增加间距 */
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  /* 字体卡片在小屏幕上的优化 */
+  .font-card {
+    min-height: 100px; /* 增加最小高度 */
+    padding: 0.5rem;
+  }
+  
+  .font-preview {
+    max-height: 80px; /* 增加图片高度限制 */
+    object-fit: contain;
+  }
+  
+  .font-name {
+    font-size: 1rem;
+    padding: 0.2rem 0;
+  }
+}
+@media (max-width: 320px) {
+    
+  .font-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* 超小屏幕适当减小但不过小 */
+    gap: 0.6rem;
+    padding: 0 0.25rem;
+  }
+  
+  .font-card {
+    min-height: 90px;
+    padding: 0.4rem;
+  }
+  
+  .font-preview {
+    max-height: 70px; /* 增加超小屏幕的图片高度 */
+  }
+  
+  .font-name {
+    font-size: 0.7rem;
+  }
+
+}
+
+/* 响应式样式 */
+@media (max-width: 768px) {
+  .navbar-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: var(--background);
+      flex-direction: column;
+      padding: 2rem 0;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+  }
+  
+  .navbar-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+  }
+  
+  .navbar-toggle {
+      display: flex;
+  }
+  
+  .navbar-link {
+      padding: 0.75rem 2rem;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+  }
+  
+  .navbar-link:last-child {
+      border-bottom: none;
+  }
+}
+/* 响应式调整 */
+@media (max-width: 768px) {
+h1 + p {
+  font-size: 1.15rem; /* 保持相对差异 */
+  margin: 1rem auto 2rem;
+}
+
+h2 + p,
+.section-description {
+  font-size: 0.95rem;
+  margin: 0.5rem auto 1.5rem;
+}
+}
+
+@media (max-width: 480px) {
+h1 + p {
+  font-size: 1.05rem;
+  margin: 0.75rem auto 1.5rem;
+}
+
+h2 + p,
+.section-description {
+  font-size: 0.9rem;
+  margin: 0.5rem auto 1.25rem;
+}
 }

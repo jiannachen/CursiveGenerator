@@ -5,9 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursive Text Generator - Type and Generate Cursive Fonts</title>
     <link rel="alternate icon" type="image/x-icon" href="./favicon.ico">
-    <meta name="description" content="Free online cursive text generator. Simply type a word or message in the text box and generate beautiful cursive fonts for social media, designs, and more.">
-    <meta name="keywords" content="cursive text generator, generate cursive font, type and generate, fancy text, calligraphy font, text converter, online tool, stylish fonts, handwriting generator, social media text, beautiful text, font changer, text effects, artistic text, convert regular text into cursive, cursive letter symbols, type a word"> 
-    <meta name="robots" content="index, follow">    
+
+    <style>
+        :root {
+            --primary-color: #4f46e5; /* 主色调：靛蓝色 */
+            --primary-light: #818cf8; /* 主色调亮色版 */
+            --primary-dark: #3730a3; /* 主色调暗色版 */
+            --secondary-color: #f97316; /* 次要色调：橙色 */
+            --text-primary: #18181b; /* 主要文本颜色：近黑色 */
+            --text-secondary: #52525b; /* 次要文本颜色：深灰色 */
+            --background: #ffffff; /* 背景色：白色 */
+            --bg-light: #f8f9fa;
+            --background-alt: #f9fafb; /* 替代背景色：浅灰色 */
+            --border-color: #e5e7eb; /* 边框颜色：浅灰色 */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* 小阴影 */
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* 中等阴影 */
+            --radius-sm: 0.375rem; /* 小圆角 */
+            --radius-md: 0.5rem; /* 中等圆角 */
+            --radius-lg: 0.75rem; /* 大圆角 */
+            --transition: all 0.2s ease; /* 全局过渡效果 */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 无衬线字体栈 */
+            --primary-color-rgb: 79, 70, 229; /* 主色调RGB值，用于rgba */
+        }
+                
+        /* 内容容器 */
+        .container {
+          max-width: 1200px; /* 最大宽度 */
+          margin: 0 auto; /* 水平居中 */
+          padding: 2rem 1.5rem; /* 减小内边距，从2rem改为1rem */
+        }
+        
+        /* 头部样式 */
+        .header {
+          text-align: center; /* 文本居中 */
+          margin-bottom: 1.5rem; /* 减小底部外边距，从3rem改为1.5rem */
+        }
+        
+        /* 标题样式 */
+        .header h1 {
+          font-size: 2rem; /* 减小字体大小，从2.5rem改为2rem */
+          font-weight: 700; /* 字体粗细 */
+          color: var(--text-primary); /* 文本颜色 */
+          margin-bottom: 0.5rem; /* 减小底部外边距，从0.75rem改为0.5rem */
+          background: linear-gradient(90deg, var(--primary-color), var(--primary-dark)); /* 渐变背景 */
+          -webkit-background-clip: text; /* 文字裁剪 */
+          -webkit-text-fill-color: transparent; /* 文字填充透明 */
+          background-clip: text; /* 标准文字裁剪属性 */
+
+        }
+          
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+    </style>
+    <!-- SEO基础标签 -->
+    <meta name="description" content="Free Cursive Font Generator - Create Beautiful Handwriting Text">
+    <meta name="keywords" content="Generate elegant cursive fonts and handwriting styles by simply typing your text. Transform any message into beautiful cursive lettering with our free online cursive text generator tool.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Cursive Generator">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph标签（社交媒体分享） -->
+    <meta property="og:title" content="Cursive Text Generator - Beautiful Cursive Fonts Online">
+    <meta property="og:description" content="Transform your text into beautiful cursive fonts instantly. Free online tool for creating stylish text for social media, designs, and more.">
+    <meta property="og:site_name" content="Cursive Generator">
+    <meta property="og:url" content="https://cursivegenerator.online/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cursivegenerator.online/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cursive Text Generator Preview">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cursive Text Generator - Beautiful Cursive Fonts Online">
+    <meta name="twitter:description" content="Transform your text into beautiful cursive fonts instantly. Free online tool for creating stylish text.">
+    <meta name="twitter:image" content="https://cursivegenerator.online/images/twitter-card.png">
+    <meta name="twitter:image:alt" content="Cursive Text Generator">
+    
+    <!-- 功能控制标签 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Cursive Generator">
+    
+    <!-- 安全和性能标签 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="origin-when-cross-origin">
     <!-- 去掉对部分div样式的收录索引 -->
     <meta name="googlebot" content="noindex:class:feedback-modal">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,42 +119,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- 页面多语言 -->
+    <link rel="canonical" href="https://cursivegenerator.online/index.html">
     <link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/index.html">
     <link rel="alternate" hreflang="en" href="https://cursivegenerator.online/index.html">
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/index.html">
+            
        <!-- 基础样式 -->
-   <link rel="stylesheet" href="./css/base.css">
-    
-       <!-- 卡片样式 -->
-       <link rel="stylesheet" href="./css/cards.css">
-       
-       <!-- 按钮样式 -->
-       <link rel="stylesheet" href="./css/textarea.css">
+    <link rel="stylesheet" href="./css/base.css">
+        <!-- 卡片样式 -->
+        <link rel="stylesheet" href="./css/cards.css">
         <!-- 按钮样式 -->
-        <link rel="stylesheet" href="./css/effect.css">
-       
-       <!-- 导航栏样式 -->
-       <link rel="stylesheet" href="./css/nav.css">
-              <!-- 在响应式样式之前添加页脚样式 -->
-    <link rel="stylesheet" href="./css/footer.css">
-       <!-- 反馈样式 -->
-       <link rel="stylesheet" href="./css/feedback.css">
-             
-       <!-- 响应式样式（放在最后以覆盖前面的样式） -->
-       <link rel="stylesheet" href="./css/responsive.css">
-       <link rel="stylesheet" href="./css/about.css">
-       <link rel="stylesheet" href="./css/guide.css">
+        <link rel="stylesheet" href="./css/textarea.css">
+            <!-- 按钮样式 -->
+            <link rel="stylesheet" href="./css/effect.css">
+
+                <!-- 在响应式样式之前添加页脚样式 -->
+        <link rel="stylesheet" href="./css/footer.css">
+        <!-- 反馈样式 -->
+        <link rel="stylesheet" href="./css/feedback.css">
+                
+        <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+        <link rel="stylesheet" href="./css/responsive.css">
+        <link rel="stylesheet" href="./css/about.css">
+        <link rel="stylesheet" href="./css/guide.css">
 
        
 </head>
 <body>
-     <!-- 导航栏 -->
 <nav class="navbar">
     <div class="navbar-container">
         <a href="index.html" class="navbar-logo">
             <i class="fas fa-feather-alt"></i>
             <span>Cursive Generator</span>
         </a>
+        
+
+
+        
         <div class="language-selector">
             <div class="current-lang">
                 <span id="currentLang">EN</span>
@@ -62,19 +164,21 @@
             <div class="language-dropdown">
                 <a href="index.html" class="lang-option active" data-lang="en">EN</a>
                 <a href="./cn/index.html" class="lang-option" data-lang="zh">中文</a>
-                <!-- 未来可以在这里添加更多语言选项 -->
             </div>
+        </div>
     </div>
 </nav>
 
     <div class="container">
         <header class="header" id="text-generator-section">
-            <h1>Cursive Text Generator</h1>
+            <h1>Free Cursive Text Generator</h1>
             <p>Generate cursive font simply by typing in text. Type a word or message and transform it into beautiful stylized text.</p>
         </header>
         
         <div class="section" id="visual-effects-section">
-            <h2 class="section-title">Visual Effects for Your Cursive Text</h2>
+            <h2 class="section-title">Visual Effects for Your Cursive Font Text</h2>
+            <p class="section-description">Enhance your generated cursive text with stunning visual effects. Apply shadows, neon glow, and golden finishes to make your handwriting fonts stand out.</p>
+            
             <div class="vfx-options">
                 <button class="vfx-option active" data-vfx="default">Default</button>
                 <button class="vfx-option" data-vfx="tiktok">TikTok</button>
@@ -118,8 +222,8 @@
   
 
         <div class="font-section" id="font-selection-section">
-            <h2 class="section-title">Choose Your Cursive Font Style</h2>
-<!-- HTML for toggle switch -->
+            <h2 class="section-title">Choose Your Cursive Font Style - 20+ Handwriting Fonts</h2>
+            <p class="section-description">Select from our collection of beautiful cursive fonts and elegant handwriting styles. Each font offers unique calligraphy characteristics perfect for different design needs.</p>
             <div class="font-toggle-container">
                 <span class="font-toggle-label">Show Font Name</span>
                 <label class="font-toggle-switch">
@@ -128,256 +232,375 @@
                 </label>
             </div>
             <div class="font-grid">
-                <div class="font-card" data-font-name="Dancing Script">
-                    <div class="font-name hidden">Dancing Script</div>
-                    <div class="font-preview">abc123</div>
-                  </div>
-            <div class="font-card" data-font-name="Great Vibes">
-                <div class="font-name hidden">Great Vibes</div>
-                <div class="font-preview">abc123</div>
+     
+                    <div class="font-card" data-font-name="Dancing Script">
+                        <div class="font-name hidden">Dancing Script</div>
+                        <img src="images/font-previews/dancing-script.png" 
+                            alt="Dancing Script cursive font preview - elegant handwriting style for invitations and decorative text" 
+                            class="font-preview" 
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Great Vibes">
+                        <div class="font-name hidden">Great Vibes</div>
+                        <img src="images/font-previews/great-vibes.png" 
+                            alt="Great Vibes cursive font preview - flowing script style perfect for wedding invitations and elegant designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Lovers Quarrel">
+                        <div class="font-name hidden">Lovers Quarrel</div>
+                        <img src="images/font-previews/lovers-quarrel.png" 
+                            alt="Lovers Quarrel cursive font preview - romantic handwritten style for love letters and personal notes" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Pacifico">
+                        <div class="font-name hidden">Pacifico</div>
+                        <img src="images/font-previews/pacifico.png" 
+                            alt="Pacifico cursive font preview - casual brush script style for fun and creative projects" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Sacramento">
+                        <div class="font-name hidden">Sacramento</div>
+                        <img src="images/font-previews/sacramento.png" 
+                            alt="Sacramento cursive font preview - sophisticated script style for formal documents and elegant branding" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Allura">
+                        <div class="font-name hidden">Allura</div>
+                        <img src="images/font-previews/allura.png" 
+                            alt="Allura cursive font preview - graceful calligraphy style for luxury branding and special occasions" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Alex Brush">
+                        <div class="font-name hidden">Alex Brush</div>
+                        <img src="images/font-previews/alex-brush.png" 
+                            alt="Alex Brush cursive font preview - natural brush lettering style for artistic and creative designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Kaushan Script">
+                        <div class="font-name hidden">Kaushan Script</div>
+                        <img src="images/font-previews/kaushan-script.png" 
+                            alt="Kaushan Script cursive font preview - bold handwritten style for headers and attention-grabbing text" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Parisienne">
+                        <div class="font-name hidden">Parisienne</div>
+                        <img src="images/font-previews/parisienne.png" 
+                            alt="Parisienne cursive font preview - French-inspired elegant script for sophisticated designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Tangerine">
+                        <div class="font-name hidden">Tangerine</div>
+                        <img src="images/font-previews/tangerine.png" 
+                            alt="Tangerine cursive font preview - delicate script style perfect for feminine and elegant projects" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Lobster">
+                        <div class="font-name hidden">Lobster</div>
+                        <img src="images/font-previews/lobster.png" 
+                            alt="Lobster cursive font preview - bold retro script style for vintage and eye-catching designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Yellowtail">
+                        <div class="font-name hidden">Yellowtail</div>
+                        <img src="images/font-previews/yellowtail.png" 
+                            alt="Yellowtail cursive font preview - playful handwritten style for casual and friendly designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Mr Dafoe">
+                        <div class="font-name hidden">Mr Dafoe</div>
+                        <img src="images/font-previews/mr-dafoe.png" 
+                            alt="Mr Dafoe cursive font preview - quirky handwritten style for creative and unique projects" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Ruthie">
+                        <div class="font-name hidden">Ruthie</div>
+                        <img src="images/font-previews/ruthie.png" 
+                            alt="Ruthie cursive font preview - charming handwritten style for personal and heartfelt messages" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Qwigley">
+                        <div class="font-name hidden">Qwigley</div>
+                        <img src="images/font-previews/qwigley.png" 
+                            alt="Qwigley cursive font preview - distinctive script style for unique and memorable designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Damion">
+                        <div class="font-name hidden">Damion</div>
+                        <img src="images/font-previews/damion.png" 
+                            alt="Damion cursive font preview - smooth script style for modern and stylish text designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Marck Script">
+                        <div class="font-name hidden">Marck Script</div>
+                        <img src="images/font-previews/marck-script.png" 
+                            alt="Marck Script cursive font preview - marker-style handwriting for casual and informal designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Fuggles">
+                        <div class="font-name hidden">Fuggles</div>
+                        <img src="images/font-previews/fuggles.png" 
+                            alt="Fuggles cursive font preview - playful handwritten style for fun and creative projects" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Ma Shan Zheng">
+                        <div class="font-name hidden">Ma Shan Zheng</div>
+                        <img src="images/font-previews/ma-shan-zheng.png" 
+                            alt="Ma Shan Zheng cursive font preview - Chinese calligraphy style for traditional and cultural designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Monotype Corsiva">
+                        <div class="font-name hidden">Monotype Corsiva</div>
+                        <img src="images/font-previews/monotype-corsiva.png" 
+                            alt="Monotype Corsiva cursive font preview - classic italic script for formal and professional documents" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                    <div class="font-card" data-font-name="Segoe Script">
+                        <div class="font-name hidden">Segoe Script</div>
+                        <img src="images/font-previews/segoe-script.png" 
+                            alt="Segoe Script cursive font preview - modern handwriting style for contemporary and clean designs" 
+                            class="font-preview"
+                            loading="lazy" 
+                            decoding="async">
+                    </div>
+
+                </div>
             </div>
-            <div class="font-card" data-font-name="Lovers Quarrel">
-                <div class="font-name hidden">Lovers Quarrel</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Pacifico">
-                <div class="font-name hidden">Pacifico</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Alex Brush">
-                <div class="font-name hidden">Alex Brush</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Parisienne">
-                <div class="font-name hidden">Parisienne</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Allura">
-                <div class="font-name hidden">Allura</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Mr Dafoe">
-                <div class="font-name hidden">Mr Dafoe</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Marck Script">
-                <div class="font-name hidden">Marck Script</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Tangerine">
-                <div class="font-name hidden">Tangerine</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Qwigley">
-                <div class="font-name hidden">Qwigley</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Kaushan Script">
-                <div class="font-name hidden">Kaushan Script</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Sacramento">
-                <div class="font-name hidden">Sacramento</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Segoe Script">
-                <div class="font-name hidden">Segoe Script</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Monotype Corsiva">
-                <div class="font-name hidden">Monotype Corsiva</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Ma Shan Zheng">
-                <div class="font-name hidden">Ma Shan Zheng</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Damion">
-                <div class="font-name hidden">Damion</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Fuggles">
-                <div class="font-name hidden">Fuggles</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Ruthie">
-                <div class="font-name hidden">Ruthie</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Yellowtail">
-                <div class="font-name hidden">Yellowtail</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Lobster">
-                <div class="font-name hidden">Lobster</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            </div>
-        </div>
+         </div>
     </div>
+</div>
 
 <!-- Redesigned Guide Section -->
-<!-- 调整后的Guide Section HTML结构 -->
-<section class="guide-section" id="guide-section">
-    <div class="container">
-        <h2 class="section-title">How to Use Cursive Text Generator</h2>
-        <p class="section-subtitle">Follow these simple steps to create beautiful cursive text in seconds</p>
 
-        <div class="guide-content-wrapper">
-            <!-- 步骤区域 -->
-            <div class="guide-steps-area">
-                <div class="guide-area-header">
-                    <h3 class="guide-area-title"><i class="fas fa-list-ol"></i>Quick Start Guide</h3>
-                </div>
-                <div class="guide-steps-content">
-                    <ol class="guide-steps-list">
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">1</div>
-                            <div class="guide-step-content">
-                                <h4>Type Your Text</h4>
-                                <p>Enter any word or message in the text input box above.</p>
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">2</div>
-                            <div class="guide-step-content">
-                                <h4>Watch it Transform</h4>
-                                <p>Your text will automatically generate in the selected cursive font.</p>
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">3</div>
-                            <div class="guide-step-content">
-                                <h4>Choose Font Style</h4>
-                                <p>Select your preferred cursive style from the font options below the input.</p>
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">4</div>
-                            <div class="guide-step-content">
-                                <h4>Add Visual Effects</h4>
-                                <p>Enhance your text with effects like shadow, neon, or golden finish.</p>
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">5</div>
-                            <div class="guide-step-content">
-                                <h4>Save Your Creation</h4>
-                                <p>Download your beautifully generated cursive text as an image.</p>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            </div>
 
-            <!-- 提示区域 -->
-            <div class="guide-tips-area">
-                <div class="guide-area-header">
-                    <h3 class="guide-area-title"><i class="fas fa-lightbulb"></i>Tips for Best Results</h3>
+    <section class="guide-section" id="guide-section">
+        <div class="container">
+            <h2 class="section-title">How to Use Our Cursive Font Generator</h2>
+            <p class="section-subtitle">Follow these simple steps to create beautiful cursive text and handwriting fonts in seconds</p>
+
+            <div class="guide-content-wrapper">
+                <!-- 步骤区域 -->
+                <div class="guide-steps-area">
+                    <div class="guide-area-header">
+                        <h3 class="guide-area-title"><i class="fas fa-list-ol"></i>Quick Start Guide for Cursive Text Generation</h3>
+                    </div>
+                    <div class="guide-steps-content">
+                        <ol class="guide-steps-list">
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">1</div>
+                                <div class="guide-step-content">
+                                    <h4>Type Your Text for Cursive Conversion</h4>
+                                    <p>Enter any word, message, or phrase in the text input box above to start generating cursive fonts.</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">2</div>
+                                <div class="guide-step-content">
+                                    <h4>Watch Your Text Transform to Cursive</h4>
+                                    <p>Your typed text will automatically generate beautiful cursive handwriting in the selected font style.</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">3</div>
+                                <div class="guide-step-content">
+                                    <h4>Choose Your Preferred Cursive Font Style</h4>
+                                    <p>Select your favorite handwriting font from our collection of elegant cursive styles and calligraphy options.</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">4</div>
+                                <div class="guide-step-content">
+                                    <h4>Add Visual Effects to Your Cursive Text</h4>
+                                    <p>Use visual effects like shadows, outlines, and gradients to enhance your text.</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">5</div>
+                                <div class="guide-step-content">
+                                    <h4>Save Your Beautiful Cursive Creation</h4>
+                                    <p>Download your beautifully generated cursive text and handwriting fonts as high-quality images.</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
-                <div class="guide-tips-content">
-                    <div class="tips-grid">
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-palette"></i>
+                
+                <!-- Tips区域 -->
+                <div class="guide-tips-area">
+                    <div class="guide-area-header">
+                        <h3 class="guide-area-title"><i class="fas fa-lightbulb"></i>Tips for Best Results</h3>
+                    </div>
+                    <div class="guide-tips-content">
+                        <div class="tips-grid">
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>Try Multiple Fonts</h4>
+                                    <p>Experiment with different cursive fonts to find the perfect style for your project</p>
+                                </div>
                             </div>
-                            <div class="tip-content">
-                                <h4>Try Multiple Fonts</h4>
-                                <p>Different styles suit different texts and purposes.</p>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>Try Various Effects</h4>
+                                    <p>Use visual effects like shadows, outlines, and gradients to enhance your text.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-wand-magic-sparkles"></i>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-align-center"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>Use Text Alignment</h4>
+                                    <p>Adjust text alignment to create better visual balance and composition.</p>
+                                </div>
                             </div>
-                            <div class="tip-content">
-                                <h4>Experiment with Effects</h4>
-                                <p>Visual effects can significantly enhance appearance.</p>
-                            </div>
-                        </div>
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-align-center"></i>
-                            </div>
-                            <div class="tip-content">
-                                <h4>Use Text Alignment</h4>
-                                <p>Center text for a balanced, professional look.</p>
-                            </div>
-                        </div>
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <div class="tip-content">
-                                <h4>Preview as You Type</h4>
-                                <p>Enable preview to see instant changes in the input area.</p>
-                            </div>
-                        </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>Preview While Typing</h4>
+                                    <p>Watch your text transform in real-time as you type and make adjustments.</p>
+                                </div>
+                            </div>       
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="overview-section" id="about-section">
-    <div class="container">
-        <h2 class="section-title">About Cursive Text Generator</h2>
-        <div class="overview-content">
-            <div class="overview-item">
-                <div class="overview-icon">
-                    <i class="fas fa-magic"></i>
+        </section>
+    <section class="overview-section" id="about-section">
+        <div class="container">
+            <h2 class="section-title">About Our Cursive Font Generator Tool</h2>
+            <div class="overview-content">
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Easy Cursive Text Generation</h3>
+                    <p>Simply type any word or message in the text box and instantly generate beautiful cursive fonts and elegant handwriting styles for your social media, designs, and creative projects.</p>
                 </div>
-                <h3>Easy Cursive Text Generation</h3>
-                <p>Simply type a word or message in the text box and instantly generate beautiful cursive fonts for your social media, designs, and more.</p>
-            </div>
-            <div class="overview-item">
-                <div class="overview-icon">
-                    <i class="fas fa-font"></i>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Multiple Cursive Fonts & Handwriting Styles</h3>
+                    <p>Choose from 20+ carefully selected cursive fonts and calligraphy styles to generate elegant handwriting that perfectly matches your design needs.</p>
                 </div>
-                <h3>Multiple Cursive Fonts</h3>
-                <p>Choose from 20+ carefully selected cursive fonts to generate elegant handwriting styles from your typed text.</p>
-            </div>
-            <div class="overview-item">
-                <div class="overview-icon">
-                    <i class="fas fa-paint-brush"></i>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Cursive Text Visual Effects</h3>
+                    <p>After you type and generate your cursive text, enhance your handwriting fonts with stunning visual effects including shadows, neon glow, and golden finish.</p>
                 </div>
-                <h3>Text Visual Effects</h3>
-                <p>After you type and generate your cursive text, enhance it with visual effects including shadows, neon glow, and golden finish.</p>
             </div>
-        </div>
-        
-        <!-- 精简但保留关键词的内容 -->
-        <div class="about-content">
-            <h3>Why Choose Our Cursive Text Generator?</h3>
-            <p>Our tool makes it simple to generate cursive fonts by just typing your text. Type a word or message once, and transform it instantly into beautiful cursive styles.</p>
             
-            <h3>Cursive Text Use Cases</h3>
-            <ul class="use-cases">
-                <li><i class="fas fa-hashtag"></i> <strong>Social Media</strong> - Type and generate cursive text to make your posts stand out with elegant fonts</li>
-                <li><i class="fas fa-palette"></i> <strong>Digital Design</strong> - Transform regular typed text into artistic cursive for creative projects</li>
-                <li><i class="fas fa-envelope"></i> <strong>Invitations</strong> - Add elegance with beautiful cursive text styles by simply typing your message</li>
-                <li><i class="fas fa-signature"></i> <strong>Signatures</strong> - Type your name and generate a distinctive cursive style for your signature</li>
-            </ul>
+            <!-- 精简但保留关键词的内容 -->
+            <div class="about-content">
+                <h3>Why Choose Our Free Cursive Font Generator?</h3>
+                <p>Our online cursive text generator makes it simple to create beautiful handwriting fonts by just typing your text. Type any word or message once, and transform it instantly into stunning cursive styles and elegant calligraphy.</p>
+                
+                <h3>Cursive Text & Handwriting Font Use Cases</h3>
+                <ul class="use-cases">
+                    <li><i class="fas fa-hashtag"></i> <strong>Social Media Posts</strong> - Type and generate cursive text to make your posts stand out with elegant handwriting fonts</li>
+                    <li><i class="fas fa-palette"></i> <strong>Digital Design Projects</strong> - Transform regular typed text into artistic cursive fonts and calligraphy for creative work</li>
+                    <li><i class="fas fa-envelope"></i> <strong>Wedding Invitations</strong> - Add elegance with beautiful cursive text styles and handwriting fonts by simply typing your message</li>
+                    <li><i class="fas fa-signature"></i> <strong>Digital Signatures</strong> - Type your name and generate a distinctive cursive style for your personal signature</li>
+                    <li><i class="fas fa-gift"></i> <strong>Greeting Cards</strong> - Create personalized cursive text and handwriting fonts for special occasions</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>Art & Calligraphy</strong> - Generate beautiful cursive fonts for artistic projects and calligraphy practice</li>
+                </ul>
+                
+                <h3>Features of Our Cursive Font Generator</h3>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <strong>Free Online Tool</strong> - Generate cursive text and handwriting fonts completely free</li>
+                    <li><i class="fas fa-check"></i> <strong>No Registration Required</strong> - Start creating cursive fonts immediately by typing your text</li>
+                    <li><i class="fas fa-check"></i> <strong>Instant Preview</strong> - See your cursive text generate in real-time as you type</li>
+                    <li><i class="fas fa-check"></i> <strong>High-Quality Output</strong> - Download your cursive fonts and handwriting text as crisp images</li>
+                    <li><i class="fas fa-check"></i> <strong>Mobile Friendly</strong> - Generate cursive text on any device, anywhere</li>
+                </ul>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+
 
     <!-- 在浮动按钮之前添加页脚 -->
         <footer class="footer">
         <div class="footer-container">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <i class="fas fa-feather-alt"></i>
-                    <span>Cursive Generator</span>
-                </div>
-                <p class="footer-description">A simple tool to generate cursive fonts by typing your text. Type a word, generate beautiful cursive instantly.</p>
+        <div class="footer-section">
+            <div class="footer-logo">
+                <i class="fas fa-feather-alt"></i>
+                <span>Cursive Generator</span>
             </div>
-            
+            <p class="footer-description">A free online cursive font generator tool to create beautiful handwriting text. Type any message and generate elegant cursive fonts and calligraphy styles instantly.</p>
+        </div>
+                    
             <div class="footer-section">
                 <h3 class="footer-title">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="#guide-section">Guide</a></li>
                     <li><a href="#about-section">About</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
@@ -442,11 +665,11 @@
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "WebApplication",
+          "@type": "SoftwareApplication",
           "name": "Cursive Text Generator",
           "url": "https://cursivegenerator.online",
           "description": "Free online cursive text generator. Simply type a word or message in the text box and generate beautiful cursive fonts for social media, designs, and more.",
-          "applicationCategory": "UtilityApplication",
+          "applicationCategory": "DesignApplication",
           "operatingSystem": "Any",
           "offers": {
             "@type": "Offer",
@@ -504,6 +727,6 @@
           ]
         }
         </script>
-
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </body>
 </html>

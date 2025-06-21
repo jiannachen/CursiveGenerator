@@ -1,15 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> <!-- 修改语言为中文 -->
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>草书生成器 - 输入文字生成草书</title> <!-- 修改标题 -->
-    <link rel="alternate icon" type="image/x-icon" href="./favicon.ico">
-    <!-- 修改描述 -->
-    <meta name="description" content="免费在线草书生成器。只需在文本框中输入单词或消息，即可为社交媒体、设计等生成漂亮的草书。">
-    <!-- 修改关键词 -->
-    <meta name="keywords" content="草书生成器, 生成草书, 输入生成, 花式文字, 书法字体, 文本转换器, 在线工具, 时尚字体, 手写生成器, 社交媒体文字, 漂亮文字, 字体转换器, 文本效果, 艺术文字, 将常规文本转换为草书, 草书母符号, 输入单词">
-    <meta name="robots" content="index, follow">
+    <title>草书文字生成器 - 输入文字生成草书字体</title>
+    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico">
+
+    <style>
+        :root {
+            --primary-color: #4f46e5; /* 主色调：靛蓝色 */
+            --primary-light: #818cf8; /* 主色调亮色版 */
+            --primary-dark: #3730a3; /* 主色调暗色版 */
+            --secondary-color: #f97316; /* 次要色调：橙色 */
+            --text-primary: #18181b; /* 主要文本颜色：近黑色 */
+            --text-secondary: #52525b; /* 次要文本颜色：深灰色 */
+            --background: #ffffff; /* 背景色：白色 */
+            --bg-light: #f8f9fa;
+            --background-alt: #f9fafb; /* 替代背景色：浅灰色 */
+            --border-color: #e5e7eb; /* 边框颜色：浅灰色 */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* 小阴影 */
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* 中等阴影 */
+            --radius-sm: 0.375rem; /* 小圆角 */
+            --radius-md: 0.5rem; /* 中等圆角 */
+            --radius-lg: 0.75rem; /* 大圆角 */
+            --transition: all 0.2s ease; /* 全局过渡效果 */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 无衬线字体栈 */
+            --primary-color-rgb: 79, 70, 229; /* 主色调RGB值，用于rgba */
+        }
+                
+        /* 内容容器 */
+        .container {
+          max-width: 1200px; /* 最大宽度 */
+          margin: 0 auto; /* 水平居中 */
+          padding: 2rem 1.5rem; /* 减小内边距，从2rem改为1rem */
+        }
+        
+        /* 头部样式 */
+        .header {
+          text-align: center; /* 文本居中 */
+          margin-bottom: 1.5rem; /* 减小底部外边距，从3rem改为1.5rem */
+        }
+        
+        /* 标题样式 */
+        .header h1 {
+          font-size: 2rem; /* 减小字体大小，从2.5rem改为2rem */
+          font-weight: 700; /* 字体粗细 */
+          color: var(--text-primary); /* 文本颜色 */
+          margin-bottom: 0.5rem; /* 减小底部外边距，从0.75rem改为0.5rem */
+          background: linear-gradient(90deg, var(--primary-color), var(--primary-dark)); /* 渐变背景 */
+          -webkit-background-clip: text; /* 文字裁剪 */
+          -webkit-text-fill-color: transparent; /* 文字填充透明 */
+          background-clip: text; /* 标准文字裁剪属性 */
+        }
+          
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+    </style>
+
+    
+    <!-- Open Graph标签（社交媒体分享） -->
+    <meta property="og:title" content="草书文字生成器 - 在线美丽草书字体">
+    <meta property="og:description" content="立即将您的文字转换为美丽的草书字体。免费在线工具，用于为社交媒体、设计等创建时尚文字。">
+    <meta property="og:site_name" content="草书生成器">
+    <meta property="og:url" content="https://cursivegenerator.online/cn/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cursivegenerator.online/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="草书文字生成器预览">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="草书文字生成器 - 在线美丽草书字体">
+    <meta name="twitter:description" content="立即将您的文字转换为美丽的草书字体。免费在线工具，用于创建时尚文字。">
+    <meta name="twitter:image" content="https://cursivegenerator.online/images/twitter-card.png">
+    <meta name="twitter:image:alt" content="草书文字生成器">
+    
+    <!-- 功能控制标签 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="草书生成器">
+    
+    <!-- 安全和性能标签 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="origin-when-cross-origin">
     <!-- 去掉对部分div样式的收录索引 -->
     <meta name="googlebot" content="noindex:class:feedback-modal">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,461 +113,570 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <!-- 页面多语言 -->
+    <link rel="canonical" href="https://cursivegenerator.online/cn/index.html">
     <link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/index.html">
     <link rel="alternate" hreflang="en" href="https://cursivegenerator.online/index.html">
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-       <!-- 基础样式 -->
-   <link rel="stylesheet" href="../css/base.css">
-
-       <!-- 卡片样式 -->
-       <link rel="stylesheet" href="../css/cards.css">
-
-       <!-- 按钮样式 -->
-       <link rel="stylesheet" href="../css/textarea.css">
-        <!-- 按钮样式 -->
-        <link rel="stylesheet" href="../css/effect.css">
-
-       <!-- 导航栏样式 -->
-       <link rel="stylesheet" href="../css/nav.css">
-              <!-- 在响应式样式之前添加页脚样式 -->
+    <link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/index.html">
+            
+    <!-- 基础样式 -->
+    <link rel="stylesheet" href="../css/base.css">
+    <!-- 卡片样式 -->
+    <link rel="stylesheet" href="../css/cards.css">
+    <!-- 按钮样式 -->
+    <link rel="stylesheet" href="../css/textarea.css">
+    <!-- 按钮样式 -->
+    <link rel="stylesheet" href="../css/effect.css">
+    <!-- 在响应式样式之前添加页脚样式 -->
     <link rel="stylesheet" href="../css/footer.css">
-       <!-- 反馈样式 -->
-       <link rel="stylesheet" href="../css/feedback.css">
-
-       <!-- 响应式样式（放在最后以覆盖前面的样式） -->
-       <link rel="stylesheet" href="../css/responsive.css">
-       <link rel="stylesheet" href="../css/about.css">
-       <link rel="stylesheet" href="../css/guide.css">
-
-
+    <!-- 反馈样式 -->
+    <link rel="stylesheet" href="../css/feedback.css">
+    <!-- 响应式样式（放在最后以覆盖前面的样式） -->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/guide.css">
 </head>
 <body>
-     <!-- 导航栏 -->
 <nav class="navbar">
     <div class="navbar-container">
         <a href="index.html" class="navbar-logo">
             <i class="fas fa-feather-alt"></i>
-            <span>草书生成器</span> <!-- 修改 Logo 文本 -->
+            <span>草书生成器</span>
         </a>
+        
         <div class="language-selector">
             <div class="current-lang">
-                <span id="currentLang">中文</span> <!-- 修改当前语言显示 -->
+                <span id="currentLang">中文</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="language-dropdown">
-                <a href="../index.html" class="lang-option" data-lang="en">EN</a> <!-- 调整英文链接 -->
-                <a href="index.html" class="lang-option active" data-lang="zh">中文</a> <!-- 调整中文链接 -->
-                <!-- 未来可以在这里添加更多语言选项 -->
+                <a href="../index.html" class="lang-option" data-lang="en">EN</a>
+                <a href="index.html" class="lang-option active" data-lang="zh">中文</a>
             </div>
+        </div>
     </div>
 </nav>
 
-    <div class="container">
-        <header class="header" id="text-generator-section">
-            <h1>草书生成器</h1> <!-- 修改主标题 -->
-            <p>只需输入文本即可生成草书。输入单词或消息，将其转换为漂亮的风格化文本。</p> <!-- 修改副标题 -->
-        </header>
-
-        <div class="section" id="visual-effects-section">
-            <h2 class="section-title">为您的草书添加视觉效果</h2> <!-- 修改效果区标题 -->
-            <div class="vfx-options">
-                <button class="vfx-option active" data-vfx="default">默认</button> <!-- 修改按钮文本 -->
-                <button class="vfx-option" data-vfx="tiktok">抖音</button> <!-- 修改按钮文本 -->
-                <button class="vfx-option" data-vfx="shadow">阴影</button> <!-- 修改按钮文本 -->
-                <button class="vfx-option" data-vfx="gloden">金色</button> <!-- 修改按钮文本 -->
-                <button class="vfx-option" data-vfx="neon">霓虹</button> <!-- 修改按钮文本 -->
-                <button class="vfx-option" data-vfx="papercut">剪纸</button> <!-- 修改按钮文本 -->
-                <button class="vfx-option" data-vfx="emboss">浮雕</button> <!-- 修改按钮文本 -->
-            </div>
-        </div>
-
-        <div class="text-input-container" id="input-section">
-            <div class="textarea-controls">
-                <div class="toggle-container">
-                    <span class="toggle-label">在文本框中预览</span> <!-- 修改切换标签 -->
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="modeToggle">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
-                <div class="align-buttons">
-                    <button class="align-button" data-align="center" title="文本对齐"> <!-- 修改按钮标题 -->
-                        <i class="fas fa-align-center"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="textarea-wrapper">
-                <textarea id="textInput" class="text-area" placeholder="在此处输入单词或消息以生成漂亮的草书。只需输入即可看到转换效果..."></textarea> <!-- 修改占位符文本 -->
-            </div>
-        </div>
-        <div id="previewText" class="preview-text" aria-label="生成的草书预览"></div> <!-- 修改 aria-label -->
-
-        <div class="action-buttons">
-            <button id="clearBtn" class="btn btn-secondary">
-                <i class="fas fa-eraser"></i> 清除 <!-- 修改按钮文本 -->
-            </button>
-            <button id="saveBtn" class="btn btn-primary">
-                <i class="fas fa-download"></i> 保存生成的文本 <!-- 修改按钮文本 -->
-            </button>
-        </div>
-
-
-        <div class="font-section" id="font-selection-section">
-            <h2 class="section-title">选择您的草书样式</h2> <!-- 修改字体区标题 -->
-<!-- HTML for toggle switch -->
-            <div class="font-toggle-container">
-                <span class="font-toggle-label">显示字体名称</span> <!-- 修改切换标签 -->
-                <label class="font-toggle-switch">
-                <input type="checkbox" id="fontNameToggle">
-                <span class="font-toggle-slider"></span>
-                </label>
-            </div>
-            <div class="font-grid">
-                <!-- Font cards remain unchanged in structure, only the hidden font names are not user-facing text -->
-                <div class="font-card" data-font-name="Dancing Script">
-                    <div class="font-name hidden">Dancing Script</div>
-                    <div class="font-preview">abc123</div>
-                  </div>
-            <div class="font-card" data-font-name="Great Vibes">
-                <div class="font-name hidden">Great Vibes</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Lovers Quarrel">
-                <div class="font-name hidden">Lovers Quarrel</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Pacifico">
-                <div class="font-name hidden">Pacifico</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Alex Brush">
-                <div class="font-name hidden">Alex Brush</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Parisienne">
-                <div class="font-name hidden">Parisienne</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Allura">
-                <div class="font-name hidden">Allura</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Mr Dafoe">
-                <div class="font-name hidden">Mr Dafoe</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Marck Script">
-                <div class="font-name hidden">Marck Script</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Tangerine">
-                <div class="font-name hidden">Tangerine</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Qwigley">
-                <div class="font-name hidden">Qwigley</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Kaushan Script">
-                <div class="font-name hidden">Kaushan Script</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Sacramento">
-                <div class="font-name hidden">Sacramento</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Segoe Script">
-                <div class="font-name hidden">Segoe Script</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Monotype Corsiva">
-                <div class="font-name hidden">Monotype Corsiva</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Ma Shan Zheng">
-                <div class="font-name hidden">Ma Shan Zheng</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Damion">
-                <div class="font-name hidden">Damion</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Fuggles">
-                <div class="font-name hidden">Fuggles</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Ruthie">
-                <div class="font-name hidden">Ruthie</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Yellowtail">
-                <div class="font-name hidden">Yellowtail</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            <div class="font-card" data-font-name="Lobster">
-                <div class="font-name hidden">Lobster</div>
-                <div class="font-preview">abc123</div>
-            </div>
-            </div>
+<div class="container">
+    <header class="header" id="text-generator-section">
+        <h1>免费草书文字生成器</h1>
+        <p>只需输入文字即可生成草书字体。输入单词或消息，将其转换为美丽的风格化文字。</p>
+    </header>
+    
+    <div class="section" id="visual-effects-section">
+        <h2 class="section-title">为您的草书字体文字添加视觉效果</h2>
+        <p class="section-description">使用令人惊艳的视觉效果增强您生成的草书文字。应用阴影、霓虹光晕和金色效果，让您的手写字体脱颖而出。</p>
+        
+        <div class="vfx-options">
+            <button class="vfx-option active" data-vfx="default">默认</button>
+            <button class="vfx-option" data-vfx="tiktok">抖音</button>
+            <button class="vfx-option" data-vfx="shadow">阴影</button>
+            <button class="vfx-option" data-vfx="gloden">金色</button>
+            <button class="vfx-option" data-vfx="neon">霓虹</button>
+            <button class="vfx-option" data-vfx="papercut">剪纸</button>
+            <button class="vfx-option" data-vfx="emboss">浮雕</button>
         </div>
     </div>
 
-<!-- Redesigned Guide Section -->
-<!-- 调整后的Guide Section HTML结构 -->
-<section class="guide-section" id="guide-section">
-    <div class="container">
-        <h2 class="section-title">如何使用草书生成器</h2> <!-- 修改指南区标题 -->
-        <p class="section-subtitle">按照这些简单的步骤，在几秒钟内创建漂亮的草书</p> <!-- 修改指南区副标题 -->
+    <div class="text-input-container" id="input-section">
+        <div class="textarea-controls">
+            <div class="toggle-container">
+                <span class="toggle-label">在文本框中预览</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="modeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="align-buttons">
+                <button class="align-button" data-align="center" title="文字对齐">
+                    <i class="fas fa-align-center"></i>
+                </button>
+            </div>
+        </div>
+        <div class="textarea-wrapper">             
+            <textarea id="textInput" class="text-area" placeholder="在此处输入单词或消息以生成美丽的草书文字。只需输入即可看到转换效果..."></textarea>
+        </div>
+    </div>
+    <div id="previewText" class="preview-text" aria-label="生成的草书文字预览"></div>
 
-        <div class="guide-content-wrapper">
-            <!-- 步骤区域 -->
-            <div class="guide-steps-area">
-                <div class="guide-area-header">
-                    <h3 class="guide-area-title"><i class="fas fa-list-ol"></i>快速入门指南</h3> <!-- 修改步骤区标题 -->
-                </div>
-                <div class="guide-steps-content">
-                    <ol class="guide-steps-list">
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">1</div>
-                            <div class="guide-step-content">
-                                <h4>输入您的文本</h4> <!-- 修改步骤标题 -->
-                                <p>在上面的文本输入框中输入任何单词或消息。</p> <!-- 修改步骤描述 -->
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">2</div>
-                            <div class="guide-step-content">
-                                <h4>观看它转换</h4> <!-- 修改步骤标题 -->
-                                <p>您的文本将自动以所选的草书生成。</p> <!-- 修改步骤描述 -->
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">3</div>
-                            <div class="guide-step-content">
-                                <h4>选择字体样式</h4> <!-- 修改步骤标题 -->
-                                <p>从输入框下方的字体选项中选择您喜欢的草书样式。</p> <!-- 修改步骤描述 -->
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">4</div>
-                            <div class="guide-step-content">
-                                <h4>添加视觉效果</h4> <!-- 修改步骤标题 -->
-                                <p>使用阴影、霓虹或金色效果增强您的文本。</p> <!-- 修改步骤描述 -->
-                            </div>
-                        </li>
-                        <li class="guide-step-item">
-                            <div class="guide-step-number">5</div>
-                            <div class="guide-step-content">
-                                <h4>保存您的创作</h4> <!-- 修改步骤标题 -->
-                                <p>将您精美生成的草书下载为图像。</p> <!-- 修改步骤描述 -->
-                            </div>
-                        </li>
-                    </ol>
-                </div>
+    <div class="action-buttons">
+        <button id="clearBtn" class="btn btn-secondary">
+            <i class="fas fa-eraser"></i> 清除
+        </button>
+        <button id="saveBtn" class="btn btn-primary">
+            <i class="fas fa-download"></i> 保存生成的文字
+        </button>
+    </div>
+
+    <div class="font-section" id="font-selection-section">
+        <h2 class="section-title">选择您的草书字体样式 - 20+ 手写字体</h2>
+        <p class="section-description">从我们收集的美丽草书字体和优雅手写样式中选择。每种字体都提供独特的书法特色，完美适合不同的设计需求。</p>
+        <div class="font-toggle-container">
+            <span class="font-toggle-label">显示字体名称</span>
+            <label class="font-toggle-switch">
+            <input type="checkbox" id="fontNameToggle">
+            <span class="font-toggle-slider"></span>
+            </label>
+        </div>
+        <div class="font-grid">
+            <div class="font-card" data-font-name="Dancing Script">
+                <div class="font-name hidden">Dancing Script</div>
+                <img src="../images/font-previews/dancing-script.png" 
+                    alt="Dancing Script 草书字体预览 - 优雅的手写样式，适用于邀请函和装饰文字" 
+                    class="font-preview" 
+                    loading="lazy" 
+                    decoding="async">
             </div>
 
-            <!-- 提示区域 -->
-            <div class="guide-tips-area">
-                <div class="guide-area-header">
-                    <h3 class="guide-area-title"><i class="fas fa-lightbulb"></i>获得最佳效果的提示</h3> <!-- 修改提示区标题 -->
+            <div class="font-card" data-font-name="Great Vibes">
+                <div class="font-name hidden">Great Vibes</div>
+                <img src="../images/font-previews/great-vibes.png" 
+                    alt="Great Vibes 草书字体预览 - 流畅的脚本样式，完美适用于婚礼邀请函和优雅设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Lovers Quarrel">
+                <div class="font-name hidden">Lovers Quarrel</div>
+                <img src="../images/font-previews/lovers-quarrel.png" 
+                    alt="Lovers Quarrel 草书字体预览 - 浪漫的手写样式，适用于情书和个人笔记" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Pacifico">
+                <div class="font-name hidden">Pacifico</div>
+                <img src="../images/font-previews/pacifico.png" 
+                    alt="Pacifico 草书字体预览 - 休闲的笔刷脚本样式，适用于有趣和创意项目" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Sacramento">
+                <div class="font-name hidden">Sacramento</div>
+                <img src="../images/font-previews/sacramento.png" 
+                    alt="Sacramento 草书字体预览 - 精致的脚本样式，适用于正式文档和优雅品牌" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Allura">
+                <div class="font-name hidden">Allura</div>
+                <img src="../images/font-previews/allura.png" 
+                    alt="Allura 草书字体预览 - 优雅的书法样式，适用于奢华品牌和特殊场合" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Alex Brush">
+                <div class="font-name hidden">Alex Brush</div>
+                <img src="../images/font-previews/alex-brush.png" 
+                    alt="Alex Brush 草书字体预览 - 自然的笔刷字体样式，适用于艺术和创意设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Kaushan Script">
+                <div class="font-name hidden">Kaushan Script</div>
+                <img src="../images/font-previews/kaushan-script.png" 
+                    alt="Kaushan Script 草书字体预览 - 现代手写样式，适用于品牌和标题" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Mr Dafoe">
+                <div class="font-name hidden">Mr Dafoe</div>
+                <img src="../images/font-previews/mr-dafoe.png" 
+                    alt="Mr Dafoe 草书字体预览 - 时尚的手写样式，适用于现代设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Parisienne">
+                <div class="font-name hidden">Parisienne</div>
+                <img src="../images/font-previews/parisienne.png" 
+                    alt="Parisienne 草书字体预览 - 法式优雅样式，适用于精致设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Marck Script">
+                <div class="font-name hidden">Marck Script</div>
+                <img src="../images/font-previews/marck-script.png" 
+                    alt="Marck Script 草书字体预览 - 经典的脚本样式，适用于传统设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Tangerine">
+                <div class="font-name hidden">Tangerine</div>
+                <img src="../images/font-previews/tangerine.png" 
+                    alt="Tangerine 草书字体预览 - 轻盈的手写样式，适用于女性化设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Qwigley">
+                <div class="font-name hidden">Qwigley</div>
+                <img src="../images/font-previews/qwigley.png" 
+                    alt="Qwigley 草书字体预览 - 独特的手写样式，适用于个性化设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Damion">
+                <div class="font-name hidden">Damion</div>
+                <img src="../images/font-previews/damion.png" 
+                    alt="Damion 草书字体预览 - 流畅的手写样式，适用于现代项目" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Fuggles">
+                <div class="font-name hidden">Fuggles</div>
+                <img src="../images/font-previews/fuggles.png" 
+                    alt="Fuggles 草书字体预览 - 有趣的手写样式，适用于休闲设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Ruthie">
+                <div class="font-name hidden">Ruthie</div>
+                <img src="../images/font-previews/ruthie.png" 
+                    alt="Ruthie 草书字体预览 - 可爱的手写样式，适用于儿童和有趣的项目" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Yellowtail">
+                <div class="font-name hidden">Yellowtail</div>
+                <img src="../images/font-previews/yellowtail.png" 
+                    alt="Yellowtail 草书字体预览 - 复古的手写样式，适用于怀旧设计" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Lobster">
+                <div class="font-name hidden">Lobster</div>
+                <img src="../images/font-previews/lobster.png" 
+                    alt="Lobster 草书字体预览 - 粗体的脚本样式，适用于标题和强调" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
+            </div>
+
+            <div class="font-card" data-font-name="Ma Shan Zheng">
+                <div class="font-name hidden">Ma Shan Zheng</div>
+                <img src="../images/font-previews/ma-shan-zheng.png" 
+                    alt="马善政 草书字体预览 - 中文手写样式，适用于中文内容" 
+                    class="font-preview"
+                    loading="lazy" 
+                    decoding="async">
                 </div>
-                <div class="guide-tips-content">
-                    <div class="tips-grid">
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-palette"></i>
+            </div>
+         </div>
+    </div>
+</div>
+    
+    <section class="guide-section" id="guide-section">
+        <div class="container">
+            <h2 class="section-title">如何使用我们的草书字体生成器</h2>
+            <p class="section-subtitle">按照这些简单的步骤，在几秒钟内创建漂亮的草书文本和手写字体</p>
+    
+            <div class="guide-content-wrapper">
+                <!-- 步骤区域 -->
+                <div class="guide-steps-area">
+                    <div class="guide-area-header">
+                        <h3 class="guide-area-title"><i class="fas fa-list-ol"></i>草书文本生成快速入门指南</h3>
+                    </div>
+                    <div class="guide-steps-content">
+                        <ol class="guide-steps-list">
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">1</div>
+                                <div class="guide-step-content">
+                                    <h4>键入文本以进行草书转换</h4>
+                                    <p>在上面的文本输入框中输入任何单词、消息或短语即可开始生成草书字体。</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">2</div>
+                                <div class="guide-step-content">
+                                    <h4>观看您的文本转换为草书</h4>
+                                    <p>您输入的文本将自动以所选字体样式生成漂亮的草书手写体。</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">3</div>
+                                <div class="guide-step-content">
+                                    <h4>选择您喜欢的草书字体样式</h4>
+                                    <p>从我们优雅的草书风格和书法选项集合中选择您最喜欢的手写字体。</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">4</div>
+                                <div class="guide-step-content">
+                                    <h4>为草书文本添加视觉效果</h4>
+                                    <p>使用阴影、霓虹光或金色饰面等令人惊叹的效果增强您生成的草书字体。</p>
+                                </div>
+                            </li>
+                            <li class="guide-step-item">
+                                <div class="guide-step-number">5</div>
+                                <div class="guide-step-content">
+                                    <h4>保存你美丽的草书创作</h4>
+                                    <p>将您生成的精美草书文本和手写字体下载为高质量图像。</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- Tips区域 -->
+                <div class="guide-tips-area">
+                    <div class="guide-area-header">
+                        <h3 class="guide-area-title"><i class="fas fa-lightbulb"></i>获得最佳效果的技巧</h3>
+                    </div>
+                    <div class="guide-tips-content">
+                        <div class="tips-grid">
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>尝试多种字体</h4>
+                                    <p>尝试不同的草书字体，找到最适合您项目的风格</p>
+                                </div>
                             </div>
-                            <div class="tip-content">
-                                <h4>尝试多种字体</h4> <!-- 修改提示标题 -->
-                                <p>不同的样式适合不同的文本和目的。</p> <!-- 修改提示描述 -->
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>尝试各种效果</h4>
+                                    <p>使用阴影、轮廓和渐变等效果来增强您的视觉效果。</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-wand-magic-sparkles"></i>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-align-center"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>使用文本对齐</h4>
+                                    <p>调整文本对齐以创建更好的视觉平衡和构图。</p>
+                                </div>
                             </div>
-                            <div class="tip-content">
-                                <h4>尝试各种效果</h4> <!-- 修改提示标题 -->
-                                <p>视觉效果可以显著增强外观。</p> <!-- 修改提示描述 -->
-                            </div>
-                        </div>
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-align-center"></i>
-                            </div>
-                            <div class="tip-content">
-                                <h4>使用文本对齐</h4> <!-- 修改提示标题 -->
-                                <p>居中对齐文本以获得平衡、专业的外观。</p> <!-- 修改提示描述 -->
-                            </div>
-                        </div>
-                        <div class="tip-item">
-                            <div class="tip-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <div class="tip-content">
-                                <h4>边输入边预览</h4> <!-- 修改提示标题 -->
-                                <p>启用预览以在输入区域查看即时更改。</p> <!-- 修改提示描述 -->
-                            </div>
-                        </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="tip-content">
+                                    <h4>打字时预览</h4>
+                                    <p>在您键入和进行调整时实时观察文本的转换。</p>
+                                </div>
+                            </div>       
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="overview-section" id="about-section">
-    <div class="container">
-        <h2 class="section-title">关于草书生成器</h2> <!-- 修改关于区标题 -->
-        <div class="overview-content">
-            <div class="overview-item">
-                <div class="overview-icon">
-                    <i class="fas fa-magic"></i>
+        </section>
+        <section class="overview-section" id="about-section">
+            <div class="container">
+            <h2 class="section-title">关于我们的草书字体生成器工具</h2>
+            <div class="overview-content">
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>轻松生成草书文本 </h3>
+                    <p>只需在文本框中输入任何单词或消息，即可立即为您的社交媒体、设计和创意项目生成漂亮的草书字体和优雅的手写风格。</p>
                 </div>
-                <h3>轻松生成草书</h3> <!-- 修改概览项标题 -->
-                <p>只需在文本框中输入单词或消息，即可为您的社交媒体、设计等即时生成漂亮的草书。</p> <!-- 修改概览项描述 -->
-            </div>
-            <div class="overview-item">
-                <div class="overview-icon">
-                    <i class="fas fa-font"></i>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>多种草书字体和手写风格</h3>
+                    <p>从 20 多种精心挑选的草书字体和书法风格中进行选择，以生成完美满足您的设计需求的优雅手写体。</p>
                 </div>
-                <h3>多种草书</h3> <!-- 修改概览项标题 -->
-                <p>从 20 多种精心挑选的草书中进行选择，将您输入的文本生成优雅的手写风格。</p> <!-- 修改概览项描述 -->
-            </div>
-            <div class="overview-item">
-                <div class="overview-icon">
-                    <i class="fas fa-paint-brush"></i>
+                <div class="overview-item">
+                    <div class="overview-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>草书文字视觉效果</h3>
+                    <p>键入并生成草书文本后，使用令人惊叹的视觉效果（包括阴影、霓虹光和金色饰面）增强手写字体。</p>
                 </div>
-                <h3>文本视觉效果</h3> <!-- 修改概览项标题 -->
-                <p>在您输入并生成草书后，使用包括阴影、霓虹灯和金色效果在内的视觉效果来增强它。</p> <!-- 修改概览项描述 -->
             </div>
-        </div>
-
-        <!-- 精简但保留关键词的内容 -->
-        <div class="about-content">
-            <h3>为什么选择我们的草书生成器？</h3> <!-- 修改关于内容标题 -->
-            <p>我们的工具使您只需输入文本即可轻松生成草书。输入一次单词或消息，即可将其即时转换为漂亮的草书样式。</p> <!-- 修改关于内容描述 -->
-
-            <h3>草书使用场景</h3> <!-- 修改用例标题 -->
-            <ul class="use-cases">
-                <li><i class="fas fa-hashtag"></i> <strong>社交媒体</strong> - 输入并生成草书，让您的帖子以优雅的字体脱颖而出</li> <!-- 修改用例描述 -->
-                <li><i class="fas fa-palette"></i> <strong>数字设计</strong> - 将常规输入的文本转换为艺术草书，用于创意项目</li> <!-- 修改用例描述 -->
-                <li><i class="fas fa-envelope"></i> <strong>邀请函</strong> - 只需输入您的消息，即可添加优雅漂亮的草书样式</li> <!-- 修改用例描述 -->
-                <li><i class="fas fa-signature"></i> <strong>签名</strong> - 输入您的姓名并生成独特的签名草书样式</li> <!-- 修改用例描述 -->
-            </ul>
-        </div>
-    </div>
-</section>
-
-    <!-- 在浮动按钮之前添加页脚 -->
-        <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <i class="fas fa-feather-alt"></i>
-                    <span>草书生成器</span> <!-- 修改页脚 Logo 文本 -->
-                </div>
-                <p class="footer-description">一个简单的工具，通过输入文本生成草书。输入单词，即时生成漂亮的草书。</p> <!-- 修改页脚描述 -->
-            </div>
-
-            <div class="footer-section">
-                <h3 class="footer-title">快速链接</h3> <!-- 修改页脚标题 -->
-                <ul class="footer-links">
-                    <li><a href="#">首页</a></li> <!-- 修改链接文本 -->
-                    <li><a href="#guide-section">指南</a></li> <!-- 修改链接文本 -->
-                    <li><a href="#about-section">关于</a></li> <!-- 修改链接文本 -->
-                    <li><a href="privacy.html">隐私政策</a></li> <!-- 修改链接文本 -->
-                    <li><a href="terms.html">使用条款</a></li> <!-- 修改链接文本 -->
+            
+            <!-- 精简但保留关键词的内容 -->
+            <div class="about-content">
+                <h3>为什么选择我们的免费草书字体生成器？</h3>
+                <p>我们的在线草书文本生成器让您只需输入文字即可轻松创建精美的手写字体。只需输入一次任何单词或信息，即可立即将其转换为令人惊艳的草书风格和优雅的书法。</p>
+                
+                <h3>草书文本和手写字体用例</h3>
+                <ul class="use-cases">
+                    <li><i class="fas fa-hashtag"></i> <strong>社交媒体帖子</strong> - 输入并生成草书文本，使用优雅的手写字体使您的帖子脱颖而出</li>
+                    <li><i class="fas fa-palette"></i> <strong>数字设计项目</strong> - 将常规输入的文本转换为艺术草书字体和书法，用于创意工作</li>
+                    <li><i class="fas fa-envelope"></i> <strong>婚礼请柬</strong> - 只需输入您的信息，即可使用漂亮的草书文本样式和手写字体增添优雅气质</li>
+                    <li><i class="fas fa-signature"></i> <strong>数字签名</strong> - 为特殊场合创建个性化的草书文字和手写字体</li>
+                    <li><i class="fas fa-gift"></i> <strong>贺卡</strong> - 为特殊场合创建个性化的草书文字和手写字体</li>
+                    <li><i class="fas fa-paint-brush"></i> <strong>艺术与书法</strong> - 为艺术项目和书法练习生成漂亮的草书字体</li>
                 </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3 class="footer-title">联系我们</h3> <!-- 修改页脚标题 -->
-                <ul class="footer-contact">
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:icstiss@gmail.com">icstiss@gmail.com</a></li>
-                    <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li> <!-- 修改链接文本 -->
+                
+                <h3>我们的草书字体生成器的特点</h3>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> <strong>免费在线工具</strong> - 完全免费生成草书文本和手写字体</li>
+                    <li><i class="fas fa-check"></i> <strong>无需注册</strong> - 通过输入文本立即开始创建草书字体</li>
+                    <li><i class="fas fa-check"></i> <strong>即时预览</strong> - 在您输入时实时查看生成的草书文字</li>
+                    <li><i class="fas fa-check"></i> <strong>高质量输出</strong> - 将草书字体和手写文本下载为清晰的图像</li>
+                    <li><i class="fas fa-check"></i> <strong>移动友好</strong> - 可在任何设备、任何地点生成草书文本</li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 草书生成器。保留所有权利。</p> <!-- 修改版权信息 -->
-        </div>
-    </footer>
+    </section>
+    
 
     <!-- 滚动到顶部按钮 -->
     <div class="floating-action-button" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-<!-- 全局反馈按钮 -->
-<div class="feedback-button" id="feedbackButton">
-    <i class="fas fa-comment-alt"></i>
-</div>
-
+    <!-- 全局反馈按钮 -->
+    <div class="feedback-button" id="feedbackButton">
+        <i class="fas fa-comment-alt"></i>
+    </div>
 <!-- 反馈模态框 -->
 <div class="feedback-modal" id="feedbackModal">
     <div class="feedback-modal-content">
         <div class="feedback-modal-header">
-            <h3 class="feedback-modal-title">提交反馈</h3> <!-- 修改模态框标题 -->
+            <h3 class="feedback-modal-title">提交反馈</h3>
             <button class="feedback-modal-close" id="closeFeedbackModal">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <p>我们重视您的反馈，因为它有助于我们不断改进产品。</p> <!-- 修改模态框描述 -->
+        <p>我们重视您的反馈，因为它可以帮助我们不断改进我们的产品。</p>
         <form id="globalFeedbackForm" class="global-feedback-form">
             <div class="global-form-group">
-                <label for="globalEmail">您的邮箱</label> <!-- 修改标签文本 -->
-                <input type="email" id="globalEmail" name="email" placeholder="输入您的邮箱（可选）"> <!-- 修改占位符文本 -->
-                <div class="global-form-helper">我们可能会通过电子邮件与您联系以获取更多信息</div> <!-- 修改帮助文本 -->
+                <label for="globalEmail">您的电子邮件地址</label>
+                <input type="email" id="globalEmail" name="email" placeholder="您的邮箱 (选填)">
+                <div class="global-form-helper">我们可能会通过电子邮件与您联系以获取更多信息</div>
             </div>
             <div class="global-form-group">
-                <label for="globalFeedback">反馈<span class="required">*</span></label> <!-- 修改标签文本 -->
-                <textarea id="globalFeedback" name="feedback" placeholder="请分享您的想法、建议或遇到的任何问题..." required></textarea> <!-- 修改占位符文本 -->
+                <label for="globalFeedback">反馈<span class="required">*</span></label>
+                <textarea id="globalFeedback" name="feedback" placeholder="请在此输入您的反馈..." required></textarea>
             </div>
             <div class="global-form-submit">
-                <button type="submit">提交反馈</button> <!-- 修改按钮文本 -->
+                <button type="submit">提交反馈</button>
             </div>
         </form>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="footer-container">
+    <div class="footer-section">
+
+            <div class="footer-logo">
+                <i class="fas fa-feather-alt"></i>
+                <span>草书生成器</span>
+            </div>
+            <p class="footer-description">免费在线草书字体生成工具，用于创建美丽的手写文字。输入任何消息，立即生成优雅的草书字体和书法样式。</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3 class="footer-title">快速链接</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#guide-section">使用指南</a></li>
+                <li><a href="#overview-section">关于</a></li>
+                <li><a href="privacy.html">隐私政策</a></li>
+                <li><a href="terms.html">使用条款</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3 class="footer-title">联系我们</h3>
+            <ul class="footer-contact">
+                <li><i class="fas fa-envelope"></i> <a href="mailto:icstiss@gmail.com">icstiss@gmail.com</a></li>
+                <li><i class="fas fa-comment"></i> <a href="#" id="openFeedbackBtn">提交反馈</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 草书生成器。保留所有权利。</p>
+    </div>
+</footer>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../js/globe.js"></script>
+    <!-- 结构化数据 -->
     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "草书生成器", // 修改名称
-          "url": "https://cursivegenerator.online", // 保持 URL
-          "description": "免费在线草书生成器。只需在文本框中输入单词或消息，即可为社交媒体、设计等生成漂亮的草书。", // 修改描述
-          "applicationCategory": "UtilityApplication",
-          "operatingSystem": "Any",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "featureList": [ // 修改功能列表
-            "通过输入文本生成草书",
-            "多种草书",
-            "视觉效果",
-            "文本对齐选项",
-            "图像下载"
-          ],
-          "softwareVersion": "1.0",
-          "potentialAction": {
-            "@type": "UseAction",
-            "target": "https://cursivegenerator.online" // 保持目标 URL
-          },
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://cursivegenerator.online" // 保持页面 ID
-          }
+    {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "草书文字生成器",
+    "description": "免费在线工具，用于创建美丽的草书和手写风格文字",
+    "url": "https://cursivegenerator.online/cn/",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+    },
+    "featureList": [
+        "20+ 草书字体",
+        "实时预览",
+        "视觉效果",
+        "高质量输出",
+        "移动友好",
+        "完全免费"
+    ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+        "@type": "Question",
+        "name": "如何使用草书文字生成器？",
+        "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "只需在文本框中输入您的文字，选择喜欢的字体样式，应用视觉效果，然后保存您的作品。"
         }
-        </script>
-    
+    }, {
+        "@type": "Question",
+        "name": "草书文字有什么用途？",
+        "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "草书文字适用于社交媒体帖子、婚礼邀请函、标志设计、海报、个人项目和网站标题等。"
+        }
+    }, {
+        "@type": "Question",
+        "name": "如何生成草书文字？",
+        "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使用我们的在线草书生成器，输入文字，选择字体样式，应用效果，然后下载高质量图片。"
+        }
+    }]
+    }
+    </script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 </body>
 </html>
