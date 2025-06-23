@@ -53,7 +53,38 @@
           background-clip: text; /* 标准文字裁剪属性 */
 
         }
+        h1 + p {
+            font-size: 1.3rem;
+            color: var(--text-primary, #18181b); /* 使用主要文本颜色，更深 */
+            text-align: center;
+            max-width: 800px;
+            margin: 1rem auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 500; /* 增加字重 */
+          }
           
+          /* h2下面的统一描述样式 - 保持次要 */
+          h2 + p {
+            font-size: 1.05rem; /* 稍微减小 */
+            color: var(--text-secondary, #64748b);
+            text-align: center;
+            max-width: 700px;
+            margin: 0.75rem auto 2rem;
+            line-height: 1.6;
+            font-weight: 400;
+          }
+          
+          /* section内h2下的段落保持一致 */
+          .section h2 + p,
+          .guide-section h2 + p,
+          .overview-section h2 + p {
+            font-size: 1.05rem;
+            color: var(--text-secondary, #64748b);
+            text-align: center;
+            max-width: 700px;
+            margin: 0.75rem auto 2rem;
+            line-height: 1.6;
+          }
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -75,7 +106,7 @@
     </style>
     <!-- SEO基础标签 -->
     <meta name="description" content="Free Cursive Font Generator - Create Beautiful Handwriting Text">
-    <meta name="keywords" content="Generate elegant cursive fonts and handwriting styles by simply typing your text. Transform any message into beautiful cursive lettering with our free online cursive text generator tool.">
+   
     <meta name="robots" content="index, follow">
     <meta name="author" content="Cursive Generator">
     <meta name="language" content="English">
