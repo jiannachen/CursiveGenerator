@@ -263,7 +263,8 @@ async function loadFeedback() {
         const controller = new AbortController();
         const response = await fetch('/api/feedback', {
             headers: {
-                'Authorization': `Bearer ${authToken}`
+                'Authorization': `Bearer             │
+ │           ${localStorage.getItem('adminToken')}` 
             },
             signal: controller.signal
         }).catch(error => {
