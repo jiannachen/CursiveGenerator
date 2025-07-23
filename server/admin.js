@@ -261,9 +261,14 @@ async function loadFeedback() {
         
         updateDebugInfo("开始从服务器加载反馈数据");
         const controller = new AbortController();
+        const token = localStorage.getItem('adminToken');
+        if (!token) {
+            throw new Error('未找到认证令牌，请重新登录');
+        }
+
         const response = await fetch('/api/feedback', {
             headers: {
-                'Authorization': `Bearer${localStorage.getItem('adminToken')}` 
+                'Authorization': `Bearer ${token}`
             },
             signal: controller.signal
         }).catch(error => {
@@ -273,6 +278,10 @@ async function loadFeedback() {
         
         const result = await response.json();
         
+        if (response.status === 401 || response.status === 403) {
+            throw new Error('未授权访问，请检查令牌或重新登录');
+        }
+
         if (!result.success) {
             throw new Error(result.message || '获取数据失败');
         }
@@ -304,7 +313,7 @@ async function loadFeedback() {
     } catch (error) {
         console.error("加载反馈数据失败:", error);
         updateDebugInfo("加载反馈数据失败: " + error.message);
-        document.getElementById('feedbackList').innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle empty-icon"></i><p class="empty-text">加载反馈数据失败</p></div>';
+        document.getElementById('feedbackList').innerHTML = `<div class="empty-state"><i class="fas fa-exclamation-triangle empty-icon"></i><p class="empty-text">加载反馈数据失败: ${error.message}</p></div>`;
     }
 }
 
@@ -549,10 +558,13 @@ function showFeedbackDetail(feedbackId) {
 // 添加删除反馈的函数
 async function deleteFeedback(feedbackId) {
     try {
+        const token = localStorage.getItem('adminToken');
+        if (!token) throw new Error('未找到认证令牌');
+
         const response = await fetch(`/api/feedback/${feedbackId}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${authToken}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -594,10 +606,13 @@ function confirmDelete(feedbackId) {
 // 标记为已读
 async function markAsRead(feedbackId) {
     try {
+        const token = localStorage.getItem('adminToken');
+        if (!token) throw new Error('未找到认证令牌');
+
         const response = await fetch(`/api/feedback/${feedbackId}/read`, {
             method: 'PUT',
             headers: {
-                'Authorization': `Bearer ${authToken}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
