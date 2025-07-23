@@ -349,12 +349,14 @@ function getFilteredFeedback() {
             }
         }
         
-        // 搜索过滤
-        if (currentFilters.search && !(
-            feedback.message.toLowerCase().includes(currentFilters.search) || 
-            feedback.email.toLowerCase().includes(currentFilters.search)
-        )) {
-            return false;
+        // 搜索过滤（增加安全检查）
+        if (currentFilters.search) {
+            const search = currentFilters.search.toLowerCase();
+            const messageMatch = feedback.message && feedback.message.toLowerCase().includes(search);
+            const emailMatch = feedback.email && feedback.email.toLowerCase().includes(search);
+            if (!messageMatch && !emailMatch) {
+                return false;
+            }
         }
         
         return true;
