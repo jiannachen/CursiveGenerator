@@ -260,7 +260,6 @@ async function loadFeedback() {
         document.getElementById('feedbackList').innerHTML = '<div class="loading-container"><div class="loading-spinner"></div></div>';
         
         updateDebugInfo("开始从服务器加载反馈数据");
-        const controller = new AbortController();
         const token = localStorage.getItem('adminToken');
         if (!token) {
             throw new Error('未找到认证令牌，请重新登录');
@@ -269,19 +268,17 @@ async function loadFeedback() {
         const response = await fetch('/api/feedback', {
             headers: {
                 'Authorization': `Bearer ${token}`
-            },
-            signal: controller.signal
-        }).catch(error => {
-            updateDebugInfo("请求发送失败: " + error.message);
-            throw error;
+            }
         });
-        
-        const result = await response.json();
-        
-        if (response.status === 401 || response.status === 403) {
-            throw new Error('未授权访问，请检查令牌或重新登录');
+
+        // 首先检查响应是否成功
+        if (!response.ok) {
+            // 如果服务器返回了错误状态，则抛出错误，而不是尝试解析JSON
+            throw new Error(`服务器错误: ${response.status} ${response.statusText}`);
         }
 
+        const result = await response.json();
+        
         if (!result.success) {
             throw new Error(result.message || '获取数据失败');
         }

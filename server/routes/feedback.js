@@ -1,12 +1,24 @@
 const express = require('express');
 const admin = require('firebase-admin');
+const jwt = require('jsonwebtoken');
+const { jwtSecret } = require('../config');
+
 // 简单的 token 验证函数
 const verifyToken = (req, res, next) => {
-    const token = req.headers.authorization?.replace('Bearer ', '');
-    if (!token || !token.startsWith('temp_token_')) {
-        return res.status(401).json({ success: false, message: '未授权访问' });
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ success: false, message: '请求未授权' });
     }
-    next();
+
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ success: false, message: 'Token无效或已过期' });
+        }
+        req.user = decoded; // 将解码后的用户信息附加到请求对象上
+        next();
+    });
 };
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 const { check, validationResult } = require('express-validator');
