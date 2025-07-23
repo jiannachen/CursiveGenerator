@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     { 
-      "src": "package.json", 
+      "src": "server/index.js", 
       "use": "@vercel/node", 
       "config": { 
         "includeFiles": ["server/**", "firebase-service-account.json"] 
@@ -20,10 +20,10 @@
   ],
   "routes": [
  
-    { "src": "/api/health", "methods": ["GET"], "dest": "server/index.js" },
-    { "src": "/api/auth/(.*)", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "dest": "server/index.js" },
-    { "src": "/api/feedback/(.*)", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "dest": "server/index.js" },
-    { "src": "/api/(.*)", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], "dest": "server/index.js" },
+    { "src": "/api/health", "dest": "server/index.js" },
+    { "src": "/api/auth/(.*)", "dest": "server/index.js" },
+    { "src": "/api/feedback/(.*)", "dest": "server/index.js" },
+    { "src": "/api/(.*)", "dest": "server/index.js" },
     
 
     { "src": "/server/admin.js", "dest": "/server/admin.js" },
