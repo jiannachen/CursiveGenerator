@@ -83,7 +83,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
             document.getElementById('loginContainer').style.display = 'none';
             document.getElementById('adminContainer').style.display = 'flex';
             // 加载反馈数据
-            loadFeedbackData();
+            loadFeedback();
         } else {
             alert('登录失败: ' + (data.message || '未知错误'));
         }
@@ -263,8 +263,7 @@ async function loadFeedback() {
         const controller = new AbortController();
         const response = await fetch('/api/feedback', {
             headers: {
-                'Authorization': `Bearer             │
- │           ${localStorage.getItem('adminToken')}` 
+                'Authorization': `Bearer${localStorage.getItem('adminToken')}` 
             },
             signal: controller.signal
         }).catch(error => {
