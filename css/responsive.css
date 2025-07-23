@@ -1,7 +1,45 @@
-/* 响应式样式 */
+/* 响应式样式 - 优化合并版本 */
 
-/* 通用移动设备适配 */
+/* 通用移动设备适配 (max-width: 768px) */
 @media (max-width: 768px) {
+  /* 导航栏适配 */
+  .navbar-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--background);
+    flex-direction: column;
+    padding: 2rem 0;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .navbar-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .navbar-toggle {
+    display: flex;
+  }
+  
+  .navbar-link {
+    padding: 0.75rem 2rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .navbar-link:last-child {
+    border-bottom: none;
+  }
+
   /* 字体网格适配 */
   .font-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -87,14 +125,6 @@
     flex: 0 0 auto;
   }
   
-  /* 浮动按钮适配 */
-  .floating-action-button {
-    width: 3rem;
-    height: 3rem;
-    bottom: 1.5rem;
-    right: 1.5rem;
-  }
-  
   /* 字体卡片适配 */
   .font-card {
     height: 80px;
@@ -131,19 +161,13 @@
     font-size: 0.6rem;
   }
 
-
   /* 语言选择器适配 */
   .language-selector {
     margin-right: 1rem;
-    /* 移除下面这行，不再强制居中对齐 */
-    /* flex-direction: column; */
-    /* 移除下面这行，不再强制居中对齐 */
-    /* align-items: center; */
-    /* 保持右对齐 */
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: auto; /* 修改为自动宽度，不再占据整行 */
+    width: auto;
   }
   
   .language-dropdown {
@@ -156,7 +180,6 @@
     min-width: 120px;
     z-index: 101;
   }
-  
 
   .language-dropdown .lang-option {
     padding: 12px 15px;
@@ -229,9 +252,9 @@
 
   /* 指南部分适配 - 改为上下布局 */
   .guide-content {
-    display: flex !important; /* 强制使用flex布局 */
-    flex-direction: column !important; /* 强制垂直方向 */
-    grid-template-columns: 1fr !important; /* 覆盖可能的网格设置 */
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
     gap: 1.5rem;
     margin-top: 1.5rem;
     width: 100%;
@@ -245,7 +268,6 @@
     box-sizing: border-box;
   }
   
-  /* 使标题更加突出 */
   .guide-steps-container h3, 
   .tips-container h3 {
     font-size: 1.4rem;
@@ -254,7 +276,6 @@
     text-align: center;
   }
   
-  /* 确保内容区域有足够的间距 */
   .guide-steps,
   .tips-list {
     margin: 0;
@@ -290,10 +311,6 @@
   }
   
   /* 页脚简化 */
-  .footer {
-    padding: 2rem 0 1rem;
-  }
-  
   .footer-section {
     margin-bottom: 1.5rem;
   }
@@ -327,31 +344,9 @@
   .global-form-group {
     margin-bottom: 0.8rem;
   }
-  
-  /* 浮动按钮调整位置 */
-  .floating-action-button,
-  .feedback-button {
-    width: 2.5rem;
-    height: 2.5rem;
-    bottom: 1rem;
-    right: 1rem;
-  }
-  
-  .feedback-button {
-    bottom: 4rem;
-  }
-  
-/* 响应式设计 - 小屏幕适配 */
-@media (max-width: 768px) {
-  .guide-section {
-    padding: 3rem 0;
-  }
-  
-  .guide-content {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
+
+
+  /* 指南新版模块适配 */
   .card-header {
     padding: 1.25rem;
   }
@@ -389,56 +384,176 @@
   .tip-content span {
     font-size: 0.85rem;
   }
-  .guide-section {
-    padding: 3rem 0;
+
+  /* 标题响应式调整 */
+  h1 + p {
+    font-size: 1.15rem;
+    margin: 1rem auto 2rem;
+  }
+
+  h2 + p,
+  .section-description {
+    font-size: 0.95rem;
+    margin: 0.5rem auto 1.5rem;
+  }
+
+  /* Overview section响应式 */
+  .overview-section .container {
+    padding: 0 1rem;
   }
   
-  .guide-content {
+  .overview-content {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .use-case-item {
+    padding: 1.25rem;
+    gap: 1rem;
+    border-radius: 10px;
+  }
+  
+  .use-case-item .fas {
+    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .use-case-content h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .use-case-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* 新版指南区域适配 */
+  .guide-container {
+    padding: 0 1rem;
+  }
+  
+  .guide-section .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .guide-section .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .guide-content-wrapper {
     gap: 1.5rem;
   }
   
-  .card-header {
-    padding: 1.25rem;
+  .guide-area-header {
+    padding: 1.25rem 1.5rem;
   }
   
-  .card-header i {
-    font-size: 1.25rem;
+  .guide-area-title {
+    font-size: 1.3rem;
   }
   
-  .card-header h3 {
+  .guide-steps-content,
+  .guide-tips-content {
+    padding: 1.5rem;
+  }
+  
+  .guide-steps-list {
+    gap: 1.5rem;
+  }
+  
+  .guide-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .guide-step-item:not(:last-child)::after {
+    left: 16px;
+    height: calc(100% + 1rem);
+  }
+  
+  .guide-step-content h4 {
     font-size: 1.1rem;
   }
   
-  .guide-steps, .tips-list {
-    padding: 1.25rem;
-  }
-  
-  .guide-steps li, .tips-list li {
-    padding: 0.75rem 0;
-  }
-  
-  .step-number {
-    width: 24px;
-    height: 24px;
-    font-size: 0.75rem;
-  }
-  
-  .tips-list li i {
-    font-size: 1.1rem;
-  }
-  
-  .tip-content strong {
+  .guide-step-content p {
     font-size: 0.95rem;
   }
   
-  .tip-content span {
-    font-size: 0.85rem;
+  .tips-grid {
+    gap: 1.25rem;
+  }
+  
+  .tip-item {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  /* 用户评价区域适配 */
+  .testimonials-section {
+    padding: 50px 0;
+  }
+  
+  .testimonials-title {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+  
+  .testimonials-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .testimonial-card {
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+  
+  .testimonial-card-content p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .testimonial-user {
+    gap: 12px;
+  }
+  
+  .testimonial-avatar {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .testimonial-user-name {
+    font-size: 16px;
+  }
+  
+  .testimonial-user-role {
+    font-size: 13px;
+  }
+  
+  .star {
+    font-size: 14px;
   }
 }
 
-
-/* 更小屏幕的设备 (480px以下) */
+/* 更小屏幕的设备 (max-width: 480px) */
 @media (max-width: 480px) {
   /* 指南内容垂直布局 - 改为手风琴模式 */
   .guide-content {
@@ -464,7 +579,7 @@
   
   .guide-steps-container, 
   .tips-area {
-    padding: 0; /* 移除内边距，由内部元素控制 */
+    padding: 0;
     margin-bottom: 1rem;
     border-radius: 12px;
     background-color: transparent;
@@ -473,110 +588,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
   
-  /* 新版指南模块的移动端适配 */
-  .guide-steps-area,
-  .guide-tips-area {
-    margin-bottom: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  }
-  
-  .guide-area-header {
-    padding: 1.2rem 1.5rem;
-  }
-  
-  .guide-area-title {
-    font-size: 1.2rem;
-  }
-  
-  .guide-area-title i {
-    margin-right: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .guide-steps-content,
-  .guide-tips-content {
-    padding: 1.5rem;
-  }
-  
-  .guide-steps-list {
-    gap: 1.5rem;
-  }
-  
-  .guide-step-number {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
-    margin-right: 1rem;
-  }
-  
-  .guide-step-content h4 {
-    font-size: 1.05rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .guide-step-content p {
-    font-size: 0.9rem;
-  }
-  
-  .tips-grid {
-    gap: 1.2rem;
-  }
-  
-  .tip-item {
-    padding: 1rem;
-  }
-  
-  .tip-icon {
-    font-size: 1rem;
-  }
-  
-  .tip-content h4 {
-    font-size: 0.95rem;
-  }
-  
-  .tip-content p {
-    font-size: 0.85rem;
-  }
-  
-  /* 步骤连接线调整 */
-  .guide-step-item:not(:last-child)::after {
-    height: calc(100% + 1rem);
-  }
-  
-  /* 优化use-cases布局 */
-  .use-cases li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 0.5rem 0;
-    margin-bottom: 0.8rem;
-  }
-
-  .use-cases li i {
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .use-cases li strong {
-    font-size: 0.9rem;
-    display: inline;
-    color: var(--text-primary);
-  }
-
-  .use-cases li span {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    display: block;
-    color: var(--text-secondary);
-    padding-left: 1.3rem;
-    margin-top: 0.3rem;
-  }
-}
-
-/* ... 现有代码 ... */
-  
+  /* 手风琴效果 */
   .guide-steps-container h3, 
   .tips-container h3 {
     font-size: 1.1rem;
@@ -591,13 +603,11 @@
     align-items: center;
   }
   
-  /* 移除原有的标题下划线 */
   .guide-steps-container h3:after, 
   .tips-container h3:after {
     display: none;
   }
   
-  /* 添加展开/折叠指示器 */
   .guide-steps-container h3:before, 
   .tips-container h3:before {
     content: '+';
@@ -606,13 +616,11 @@
     color: var(--primary-color);
   }
   
-  /* 展开状态的样式 */
   .guide-steps-container.open h3:before, 
   .tips-container.open h3:before {
     content: '−';
   }
   
-  /* 内容区域默认隐藏 */
   .guide-steps, 
   .tips-list {
     display: none;
@@ -620,7 +628,6 @@
     background-color: #fff;
   }
   
-  /* 展开状态显示内容 */
   .guide-steps-container.open .guide-steps, 
   .tips-container.open .tips-list {
     display: block;
@@ -652,7 +659,8 @@
     margin-right: 0.5rem;
     margin-top: 0.1rem;
   }
-  
+
+  /* Tips样式优化 */
   .tips-container {
     background-color: #f4f5f7;
     border-radius: 8px;
@@ -700,9 +708,35 @@
     line-height: 1.5;
   }
 
+  /* 优化use-cases布局 */
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .use-case-item {
+    padding: 1rem;
+    gap: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .use-case-item .fas {
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+  }
+  
+  .use-case-content h4 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .use-case-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 
-
-  /* 优化use-cases布局 - 不修改HTML结构 */
   .use-cases li {
     display: flex;
     flex-direction: column;
@@ -732,9 +766,231 @@
     padding-left: 1.3rem;
     margin-top: 0.3rem;
   }
+  
+  /* 字体网格小屏幕适配 */
+  .font-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .font-card {
+    min-height: 100px;
+    padding: 0.5rem;
+  }
+  
+  .font-preview {
+    max-height: 80px;
+    object-fit: contain;
+  }
+  
+  .font-name {
+    font-size: 1rem;
+    padding: 0.2rem 0;
+  }
+
   .font-preview-img {
     max-height: 50px;
+  }
+
+  /* 标题响应式调整 */
+  h1 + p {
+    font-size: 1.05rem;
+    margin: 0.75rem auto 1.5rem;
+  }
+
+  h2 + p,
+  .section-description {
+    font-size: 0.9rem;
+    margin: 0.5rem auto 1.25rem;
+  }
+
+  /* Overview section */
+  .overview-section .container {
+    padding: 0 0.75rem;
+  }
+  
+  .overview-item {
+    padding: 1.25rem;
+  }
+  
+  .overview-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .overview-item h3 {
+    font-size: 1.2rem;
+  }
+  
+  .about-content {
+    padding: 1.5rem;
+  }
+  
+  .about-content h3 {
+    font-size: 1.4rem;
+  }
+  
+  .about-content p,
+  .about-content ul li {
+    font-size: 1rem;
+  }
+
+  /* 新版指南区域 */
+  .guide-steps-area,
+  .guide-tips-area {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .guide-area-header {
+    padding: 1rem 1.25rem;
+  }
+  
+  .guide-area-title {
+    font-size: 1.2rem;
+  }
+  
+  .guide-area-title i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .guide-steps-content,
+  .guide-tips-content {
+    padding: 1.25rem;
+  }
+  
+  .guide-step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    margin-right: 0.75rem;
+  }
+  
+  .guide-step-item:not(:last-child)::after {
+    left: 14px;
+  }
+  
+  .guide-step-content h4 {
+    font-size: 1rem;
+  }
+  
+  .guide-step-content p {
+    font-size: 0.9rem;
+  }
+  
+  .tip-item {
+    padding: 0.875rem;
+    gap: 0.625rem;
+  }
+  
+  .tip-content h4 {
+    font-size: 1rem;
+  }
+  
+  .tip-content p {
+    font-size: 0.9rem;
+  }
+
+  /* 用户评价区域 */
+  .testimonials-section {
+    padding: 40px 0;
+  }
+  
+  .testimonials-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+  
+  .testimonials-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+  }
+  
+  .testimonial-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+  
+  .testimonial-card-content {
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-card-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .testimonial-user {
+    gap: 10px;
+  }
+  
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .testimonial-user-name {
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+  
+  .testimonial-user-role {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  
+  .star {
+    font-size: 13px;
+  }
 }
+
+/* 超小屏幕适配 (max-width: 320px) */
+@media (max-width: 320px) {
+  .font-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.6rem;
+    padding: 0 0.25rem;
+  }
+  
+  .font-card {
+    min-height: 90px;
+    padding: 0.4rem;
+  }
+  
+  .font-preview {
+    max-height: 70px;
+  }
+  
+  .font-name {
+    font-size: 0.7rem;
+  }
+
+  /* 用户评价区域超小屏适配 */
+  .testimonials-section {
+    padding: 30px 0;
+  }
+  
+  .testimonials-title {
+    font-size: 1.4rem;
+  }
+  
+  .testimonials-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .testimonial-card {
+    padding: 16px 12px;
+  }
+  
+  .testimonial-card-content p {
+    font-size: 13px;
+  }
 }
 
 /* 平板适配 (768px - 1024px) */
@@ -834,266 +1090,60 @@
   .tips-list {
     display: block;
   }
-}
 
-/* 触屏设备优化 */
-@media (pointer: coarse) {
-  .text-area {
-    min-height: 4.5rem;
-    padding: 1rem 0.9rem;
-    line-height: 1.7;
+  /* 用户评价区域平板适配 */
+  .testimonials-section {
+    padding: 60px 0;
   }
   
-  .preview-text:active {
-    transform: scale(0.98);
-    transition: transform 0.2s ease;
+  .testimonials-title {
+    font-size: 2.2rem;
   }
   
-  .vfx-option {
-    padding: 0.6rem 1.2rem;
+  .testimonials-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
   }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-  }
-  
-  /* 增强触屏设备上的点击反馈 */
-  .align-button:active,
-  .copy-button:active,
-  .preview-copy-button:active {
-    transform: scale(0.95);
-    opacity: 0.9;
-  }
-  
-  /* 关于和指南部分触屏优化 */
-  .guide-steps li:active,
-  .tips-list li:active,
-  .overview-item:active {
-    transform: scale(0.98);
-  }
-}
 
-/* 桌面端优化 (1024px以上) */
-@media (min-width: 1024px) {
-  .preview-text,
-  .preview-image-container {
-    width: 100%;
-    font-size: 2rem !important;
-    line-height: 1.6;
-    padding: 1rem 1rem;
+  /* iPad专门的use-case-item优化 */
+  .use-cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
-  .text-area {
-    font-size: 1.4rem;
-    line-height: 1.5;
+  .use-case-item {
+    padding: 1.6rem;
+    gap: 1.2rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* 优化桌面端悬停效果 */
-  .preview-text:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  .use-case-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   }
   
-  /* 关于和指南部分桌面优化 */
-  .overview-content {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+  .use-case-item .fas {
+    font-size: 1.25rem;
+    width: 42px;
+    height: 42px;
+    background: rgba(var(--primary-color-rgb), 0.12);
   }
   
-  /* 在桌面端恢复左右布局 */
-  .guide-content {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    display: grid;
+  .use-case-item:hover .fas {
+    transform: scale(1.05);
+    background: rgba(var(--primary-color-rgb), 0.18);
   }
   
-  .about-content {
-    padding: 3rem;
+  .use-case-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
   }
   
-  .guide-steps-container, 
-  .tips-container {
-    padding: 2.5rem;
-    height: 100%;
-  }
-  
-  .detailed-guide {
-    padding: 2.5rem;
-  }
-  
-}
-
-/* 超大屏幕适配 (1440px以上) */
-@media (min-width: 1440px) {
-  .preview-text,
-  .preview-image-container {
-    max-width: 1200px;
-    font-size: 2.2rem !important;
-    padding: 1.8rem 2.5rem;
-  }
-  
-  .container {
-    max-width: 1400px;
-  }
-  
-  .font-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  }
-  
-  .text-area {
-    font-size: 1.5rem;
-    line-height: 1.6;
-  }
-  
-  /* 关于和指南部分超大屏幕适配 */
-  .overview-section .container,
-  .guide-section .container {
-    max-width: 1400px;
-  }
-  
-  .overview-content {
-    gap: 2.5rem;
-  }
-  
-  .overview-item {
-    padding: 2.5rem;
-  }
-  
-  .about-content {
-    padding: 3.5rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .guide-content {
-    gap: 2.5rem;
-  }
-  
-  .guide-steps-container, 
-  .tips-container {
-    padding: 3rem;
-  }
-  
-  .detailed-guide {
-    padding: 3rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-@media (max-width: 480px) {
-  /* 现有样式... */
-   
-  /* 字体网格小屏幕适配 */
-  .font-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 增加最小宽度 */
-    gap: 0.8rem; /* 增加间距 */
-    margin-top: 1rem;
-    padding: 0 0.5rem;
-  }
-  
-  /* 字体卡片在小屏幕上的优化 */
-  .font-card {
-    min-height: 100px; /* 增加最小高度 */
-    padding: 0.5rem;
-  }
-  
-  .font-preview {
-    max-height: 80px; /* 增加图片高度限制 */
-    object-fit: contain;
-  }
-  
-  .font-name {
+  .use-case-content p {
     font-size: 1rem;
-    padding: 0.2rem 0;
+    line-height: 1.6;
   }
-}
-@media (max-width: 320px) {
-    
-  .font-grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* 超小屏幕适当减小但不过小 */
-    gap: 0.6rem;
-    padding: 0 0.25rem;
-  }
-  
-  .font-card {
-    min-height: 90px;
-    padding: 0.4rem;
-  }
-  
-  .font-preview {
-    max-height: 70px; /* 增加超小屏幕的图片高度 */
-  }
-  
-  .font-name {
-    font-size: 0.7rem;
-  }
-
 }
 
-/* 响应式样式 */
-@media (max-width: 768px) {
-  .navbar-menu {
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: var(--background);
-      flex-direction: column;
-      padding: 2rem 0;
-      box-shadow: var(--shadow-md);
-      transform: translateY(-100%);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1000;
-  }
-  
-  .navbar-menu.active {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-  }
-  
-  .navbar-toggle {
-      display: flex;
-  }
-  
-  .navbar-link {
-      padding: 0.75rem 2rem;
-      width: 100%;
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
-  }
-  
-  .navbar-link:last-child {
-      border-bottom: none;
-  }
-}
-/* 响应式调整 */
-@media (max-width: 768px) {
-h1 + p {
-  font-size: 1.15rem; /* 保持相对差异 */
-  margin: 1rem auto 2rem;
-}
-
-h2 + p,
-.section-description {
-  font-size: 0.95rem;
-  margin: 0.5rem auto 1.5rem;
-}
-}
-
-@media (max-width: 480px) {
-h1 + p {
-  font-size: 1.05rem;
-  margin: 0.75rem auto 1.5rem;
-}
-
-h2 + p,
-.section-description {
-  font-size: 0.9rem;
-  margin: 0.5rem auto 1.25rem;
-}
-}
+/* PC端优化规则已移至 about.css */

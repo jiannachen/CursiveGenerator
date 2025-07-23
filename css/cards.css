@@ -1,23 +1,12 @@
 
 
-/* 字体网格 */
-.font-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 减小最小宽度，从140px改为120px */
-  gap: 0.8rem; /* 减小间距，从1rem改为0.8rem */
-  margin-top: 1.5rem;
-  max-width: 1200px; /* 修改为与其他部分一致的宽度 */
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* 字体选择区域 */
 .font-section {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border-color);
   position: relative;
-  max-width: 1200px; /* 添加最大宽度限制 */
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -35,7 +24,7 @@
 
 .section-title {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
@@ -128,7 +117,7 @@ input:checked + .font-toggle-slider:before {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 80px; /* 减小高度，从90px改为80px */
+  height: 60px; /* Adjusted for better card fit on PC */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -152,14 +141,14 @@ input:checked + .font-toggle-slider:before {
 
 /* 字体预览样式 */
 .font-preview {
-  font-size: 1.5rem; /* 稍微减小预览字体大小，从1.3rem改为1.2rem */
+  font-size: 0.8rem; /* Further adjusted for better card fit on PC */
   transition: all 0.25s ease;
   line-height: 1.2;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  padding: 0.5rem;
+  padding: 0.05rem; /* Further adjusted for better card fit */
 }
 
 .font-card:hover {

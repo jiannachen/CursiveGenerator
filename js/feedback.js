@@ -84,7 +84,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         function getCurrentLang() {
-            return localStorage.getItem('preferredLanguage') || 'en';
+            // Check if we're on a Chinese page by looking at the URL or HTML lang attribute
+            const isChinesePage = window.location.pathname.includes('/cn/') || 
+                                 document.documentElement.lang === 'zh' ||
+                                 document.documentElement.lang === 'zh-CN';
+            
+            return localStorage.getItem('preferredLanguage') || (isChinesePage ? 'zh' : 'en');
         }
         
         // 验证邮箱格式

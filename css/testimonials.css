@@ -1,0 +1,290 @@
+/* Testimonials Section Styles */
+/* Testimonials Section Styles */
+.testimonials-section {
+  padding: 4rem 0;
+  background-color: var(--background-alt, #f9fafb); /* 使用正确的CSS变量 */
+  width: 100%; /* 确保通栏 */
+}
+
+/* 统一版心区域样式 */
+.testimonials-container {
+  max-width: 1200px; /* 添加版心限制 */
+  margin: 0 auto; /* 居中 */
+  padding: 0 2rem; /* 统一内边距，与其他容器保持一致 */
+  text-align: center;
+}
+
+.testimonials-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.testimonials-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+/* 推荐卡片样式 */
+.testimonial-card {
+  background: var(--background, #ffffff);
+  padding: 2rem;
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: var(--shadow-md, 0 8px 24px rgba(0, 0, 0, 0.08));
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+/* Hover效果 */
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg, 0 20px 40px rgba(0, 0, 0, 0.15));
+  background: linear-gradient(135deg, var(--background, #ffffff) 0%, rgba(var(--primary-color-rgb, 79, 70, 229), 0.02) 100%);
+}
+
+/* 添加装饰性渐变边框效果 */
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color, #4f46e5), var(--primary-color-light, #6366f1));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* 添加光泽效果 */
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(-45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.testimonial-card:hover::after {
+  transform: rotate(-45deg) translateX(100%);
+}
+
+.testimonial-card-content {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-card-content p {
+  font-size: 1rem;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.7;
+  margin: 0;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-card-content p {
+  color: var(--text-primary, #1e293b);
+}
+
+/* 引号样式优化 */
+.testimonial-card-content p::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary-color, #4f46e5);
+  font-weight: 600;
+  float: left;
+  margin-right: 0.5rem;
+  line-height: 1;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  font-family: Georgia, serif;
+}
+
+.testimonial-card:hover .testimonial-card-content p::before {
+  opacity: 1;
+  transform: scale(1.1);
+  color: var(--primary-color-dark, #3730a3);
+}
+
+/* 用户信息区域样式 */
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--primary-color-rgb, 79, 70, 229), 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-user {
+  border-top-color: rgba(var(--primary-color-rgb, 79, 70, 229), 0.2);
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color, #4f46e5), var(--primary-color-light, #6366f1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb, 79, 70, 229), 0.3);
+}
+
+.testimonial-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.testimonial-user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+  margin: 0 0 0.25rem 0;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-user-name {
+  color: var(--primary-color, #4f46e5);
+}
+
+.testimonial-user-role {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #64748b);
+  margin: 0;
+  word-break: break-word;
+  transition: color 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-user-role {
+  color: var(--text-primary, #1e293b);
+}
+
+/* 星级评分样式 */
+.testimonial-rating {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.testimonial-rating .star {
+  color: #fbbf24;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.testimonial-card:hover .testimonial-rating .star {
+  transform: scale(1.1);
+}
+
+.testimonial-card:hover .testimonial-rating .star:nth-child(1) { transition-delay: 0s; }
+.testimonial-card:hover .testimonial-rating .star:nth-child(2) { transition-delay: 0.05s; }
+.testimonial-card:hover .testimonial-rating .star:nth-child(3) { transition-delay: 0.1s; }
+.testimonial-card:hover .testimonial-rating .star:nth-child(4) { transition-delay: 0.15s; }
+.testimonial-card:hover .testimonial-rating .star:nth-child(5) { transition-delay: 0.2s; }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .testimonial-card-content p::before {
+    font-size: 2.5rem;
+    margin-right: 0.375rem;
+  }
+  
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .testimonial-user-name {
+    font-size: 1rem;
+  }
+  
+  .testimonial-user-role {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    padding: 1.25rem;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .testimonial-card-content {
+    margin-bottom: 1.25rem;
+  }
+  
+  .testimonial-card-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .testimonial-card-content p::before {
+    font-size: 2.25rem;
+    margin-right: 0.25rem;
+  }
+  
+  .testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  
+  .testimonial-user {
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+  }
+}

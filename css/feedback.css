@@ -1,8 +1,8 @@
 /* 全局反馈按钮 */
 .feedback-button {
     position: fixed;
-    bottom: 6rem; /* 与返回顶部按钮错开 */
-    right: 2rem; /* 改为右下角 */
+    bottom: 5.5rem; /* 与返回顶部按钮错开，优化间距 */
+    right: 1.5rem; /* 统一右侧边距 */
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
@@ -14,18 +14,22 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: var(--transition);
-    z-index: 99;
+    z-index: 100; /* 提高层级，避免与其他元素冲突 */
+    /* 添加触摸优化 */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   
   
   .feedback-button:hover {
     background-color: var(--primary-dark);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
   }
   
   .feedback-button i {
     font-size: 1.25rem;
   }
+
   
   /* 反馈模态框 */
   .feedback-modal {
@@ -48,41 +52,35 @@
     opacity: 1;
     visibility: visible;
   }
-  
-  /* 修复移动端媒体查询冲突 */
-  @media (max-width: 768px) {
-    .feedback-button {
-      width: 3rem;
-      height: 3rem;
-      bottom: 5rem; /* 与返回顶部按钮错开 */
-      right: 1.5rem; /* 保持在右下角 */
-    }
-    
-    .feedback-modal-content {
-      padding: 1.5rem;
-      width: 95%; /* 增加宽度，适合移动设备 */
-      max-width: 450px;
-    }
-    
-    .global-form-group label {
-      font-size: 0.85rem;
-    }
-    
-    .global-form-group input,
-    .global-form-group textarea {
-      padding: 0.6rem 0.8rem;
-      font-size: 0.95rem;
-    }
-    
-    .global-form-submit {
-      justify-content: center; /* 移动端居中显示按钮 */
-    }
-    
-    .global-form-submit button {
-      width: 100%; /* 按钮占满宽度 */
-      padding: 0.75rem 1rem;
-    }
+
+     /* 浮动操作按钮 */
+.floating-action-button {
+    position: fixed;
+    bottom: 1.5rem; /* 统一底部距离 */
+    right: 1.5rem; /* 统一右侧距离 */
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 98; /* 层级低于反馈按钮 */
+    /* 添加触摸优化 */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
+  
+  /* 浮动按钮悬停效果 */
+  .floating-action-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px) scale(1.02);
+  }
+  
   
   .feedback-modal-content {
     background-color: var(--background);
@@ -213,45 +211,167 @@
     color: var(--text-secondary);
   }
   
- 
-  
-  /* 超小屏幕适配 */
-  @media (max-width: 480px) {
-    .feedback-modal-content {
-      padding: 1.25rem;
-      width: 92%;
-    }
-    
-    .feedback-modal-title {
-      font-size: 1.1rem;
-    }
-    
-    .global-form-group label {
-      font-size: 0.8rem;
-    }
-  }
-   /* 浮动操作按钮 */
-.floating-action-button {
-    position: fixed; /* 固定定位 */
-    bottom: 2rem; /* 底部距离 */
-    right: 2rem; /* 右侧距离 */
-    width: 3.5rem; /* 宽度 */
-    height: 3.5rem; /* 高度 */
-    border-radius: 50%; /* 圆形 */
-    background-color: var(--primary-color); /* 背景色 */
-    color: white; /* 文本颜色 */
-    display: flex; /* 弹性布局 */
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-    cursor: pointer; /* 鼠标指针样式 */
-    transition: var(--transition); /* 过渡效果 */
-    z-index: 99; /* 层级 */
+ /* 移动端优先的优化样式 */
+@media (max-width: 768px) {
+  /* 反馈按钮调整 - 优化触摸体验 */
+  .feedback-button {
+    width: 3.2rem; /* 稍大的触摸区域 */
+    height: 3.2rem;
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); /* 与返回顶部按钮保持适当距离，支持安全区域 */
+    right: calc(1rem + env(safe-area-inset-right, 0px)); /* 统一右边距，支持安全区域 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* 减小阴影 */
+    /* 增大触摸区域 */
+    min-width: 44px;
+    min-height: 44px;
   }
   
-  /* 浮动按钮悬停效果 */
-  .floating-action-button:hover {
-    background-color: var(--primary-dark); /* 背景色 */
-    transform: translateY(-2px); /* 上移 */
+  /* 浮动操作按钮调整 */
+  .floating-action-button {
+    width: 3.2rem;
+    height: 3.2rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); /* 支持安全区域 */
+    right: calc(1rem + env(safe-area-inset-right, 0px)); /* 与反馈按钮完全对齐 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    /* 增大触摸区域 */
+    min-width: 44px;
+    min-height: 44px;
   }
   
+  /* 图标大小调整 */
+  .feedback-button i,
+  .floating-action-button i {
+    font-size: 1.1rem;
+  }
+  
+  /* 模态框内容调整 */
+  .feedback-modal-content {
+    padding: 1.5rem;
+    width: 92%;
+    max-width: none; /* 移除最大宽度限制 */
+    margin: 0 auto;
+    border-radius: var(--radius-md); /* 使用稍小的圆角 */
+    max-height: 85vh; /* 稍微减少最大高度 */
+  }
+  
+  /* 模态框标题调整 */
+  .feedback-modal-title {
+    font-size: 1.15rem;
+  }
+  
+  /* 表单元素调整 */
+  .global-form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .global-form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .global-form-group input,
+  .global-form-group textarea {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  .global-form-group textarea {
+    min-height: 100px; /* 减少最小高度 */
+  }
+  
+  /* 提交按钮调整 */
+  .global-form-submit button {
+    width: 100%; /* 按钮占满宽度 */
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+  
+  /* 关闭按钮调整 */
+  .feedback-modal-close {
+    font-size: 1.3rem;
+  }
+}
+
+/* 超小屏幕额外优化 (如iPhone 5/SE等) */
+@media (max-width: 375px) {
+  .feedback-button {
+    width: 3rem;
+    height: 3rem;
+    bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); /* 进一步优化间距，支持安全区域 */
+    right: calc(0.75rem + env(safe-area-inset-right, 0px)); /* 与浮动按钮完全对齐 */
+  }
+  
+  .floating-action-button {
+    width: 3rem;
+    height: 3rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)); /* 支持安全区域 */
+    right: calc(0.65rem + env(safe-area-inset-right, 0px)); /* 确保与反馈按钮垂直对齐 */
+  }
+  
+  /* 图标大小进一步调整 */
+  .feedback-button i,
+  .floating-action-button i {
+    font-size: 1rem;
+  }
+  
+  .feedback-modal-content {
+    padding: 1.25rem;
+    width: 94%;
+    max-height: 80vh;
+  }
+  
+  .feedback-modal-title {
+    font-size: 1.1rem;
+  }
+  
+  .global-form-group input,
+  .global-form-group textarea {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .global-form-group textarea {
+    min-height: 80px;
+  }
+}
+
+/* 横屏模式优化 */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* 横屏时按钮位置调整 */
+  .feedback-button {
+    bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1rem + env(safe-area-inset-right, 0px)); /* 确保与浮动按钮垂直对齐 */
+  }
+  
+  .floating-action-button {
+    bottom: calc(0.8rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1rem + env(safe-area-inset-right, 0px)); /* 保持完美对齐 */
+  }
+  
+  .feedback-modal-content {
+    max-height: 70vh;
+  }
+  
+  .global-form-group textarea {
+    min-height: 60px;
+  }
+}
+
+
+/* 改善焦点可见性（键盘导航支持） */
+.feedback-button:focus,
+.floating-action-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 优化按钮间的视觉层次 */
+.feedback-button:hover,
+.floating-action-button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* 添加活跃状态反馈 */
+.feedback-button:active,
+.floating-action-button:active {
+  transform: translateY(0) scale(0.95);
+  transition: transform 0.1s ease;
+}

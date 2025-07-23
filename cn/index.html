@@ -1,181 +1,86 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>草书文字生成器 - 输入文字生成草书字体</title>
-    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico">
     <meta name="description" content="使用草书文字生成器，轻松输入文本生成优雅的草书字体，支持多种风格和视觉效果，适合各种创意项目。">
-   
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Cursive Generator">
+    <meta name="author" content="花体字文字生成器">
     <meta name="language" content="Chinese">
-    <style>
-        :root {
-            --primary-color: #4f46e5; /* 主色调：靛蓝色 */
-            --primary-light: #818cf8; /* 主色调亮色版 */
-            --primary-dark: #3730a3; /* 主色调暗色版 */
-            --secondary-color: #f97316; /* 次要色调：橙色 */
-            --text-primary: #18181b; /* 主要文本颜色：近黑色 */
-            --text-secondary: #52525b; /* 次要文本颜色：深灰色 */
-            --background: #ffffff; /* 背景色：白色 */
-            --bg-light: #f8f9fa;
-            --background-alt: #f9fafb; /* 替代背景色：浅灰色 */
-            --border-color: #e5e7eb; /* 边框颜色：浅灰色 */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* 小阴影 */
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* 中等阴影 */
-            --radius-sm: 0.375rem; /* 小圆角 */
-            --radius-md: 0.5rem; /* 中等圆角 */
-            --radius-lg: 0.75rem; /* 大圆角 */
-            --transition: all 0.2s ease; /* 全局过渡效果 */
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* 无衬线字体栈 */
-            --primary-color-rgb: 79, 70, 229; /* 主色调RGB值，用于rgba */
-        }
-                
-        /* 内容容器 */
-        .container {
-          max-width: 1200px; /* 最大宽度 */
-          margin: 0 auto; /* 水平居中 */
-          padding: 2rem 1.5rem; /* 减小内边距，从2rem改为1rem */
-        }
-        
-        /* 头部样式 */
-        .header {
-          text-align: center; /* 文本居中 */
-          margin-bottom: 1.5rem; /* 减小底部外边距，从3rem改为1.5rem */
-        }
-        
-        /* 标题样式 */
-        .header h1 {
-          font-size: 2rem; /* 减小字体大小，从2.5rem改为2rem */
-          font-weight: 700; /* 字体粗细 */
-          color: var(--text-primary); /* 文本颜色 */
-          margin-bottom: 0.5rem; /* 减小底部外边距，从0.75rem改为0.5rem */
-          background: linear-gradient(90deg, var(--primary-color), var(--primary-dark)); /* 渐变背景 */
-          -webkit-background-clip: text; /* 文字裁剪 */
-          -webkit-text-fill-color: transparent; /* 文字填充透明 */
-          background-clip: text; /* 标准文字裁剪属性 */
-        }
-        h1 + p {
-            font-size: 1.3rem;
-            color: var(--text-primary, #18181b); /* 使用主要文本颜色，更深 */
-            text-align: center;
-            max-width: 800px;
-            margin: 1rem auto 2.5rem;
-            line-height: 1.7;
-            font-weight: 500; /* 增加字重 */
-          }
-          
-          /* h2下面的统一描述样式 - 保持次要 */
-          h2 + p {
-            font-size: 1.05rem; /* 稍微减小 */
-            color: var(--text-secondary, #64748b);
-            text-align: center;
-            max-width: 700px;
-            margin: 0.75rem auto 2rem;
-            line-height: 1.6;
-            font-weight: 400;
-          }
-          
-          /* section内h2下的段落保持一致 */
-          .section h2 + p,
-          .guide-section h2 + p,
-          .overview-section h2 + p {
-            font-size: 1.05rem;
-            color: var(--text-secondary, #64748b);
-            text-align: center;
-            max-width: 700px;
-            margin: 0.75rem auto 2rem;
-            line-height: 1.6;
-          }
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="花体字文字生成器">
+    <meta name="googlebot" content="noindex:class:feedback-modal">
+    <!-- Page Title and Favicon -->
+    <title>花体字生成器 - 输入文字在线生成花体字</title>
+    <link rel="alternate icon" type="image/x-icon" href="../favicon.ico">
+
 
     
     <!-- Open Graph标签（社交媒体分享） -->
-    <meta property="og:title" content="草书文字生成器 - 在线美丽草书字体">
-    <meta property="og:description" content="立即将您的文字转换为美丽的草书字体。免费在线工具，用于为社交媒体、设计等创建时尚文字。">
-    <meta property="og:site_name" content="草书生成器">
+    <meta property="og:title" content="花体字生成器 - 输入文字在线生成花体字">
+    <meta property="og:description" content="立即将您的文字转换为美丽的花体字字体。免费在线工具，用于为社交媒体、设计等创建时尚文字。">
+    <meta property="og:site_name" content="花体字文字生成器">
     <meta property="og:url" content="https://cursivegenerator.online/cn/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://cursivegenerator.online/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="草书文字生成器预览">
+    <meta property="og:image:alt" content="花体字生成器预览">
     <meta property="og:locale" content="zh_CN">
     
     <!-- Twitter Card标签 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="草书文字生成器 - 在线美丽草书字体">
-    <meta name="twitter:description" content="立即将您的文字转换为美丽的草书字体。免费在线工具，用于创建时尚文字。">
+    <meta name="twitter:title" content="花体字生成器 - 在线美丽草花体字">
+    <meta name="twitter:description" content="立即将您的文字转换为美丽的花体字。免费在线工具，用于创建时尚文字。">
     <meta name="twitter:image" content="https://cursivegenerator.online/images/twitter-card.png">
-    <meta name="twitter:image:alt" content="草书文字生成器">
+    <meta name="twitter:image:alt" content="花体字生成器">
     
     <!-- 功能控制标签 -->
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="草书生成器">
+    <meta name="apple-mobile-web-app-title" content="花体字文字生成器">
     
-    <!-- 安全和性能标签 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="referrer" content="origin-when-cross-origin">
-    <!-- 去掉对部分div样式的收录索引 -->
-    <meta name="googlebot" content="noindex:class:feedback-modal">
+    <!-- External Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Pacifico&family=Alex+Brush&family=Parisienne&family=Allura&family=Mr+Dafoe&family=Marck+Script&family=Tangerine&family=Qwigley&family=Kaushan+Script&family=Sacramento&family=Damion&family=Fuggles&family=Ruthie&family=Yellowtail&family=Lobster&family=Lovers+Quarrel&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- 页面多语言 -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <!-- Language Links -->
     <link rel="canonical" href="https://cursivegenerator.online/cn/index.html">
     <link rel="alternate" hreflang="zh-CN" href="https://cursivegenerator.online/cn/index.html">
     <link rel="alternate" hreflang="en" href="https://cursivegenerator.online/index.html">
     <link rel="alternate" hreflang="x-default" href="https://cursivegenerator.online/index.html">
             
-    <!-- 基础样式 -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/base.css">
-    <!-- 卡片样式 -->
+    <link rel="stylesheet" href="../css/hero.css">
     <link rel="stylesheet" href="../css/cards.css">
-    <!-- 按钮样式 -->
     <link rel="stylesheet" href="../css/textarea.css">
-    <!-- 按钮样式 -->
     <link rel="stylesheet" href="../css/effect.css">
-    <!-- 在响应式样式之前添加页脚样式 -->
     <link rel="stylesheet" href="../css/footer.css">
-    <!-- 反馈样式 -->
     <link rel="stylesheet" href="../css/feedback.css">
-    <!-- 响应式样式（放在最后以覆盖前面的样式） -->
-    <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/about.css">
     <link rel="stylesheet" href="../css/guide.css">
+    <link rel="stylesheet" href="../css/testimonials.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 <nav class="navbar">
     <div class="navbar-container">
         <a href="index.html" class="navbar-logo">
             <i class="fas fa-feather-alt"></i>
-            <span>草书生成器</span>
+            <span>花体字生成器</span>
         </a>
         
         <div class="language-selector">
@@ -191,11 +96,33 @@
     </div>
 </nav>
 
-<div class="container">
-    <header class="header" id="text-generator-section">
-        <h1>免费草书文字生成器</h1>
-        <p>只需输入文字即可生成草书字体。输入单词或消息，将其转换为美丽的风格化文字。</p>
-    </header>
+<section class="hero" id="text-generator-section">
+    <div class="hero-background-animation"></div>
+    <div class="hero-container">
+        <div class="hero-text-content">
+            <h1 class="hero-title">在线花体字生成器</h1>
+            <p class="hero-subtitle">使用我们免费的在线花体字生成器，即时生成优美的手写花体字和时尚字体。非常适合独特设计和社交媒体。</p>
+            <a href="#generator" class="hero-cta">
+                开始生成 <i class="fas fa-arrow-right"></i> 
+            </a>
+        </div>
+        <div class="hero-portfolio-wrapper">
+            <div class="portfolio-card card-1" data-effect="vfx-golden">
+                <span>优雅</span>
+            </div>
+            <div class="portfolio-card card-2" data-effect="vfx-neon">
+                <span>创意</span>
+            </div>
+            <div class="portfolio-card card-3" data-effect="vfx-shadow">
+                <span>时尚</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <main id="generator" class="container">
+    <div class="textarea-container">
+    
     
     <div class="section" id="visual-effects-section">
         <h2 class="section-title">为您的草书字体文字添加视觉效果</h2>
@@ -205,7 +132,7 @@
             <button class="vfx-option active" data-vfx="default">默认</button>
             <button class="vfx-option" data-vfx="tiktok">抖音</button>
             <button class="vfx-option" data-vfx="shadow">阴影</button>
-            <button class="vfx-option" data-vfx="gloden">金色</button>
+            <button class="vfx-option" data-vfx="golden">金色</button>
             <button class="vfx-option" data-vfx="neon">霓虹</button>
             <button class="vfx-option" data-vfx="papercut">剪纸</button>
             <button class="vfx-option" data-vfx="emboss">浮雕</button>
@@ -422,8 +349,9 @@
                     class="font-preview"
                     loading="lazy" 
                     decoding="async">
-                </div>
-                <div class="font-card" data-font-name="Monotype Corsiva">
+            </div>
+            
+            <div class="font-card" data-font-name="Monotype Corsiva">
                     <div class="font-name hidden">Monotype Corsiva</div>
                     <img src="../images/font-previews/monotype-corsiva.png" 
                         alt="Monotype Corsiva 草书字体预览 - 适用于正式和专业文档的经典斜体手写体" 
@@ -600,7 +528,77 @@
         </div>
     </section>
     
-
+<!-- Testimonials Section - 通栏背景 -->
+<section class="testimonials-section">
+    <div class="testimonials-container">
+        <h2 class="testimonials-title">用户真实评价</h2>
+        <p class="testimonials-subtitle">看看设计师、社交媒体运营者和创作者们为什么都选择我们的<strong>花体字生成器</strong>和<strong>草书转换器</strong>来完成他们的项目。</p>
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-card-content">
+                    <p>这是我用过最好的<strong>花体字生成器</strong>！丰富的<strong>草书字体</strong>和<strong>艺术字体</strong>选择让我的设计项目效率提升了很多。<strong>英文草书转换</strong>功能特别实用，真的是设计师必备工具！</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">A</div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-user-name">Alex T.</h4>
+                        <p class="testimonial-user-role">平面设计师</p>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-card-content">
+                    <p>超爱这些<strong>花体英文字体</strong>！用<strong>花体字生成器</strong>制作的社交媒体内容颜值爆表。<strong>手写体转换</strong>功能让普通文字瞬间变得优雅，粉丝们都夸我的<strong>艺术字</strong>好看！</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">S</div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-user-name">Sarah M.</h4>
+                        <p class="testimonial-user-role">社交媒体运营</p>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="testimonial-card-content">
+                    <p>为婚礼请柬找合适字体时发现了这个<strong>免费花体字生成器</strong>，简直是宝藏！<strong>优雅草书字体</strong>完美契合婚礼主题，<strong>在线字体转换</strong>又快又方便，强烈推荐给需要<strong>美观字体</strong>的朋友们！</p>
+                </div>
+                <div class="testimonial-user">
+                    <div class="testimonial-avatar">J</div>
+                    <div class="testimonial-user-info">
+                        <h4 class="testimonial-user-name">Jessica L.</h4>
+                        <p class="testimonial-user-role">婚礼策划师</p>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- 滚动到顶部按钮 -->
     <div class="floating-action-button" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
@@ -643,7 +641,7 @@
 
             <div class="footer-logo">
                 <i class="fas fa-feather-alt"></i>
-                <span>草书生成器</span>
+                <span>花体字文字生成器</span>
             </div>
             <p class="footer-description">免费在线草书字体生成工具，用于创建美丽的手写文字。输入任何消息，立即生成优雅的草书字体和书法样式。</p>
         </div>
@@ -668,9 +666,10 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2025 草书生成器。保留所有权利。</p>
+        <p>&copy; 2025 花体字文字生成器。保留所有权利。</p>
     </div>
 </footer>
+    <!-- Firebase and Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="../js/script.js"></script>
@@ -725,12 +724,10 @@
         "name": "如何生成草书文字？",
         "acceptedAnswer": {
         "@type": "Answer",
-        "text": "使用我们的在线草书生成器，输入文字，选择字体样式，应用效果，然后下载高质量图片。"
+        "text": "使用我们的在线花体字生成器，输入文字，选择字体样式，应用效果，然后下载高质量图片。"
         }
     }]
     }
     </script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-
 </body>
 </html>
