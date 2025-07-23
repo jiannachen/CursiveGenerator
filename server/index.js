@@ -1,4 +1,43 @@
-// ... 现有代码 ...
+const express = require('express');
+const path = require('path');
+const admin = require('firebase-admin');
+const config = require('./config');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// 中间件设置
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// CORS 设置
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
+
+// Firebase 连接检查函数
+async function checkFirebaseConnection() {
+    try {
+        const db = admin.database();
+        await db.ref('.info/connected').once('value');
+        return true;
+    } catch (error) {
+        console.error('Firebase 连接测试失败:', error);
+        return false;
+    }
+}
+
+// 健康检查路由
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
 
 // 添加一个临时的登录路由，绕过Firebase
 app.post('/api/auth/login', (req, res) => {

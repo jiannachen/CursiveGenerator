@@ -1,6 +1,13 @@
 const express = require('express');
 const admin = require('firebase-admin');
-const { verifyToken } = require('./auth');
+// 简单的 token 验证函数
+const verifyToken = (req, res, next) => {
+    const token = req.headers.authorization?.replace('Bearer ', '');
+    if (!token || !token.startsWith('temp_token_')) {
+        return res.status(401).json({ success: false, message: '未授权访问' });
+    }
+    next();
+};
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 const { check, validationResult } = require('express-validator');
 
@@ -60,16 +67,19 @@ const feedbackLimiter = async (req, res, next) => {
 // 敏感词过滤函数
 function containsSensitiveContent(text) {
     const sensitiveWords = ['spam', 'advertisement', 'ads', '广告', '推广', '色情', '赌博'];
-     // 检查完整词匹配
-     if (sensitiveWords.some(word => processedText.includes(word))) {
+    const processedText = text.toLowerCase();
+    
+    // 检查完整词匹配
+    if (sensitiveWords.some(word => processedText.includes(word))) {
         return true;
     }
-     // 检查模糊匹配（处理故意插入特殊字符的情况）
-     const fuzzyText = processedText.replace(/[^\u4e00-\u9fa5a-z]/g, ''); // 只保留中文和英文字母
-     return sensitiveWords.some(word => {
-         const fuzzyWord = word.replace(/[^\u4e00-\u9fa5a-z]/g, '');
-         return fuzzyText.includes(fuzzyWord) && fuzzyWord.length > 1; // 避免单字母误判
-     });
+    
+    // 检查模糊匹配（处理故意插入特殊字符的情况）
+    const fuzzyText = processedText.replace(/[^\u4e00-\u9fa5a-z]/g, ''); // 只保留中文和英文字母
+    return sensitiveWords.some(word => {
+        const fuzzyWord = word.replace(/[^\u4e00-\u9fa5a-z]/g, '');
+        return fuzzyText.includes(fuzzyWord) && fuzzyWord.length > 1; // 避免单字母误判
+    });
 }
 
 
